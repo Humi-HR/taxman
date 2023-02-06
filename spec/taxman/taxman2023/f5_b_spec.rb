@@ -3,7 +3,7 @@
 require "bigdecimal/util"
 
 # F5B = F5 * (B/PI)
-RSpec.describe Taxman::F5B do
+RSpec.describe Taxman2023::F5B do
   # We're taking the examples from https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas/t4127-jan/t4127-jan-payroll-deductions-formulas-computer-programs.html#toc97
   let(:f5b) { described_class.new(pi: pi, b: b, f5: f5).amount }
 

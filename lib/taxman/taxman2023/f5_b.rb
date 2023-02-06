@@ -2,7 +2,7 @@
 
 require "bigdecimal/util"
 
-module Taxman
+module Taxman2023
   # Calculates the F5B factor
   class F5B
     attr_reader :f5, :b, :pi
