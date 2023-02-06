@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "bigdecimal/util"
-
 # rubocop:disable RSpec/MultipleMemoizedHelpers
 RSpec.describe Taxman2023::A do
   let(:a) do
