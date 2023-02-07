@@ -12,6 +12,7 @@ require_relative "taxman/taxman2023/ei"
 require_relative "taxman/taxman2023/k2_generic"
 
 require_relative "taxman/taxman2023/on/k2p"
+require_relative "taxman/taxman2023/on/t4"
 
 module Taxman
   class Error < StandardError; end
