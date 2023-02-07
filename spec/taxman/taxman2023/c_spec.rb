@@ -5,10 +5,9 @@ RSpec.describe Taxman2023::C do
 
   let(:p) { 12 }
   let(:pm) { 12 }
-  let(:cpp_max) { 3_754_45.0.to_d }
 
   context "when the employee has already reached the cpp maximum for the year" do
-    let(:d) { cpp_max }
+    let(:d) { Taxman2023::C::CPP_MAX }
     let(:pi) { 4_000_00 }
 
     it "calculates zero cpp contribution for this period" do
@@ -17,7 +16,7 @@ RSpec.describe Taxman2023::C do
   end
 
   context "when the employee will meet and exceed the maximum this period" do
-    let(:d) { cpp_max - 100_00 }
+    let(:d) { Taxman2023::C::CPP_MAX - 100_00 }
     let(:pi) { 4_000_00 }
 
     it "calculates a cpp contribution of the remaining room" do

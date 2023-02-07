@@ -7,10 +7,10 @@ module Taxman2023
     attr_reader :pi, :p, :pm, :d
 
     def initialize(pi:, p:, pm:, d:)
-      @pi = pi
-      @p = p
-      @pm = pm
-      @d = d
+      @pi = pi.to_d
+      @p = p.to_d
+      @pm = pm.to_d
+      @d = d.to_d
     end
 
     def amount
