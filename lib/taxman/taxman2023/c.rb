@@ -1,0 +1,30 @@
+# frozen_string_literal: true
+
+module Taxman2023
+  # Calculates the CPP contribution for the period
+  class C
+    CPP_MAX = 3_754_45.to_d
+    attr_reader :pi, :p, :pm, :d
+
+    def initialize(pi:, p:, pm:, d:)
+      @pi = pi
+      @p = p
+      @pm = pm
+      @d = d
+    end
+
+    def amount
+      [cpp_max, cpp_calculated].min.round(2)
+    end
+
+    def cpp_max
+      (CPP_MAX * pm / 12) - d
+    end
+
+    def cpp_calculated
+      cpp = (pi - (3_500_00.to_d / p)) * 0.0595
+
+      [cpp, 0].max
+    end
+  end
+end

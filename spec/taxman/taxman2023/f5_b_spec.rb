@@ -13,7 +13,7 @@ RSpec.describe Taxman2023::F5B do
     let(:b) { 0 }
 
     it "is equal to zero" do
-      expect(f5b).to eq 0
+      expect(f5b).to be_zero
     end
   end
 
@@ -22,7 +22,7 @@ RSpec.describe Taxman2023::F5B do
     let(:pi) { 0 }
 
     it "is equal to zero" do
-      expect(f5b).to eq 0
+      expect(f5b).to be_zero
     end
   end
 

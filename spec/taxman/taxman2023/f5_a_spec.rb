@@ -21,7 +21,7 @@ RSpec.describe Taxman2023::F5A do
     let(:pi) { 0 }
 
     it "is equal to zero" do
-      expect(f5a).to eq 0
+      expect(f5a).to be_zero
     end
   end
 

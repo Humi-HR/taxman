@@ -9,7 +9,7 @@ RSpec.describe Taxman2023::T3 do
     let(:k2) { 0 }
 
     it "calculates no taxes" do
-      expect(t3).to eq 0
+      expect(t3).to be_zero
     end
   end
 
