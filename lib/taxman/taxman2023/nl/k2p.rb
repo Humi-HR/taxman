@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Taxman2023
-  module On
+  module Nl
     # Calculates the k2p factor for ontario
     class K2p
       attr_reader :i, # Income in the period
