@@ -4,9 +4,6 @@ module Taxman2023
   # Calculates the annualized provincial tax
   class T4Generic
     attr_reader :a,
-                :b,
-                :b1,
-                :p,
                 :k2p,
                 :k3p
 

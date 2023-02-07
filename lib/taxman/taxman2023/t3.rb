@@ -5,16 +5,22 @@ module Taxman2023
   class T3
     attr_reader :a, :hd, :k2, :k3
 
-    FIRST_THRESHOLD = 53_359_00.to_d
-    SECOND_THRESHOLD = 106_717_00.to_d
-    THIRD_THRESHOLD = 165_430_00.to_d
-    FOURTH_THRESHOLD = 235_675_00.to_d
+    LOWEST_RATE = 0.150.to_d
 
-    def initialize(a:, hd:, k2:, k3: 0)
-      @a = a
-      @hd = hd
-      @k2 = k2
-      @k3 = k3 # Other federal non-refundable tax credits
+    RATES_AND_CONSTANTS = {
+      53_359_00.to_d => [LOWEST_RATE, 0.0.to_d],
+      106_717_00.to_d => [0.205.to_d, 2_935_00.to_d],
+      165_430_00.to_d => [0.260.to_d, 8_804_00.to_d],
+      235_675_00.to_d => [0.290.to_d, 13_767_00.to_d],
+      BigDecimal("Infinity") => [0.330.to_d, 23_194_00.to_d]
+    }.freeze
+
+    def initialize(a:, hd:, k2:, tc: nil, k3: 0)
+      @a = a.to_d
+      @hd = hd.to_d
+      @k2 = k2.to_d
+      @k3 = k3.to_d # Other federal non-refundable tax credits
+      @tc = tc&.to_d
     end
 
     def amount
@@ -23,42 +29,32 @@ module Taxman2023
       ((r * a) - k - k1 - k2 - k3 - k4).round(2)
     end
 
-    # rubocop:disable Metrics/MethodLength
     def r
-      @r ||= if a <= FIRST_THRESHOLD
-               0.150
-             elsif a <= SECOND_THRESHOLD
-               0.205
-             elsif a <= THIRD_THRESHOLD
-               0.260
-             elsif a <= FOURTH_THRESHOLD
-               0.290
-             else
-               0.330
-             end
+      rate, = RATES_AND_CONSTANTS[bracket]
+
+      rate
     end
 
     def k
-      @k ||= if a <= FIRST_THRESHOLD
-               0
-             elsif a <= SECOND_THRESHOLD
-               2_935_00.to_d
-             elsif a <= THIRD_THRESHOLD
-               8_804_00.to_d
-             elsif a <= FOURTH_THRESHOLD
-               13_767_00.to_d
-             else
-               23_194_00.to_d
-             end
+      _, constant = RATES_AND_CONSTANTS[bracket]
+
+      constant
     end
-    # rubocop:enable Metrics/MethodLength
+
+    def bracket
+      @bracket ||= RATES_AND_CONSTANTS.keys.sort.find { |bracket| a <= bracket }
+    end
 
     def k1
-      0.15 * Bpaf.new(a: a, hd: hd).amount
+      LOWEST_RATE * tc
+    end
+
+    def tc
+      @tc ||= Bpaf.new(a: a, hd: hd).amount
     end
 
     def k4
-      [0.15 * cea, 0.15 * a].min
+      [LOWEST_RATE * cea, LOWEST_RATE * a].min
     end
 
     def cea

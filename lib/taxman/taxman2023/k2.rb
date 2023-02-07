@@ -26,7 +26,7 @@ module Taxman2023
         b: b,
         b1: b1,
         p: p,
-        rate: 0.15
+        rate: T3::LOWEST_RATE
       ).amount
     end
   end
