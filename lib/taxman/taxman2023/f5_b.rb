@@ -7,6 +7,7 @@ module Taxman2023
   class F5B
     attr_reader :f5, :b, :pi
 
+    # Pensionable income here _includes_ the bonus!
     def initialize(f5:, b:, pi:)
       @f5 = f5.to_d
       @b = b.to_d

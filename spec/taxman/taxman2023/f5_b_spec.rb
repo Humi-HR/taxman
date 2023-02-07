@@ -39,4 +39,15 @@ RSpec.describe Taxman2023::F5B do
       expect(f5b).to eq f5
     end
   end
+
+  # see https://docs.google.com/spreadsheets/d/1GwlJj9_1ilsRuOV5qPsQY-qFWXqkEEGzeshSq-sgjRg/edit?usp=sharing
+  context "when there is a large bonus in the period" do
+    let(:b) { 21_619_00 }
+    let(:pi) { 3_076_92 + b }
+    let(:f5) { 245_61.34 }
+
+    it "matches PDOC/Greg's sheet" do
+      expect(f5b).to eq 215_01.19.to_d
+    end
+  end
 end
