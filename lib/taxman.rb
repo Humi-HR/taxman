@@ -9,6 +9,7 @@ require_relative "taxman/taxman2023/t3"
 require_relative "taxman/taxman2023/k2"
 require_relative "taxman/taxman2023/c"
 require_relative "taxman/taxman2023/ei"
+require_relative "taxman/taxman2023/k2_generic"
 
 require_relative "taxman/taxman2023/on/k2p"
 
