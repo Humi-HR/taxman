@@ -9,7 +9,8 @@ RSpec.describe Taxman2023::PeriodInput do
       rsp_deductions: 3,
       alimony: 5,
       rsp_deductions_from_bonus: 6,
-      union_dues: 9
+      union_dues: 9,
+      province: "on"
     )
   end
 
@@ -21,13 +22,20 @@ RSpec.describe Taxman2023::PeriodInput do
         f: 3_00.to_d,
         f2: 5_00.to_d,
         f3: 6_00.to_d,
-        u1: 9_00.to_d
+        u1: 9_00.to_d,
+        province: "ON"
       }
     )
   end
 
   context "with optional params absent" do
-    let(:period_input) { described_class.new(taxable_periodic_income: 50, taxable_non_periodic_income: 100) }
+    let(:period_input) do
+      described_class.new(
+        taxable_periodic_income: 50,
+        taxable_non_periodic_income: 100,
+        province: "on"
+      )
+    end
 
     it "has default values" do
       expect(period_input.translate).to eq(
@@ -37,7 +45,8 @@ RSpec.describe Taxman2023::PeriodInput do
           f: 0.to_d,
           f2: 0.to_d,
           f3: 0.to_d,
-          u1: 0.to_d
+          u1: 0.to_d,
+          province: "ON"
         }
       )
     end

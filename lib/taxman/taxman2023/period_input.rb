@@ -7,6 +7,7 @@ module Taxman2023
     def initialize(
       taxable_periodic_income:,
       taxable_non_periodic_income:,
+      province:,
       rsp_deductions: 0,
       alimony: 0,
       rsp_deductions_from_bonus: 0,
@@ -18,6 +19,7 @@ module Taxman2023
       @f2 = alimony
       @f3 = rsp_deductions_from_bonus
       @u1 = union_dues
+      @province = province
     end
 
     def translate
@@ -27,7 +29,8 @@ module Taxman2023
         f: (@f * 100).to_d,
         f2: (@f2 * 100).to_d,
         f3: (@f3 * 100).to_d,
-        u1: (@u1 * 100).to_d
+        u1: (@u1 * 100).to_d,
+        province: @province.strip.upcase
       }
     end
   end
