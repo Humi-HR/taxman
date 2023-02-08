@@ -18,7 +18,7 @@ module Taxman2023
     end
 
     def cpp_max
-      (CPP_MAX * pm / 12) - d
+      [(CPP_MAX * pm / 12) - d, 0].max
     end
 
     def cpp_calculated
