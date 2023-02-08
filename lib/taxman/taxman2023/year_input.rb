@@ -7,6 +7,7 @@ module Taxman2023
       ytd_bonus:,
       pay_periods:,
       f5b_ytd:,
+      employer_ei_multiple: 1.4,
       annual_deductions: 0, # F1
       ytd_rsp_bonus_deductions: 0 # F4
     )
@@ -15,6 +16,7 @@ module Taxman2023
       @f4 = ytd_rsp_bonus_deductions
       @p = pay_periods
       @f5b_ytd = f5b_ytd
+      @employer_ei_multiple = employer_ei_multiple
     end
 
     def translate
@@ -23,7 +25,8 @@ module Taxman2023
         f1: (@f1 * 100).to_d,
         f4: (@f4 * 100).to_d,
         p: @p,
-        f5b_ytd: (@f5b_ytd * 100).to_d
+        f5b_ytd: (@f5b_ytd * 100).to_d,
+        employer_ei_multiple: @employer_ei_multiple.to_d
       }
     end
   end

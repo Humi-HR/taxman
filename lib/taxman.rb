@@ -37,6 +37,7 @@ require_relative "taxman/taxman2023/module_mapper"
 require_relative "taxman/taxman2023/tax_calculator"
 require_relative "taxman/taxman2023/bonus_tax"
 require_relative "taxman/taxman2023/cpp_calculator"
+require_relative "taxman/taxman2023/ei_calculator"
 
 module Taxman
   class Error < StandardError; end

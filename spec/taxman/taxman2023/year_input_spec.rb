@@ -8,7 +8,8 @@ RSpec.describe Taxman2023::YearInput do
       annual_deductions: 2, # F1
       ytd_rsp_bonus_deductions: 3, # F4
       pay_periods: 12,
-      f5b_ytd: 4
+      f5b_ytd: 4,
+      employer_ei_multiple: 1.3
     )
   end
 
@@ -19,7 +20,8 @@ RSpec.describe Taxman2023::YearInput do
         f1: 2_00.to_d,
         f4: 3_00.to_d,
         p: 12,
-        f5b_ytd: 4_00.to_d
+        f5b_ytd: 4_00.to_d,
+        employer_ei_multiple: 1.3.to_d
       }
     )
   end
@@ -34,7 +36,8 @@ RSpec.describe Taxman2023::YearInput do
           f5b_ytd: 2_00.to_d,
           p: 26,
           f1: 0,
-          f4: 0
+          f4: 0,
+          employer_ei_multiple: 1.4.to_d
         }
       )
     end
