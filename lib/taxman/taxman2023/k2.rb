@@ -20,6 +20,10 @@ module Taxman2023
       @p = p
     end
 
+    def self.params
+      %i[i b b1 p]
+    end
+
     def amount
       K2Generic.new(
         i: i,

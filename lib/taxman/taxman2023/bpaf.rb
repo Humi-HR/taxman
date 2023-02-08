@@ -18,7 +18,7 @@ module Taxman2023
       return MAX_AMOUNT if ni <= LOWER_THRESHOLD
       return MIN_AMOUNT if ni >= UPPER_THRESHOLD
 
-      (MAX_AMOUNT - ((ni - LOWER_THRESHOLD) * (1_479_00.to_d / 70_245_00.to_d))).round(2)
+      MAX_AMOUNT - ((ni - LOWER_THRESHOLD) * (1_479_00.to_d / 70_245_00.to_d))
     end
   end
 end

@@ -11,6 +11,10 @@ module Taxman2023
       @f5b = f5b.to_d
     end
 
+    def self.params
+      %i[b f3 f5b]
+    end
+
     def amount
       b - f3 - f5b
     end

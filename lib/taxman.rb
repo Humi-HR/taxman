@@ -17,6 +17,9 @@ require_relative "taxman/taxman2023/t2_generic"
 require_relative "taxman/taxman2023/a_bonus"
 require_relative "taxman/taxman2023/current_bonus_term"
 require_relative "taxman/taxman2023/ytd_bonus_term"
+require_relative "taxman/taxman2023/tax_calculator"
+require_relative "taxman/taxman2023/bonus_tax"
+require_relative "taxman/taxman2023/t"
 
 # Provincial specific
 require_relative "taxman/taxman2023/on/k2p"
@@ -32,7 +35,10 @@ require_relative "taxman/taxman2023/ei_input"
 require_relative "taxman/taxman2023/period_input"
 require_relative "taxman/taxman2023/year_input"
 require_relative "taxman/taxman2023/td1_input"
+require_relative "taxman/taxman2023/module_mapper"
 
 module Taxman
   class Error < StandardError; end
+
+  class ContextMissing < StandardError; end
 end

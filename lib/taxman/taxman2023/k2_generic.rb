@@ -24,8 +24,7 @@ module Taxman2023
     end
 
     def amount
-      (([cpp_credit, max_cpp_credit].min * rate) +
-       ([ei_credit, max_ei_credit].min * rate)).round(2)
+      ([cpp_credit, max_cpp_credit].min * rate) + ([ei_credit, max_ei_credit].min * rate)
     end
 
     def cpp_credit

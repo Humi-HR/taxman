@@ -23,10 +23,14 @@ module Taxman2023
       @tc = tc&.to_d
     end
 
+    def self.params
+      %i[a hd k2 k3 tc]
+    end
+
     def amount
       return 0 if a <= 0
 
-      ((r * a) - k - k1 - k2 - k3 - k4).round(2)
+      (r * a) - k - k1 - k2 - k3 - k4
     end
 
     def r
@@ -39,10 +43,6 @@ module Taxman2023
       _, constant = RATES_AND_CONSTANTS[bracket]
 
       constant
-    end
-
-    def bracket
-      @bracket ||= RATES_AND_CONSTANTS.keys.sort.find { |bracket| a <= bracket }
     end
 
     def k1
@@ -59,6 +59,12 @@ module Taxman2023
 
     def cea
       1_368_00.to_d
+    end
+
+    private
+
+    def bracket
+      @bracket ||= RATES_AND_CONSTANTS.keys.sort.find { |bracket| a <= bracket }
     end
   end
 end

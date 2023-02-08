@@ -9,9 +9,9 @@ module Taxman2023
 
     def initialize(
       a:,
-      tcp:,
       k2p:,
-      k3p:
+      k3p:,
+      tcp: nil
     )
       @a = a.to_d # Annualized income
       @tcp = tcp&.to_d # Personal exemption from provincial TD1, or we use the basic exemption
@@ -19,12 +19,16 @@ module Taxman2023
       @k3p = k3p.to_d # Other non-refundable provincial tax credits
     end
 
+    def self.params
+      %i[a k2p k3p tcp]
+    end
+
     def amount
-      [((v * a) - kp - k1p - k2p - k3p - k4p).round(2), 0].max
+      [(v * a) - kp - k1p - k2p - k3p - k4p, 0.to_d].max
     end
 
     def k4p
-      0
+      0.to_d
     end
 
     def k1p
@@ -46,6 +50,8 @@ module Taxman2023
 
       constant
     end
+
+    private
 
     def bracket
       @bracket ||= self.class::RATES_AND_CONSTANTS.keys.sort.find { |bracket| a <= bracket }

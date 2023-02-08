@@ -17,7 +17,7 @@ module Taxman2023
       return 0 if pi <= 0
       return f5 if b <= 0
 
-      (f5 * ((pi - b) / pi)).round(2)
+      f5 * ((pi - b) / pi)
     end
   end
 end

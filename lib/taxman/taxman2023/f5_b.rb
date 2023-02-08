@@ -17,7 +17,7 @@ module Taxman2023
     def amount
       return 0.to_d if pi <= 0
 
-      (f5 * b / pi).round(2)
+      f5 * b / pi
     end
   end
 end

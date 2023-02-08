@@ -10,8 +10,12 @@ module Taxman2023
       @t4 = t4.to_d # Basic annualized provincial tax
     end
 
+    def self.params
+      %i[a t4]
+    end
+
     def amount
-      (t4 + v1 + v2 - s).round(2)
+      t4 + v1 + v2 - s
     end
 
     def v1

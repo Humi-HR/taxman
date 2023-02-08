@@ -14,7 +14,7 @@ module Taxman2023
     end
 
     def amount
-      (a_amount + current_bonus_term_amount + ytd_bonus_term_amount).round(2)
+      a_amount + current_bonus_term_amount + ytd_bonus_term_amount
     end
 
     def a_amount

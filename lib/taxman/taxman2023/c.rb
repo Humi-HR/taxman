@@ -14,7 +14,7 @@ module Taxman2023
     end
 
     def amount
-      [cpp_max, cpp_calculated].min.round(2)
+      [cpp_max, cpp_calculated].min
     end
 
     def cpp_max

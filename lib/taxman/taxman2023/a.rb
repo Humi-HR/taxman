@@ -12,6 +12,10 @@ module Taxman2023
                 :hd,
                 :f1
 
+    def self.params
+      %i[p i f f2 f5a u1 hd f1]
+    end
+
     # rubocop:disable Metrics/ParameterLists
     def initialize(
       p:,
@@ -39,7 +43,7 @@ module Taxman2023
 
       return 0 if a <= 0
 
-      a.round(2)
+      a
     end
   end
 end
