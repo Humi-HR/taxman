@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Taxman2023
-  # Calculates the annualized provincial tax
+  # Calculates the basic annualized provincial tax
   class T4Generic
     attr_reader :a,
                 :k2p,
