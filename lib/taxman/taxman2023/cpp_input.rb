@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Taxman2023
-  # Construct a CppInput and pass it to the calculator
+  # This input collects the factors specific to cpp calculation
   class CppInput
     def initialize(pensionable_income_this_period:,
                    ytd_contributions:,

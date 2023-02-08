@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Taxman2023
-  # Construct an EiInput and pass it to the calculator
+  # This input collects the factors relevant to ei calculation
   class EiInput
     def initialize(insurable_income_this_period:,
                    employees_ytd_contributions:)
