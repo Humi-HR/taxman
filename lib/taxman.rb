@@ -26,6 +26,7 @@ require_relative "taxman/taxman2023/nl/t4"
 # Program structure
 require_relative "taxman/taxman2023/calculate"
 require_relative "taxman/taxman2023/cpp_input"
+require_relative "taxman/taxman2023/ei_input"
 
 module Taxman
   class Error < StandardError; end
