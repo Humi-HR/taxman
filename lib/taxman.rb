@@ -3,6 +3,7 @@
 require_relative "taxman/version"
 
 # Tax factors
+require_relative "taxman/taxman2023/f5"
 require_relative "taxman/taxman2023/f5_a"
 require_relative "taxman/taxman2023/f5_b"
 require_relative "taxman/taxman2023/a"
@@ -27,7 +28,6 @@ require_relative "taxman/taxman2023/nl/k2p"
 require_relative "taxman/taxman2023/nl/t4"
 
 # Program structure
-require_relative "taxman/taxman2023/calculate"
 require_relative "taxman/taxman2023/cpp_input"
 require_relative "taxman/taxman2023/ei_input"
 require_relative "taxman/taxman2023/period_input"
@@ -35,9 +35,10 @@ require_relative "taxman/taxman2023/year_input"
 require_relative "taxman/taxman2023/td1_input"
 require_relative "taxman/taxman2023/module_mapper"
 require_relative "taxman/taxman2023/tax_calculator"
-require_relative "taxman/taxman2023/bonus_tax"
+require_relative "taxman/taxman2023/bonus_tax_calculator"
 require_relative "taxman/taxman2023/cpp_calculator"
 require_relative "taxman/taxman2023/ei_calculator"
+require_relative "taxman/taxman2023/calculate"
 
 module Taxman
   class Error < StandardError; end

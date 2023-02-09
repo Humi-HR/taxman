@@ -14,6 +14,10 @@ module Taxman2023
       @pi = pi.to_d
     end
 
+    def self.params
+      %i[f5 b pi]
+    end
+
     def amount
       return 0.to_d if pi <= 0
 

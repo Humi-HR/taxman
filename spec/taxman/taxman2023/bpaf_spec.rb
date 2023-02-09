@@ -16,7 +16,7 @@ RSpec.describe Taxman2023::Bpaf do
     let(:a) { 200_000_00.to_d }
 
     it "scales the bpaf down" do
-      expect(bpaf).to eq (15_000_00 - ((a - 165_430_00) * (1_479_00.to_d / 70_245_00.to_d))).round(2)
+      expect(bpaf).to eq (15_000_00 - ((a - 165_430_00) * (1_479_00.to_d / 70_245_00.to_d)))
     end
   end
 

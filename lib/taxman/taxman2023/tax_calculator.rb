@@ -74,8 +74,8 @@ module Taxman2023
       # Set T
       context[:t] = T.new(**context.slice(*T.params)).amount
 
-      context[:federal_tax] = (context[:t1] / context[:p]).round.to_d
-      context[:provincial_tax] = (context[:t2] / context[:p]).round.to_d
+      context[:federal_tax] = ((context[:t1] / context[:p]) / 100).round(2)
+      context[:provincial_tax] = ((context[:t2] / context[:p]) / 100).round(2)
 
       context
     end

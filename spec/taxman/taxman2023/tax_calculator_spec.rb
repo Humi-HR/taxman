@@ -33,11 +33,11 @@ RSpec.describe Taxman2023::TaxCalculator do
   let(:tax) { described_class.new(context: context).calculate }
 
   it "matches the federal taxes on PDOC/Greg's sheet" do
-    expect(tax[:federal_tax]).to be_within(0.1).of 543_84.08.to_d.round
+    expect(tax[:federal_tax]).to be_within(0.1).of 543.84.to_d
   end
 
   it "matches the provincial taxes on PDOC/Greg's sheet" do
-    expect(tax[:provincial_tax]).to be_within(0.1).of 321_16.87.to_d.round
+    expect(tax[:provincial_tax]).to be_within(0.1).of 321.17.to_d
   end
 
   context "when a required parameter is missing" do

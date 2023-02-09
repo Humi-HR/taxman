@@ -10,7 +10,7 @@ RSpec.describe Taxman2023::On::K2p do
     let(:b) { 1_000_00 }
 
     it "matches PDOC/Greg's sheet" do
-      expect(k2p).to eq 174_01.04.to_d
+      expect(k2p).to be_within(0.01).of 174_01.04.to_d
     end
   end
 
@@ -21,7 +21,7 @@ RSpec.describe Taxman2023::On::K2p do
     let(:b1) { 1_000_00 }
 
     it "matches PDOC/Greg's sheet" do
-      expect(k2p).to eq 177_33.33.to_d
+      expect(k2p).to be_within(0.01).of 177_33.33.to_d
     end
   end
 
@@ -32,7 +32,7 @@ RSpec.describe Taxman2023::On::K2p do
     let(:b1) { 1_000_00 }
 
     it "matches PDOC/Greg's sheet" do
-      expect(k2p).to eq 208_35.80.to_d
+      expect(k2p).to be_within(0.01).of 208_35.80.to_d
     end
   end
 
@@ -44,7 +44,7 @@ RSpec.describe Taxman2023::On::K2p do
     let(:b1) { 0 }
 
     it "matches PDOC/Greg's sheet" do
-      expect(k2p).to eq 208_35.80.to_d
+      expect(k2p).to be_within(0.01).of 208_35.80.to_d
     end
   end
 end

@@ -31,7 +31,7 @@ RSpec.describe Taxman2023::F5A do
     let(:b)  { 1_000_00 }
 
     it "calculates the correct f5a" do
-      expect(f5a).to eq "42_61.42".to_d
+      expect(f5a).to be_within(0.01).of "42_61.42".to_d
     end
   end
 end

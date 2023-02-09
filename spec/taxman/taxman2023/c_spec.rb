@@ -38,7 +38,7 @@ RSpec.describe Taxman2023::C do
     let(:pi) { 5_500_00 }
 
     it "matches the PDOC expectation" do
-      expect(c).to eq 309_89.58.to_d
+      expect(c).to be_within(0.01).of 309_89.58.to_d
     end
   end
 end

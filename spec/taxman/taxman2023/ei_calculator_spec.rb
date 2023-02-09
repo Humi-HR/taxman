@@ -6,13 +6,13 @@ RSpec.describe Taxman2023::EiCalculator do
 
   it "adds the employee contribution to the context" do
     expect(ei_calculator).to match(
-      a_hash_including(employee_ei_contribution: 54_78.to_d)
+      a_hash_including(employee_ei_contribution: 54.78.to_d)
     )
   end
 
   it "adds the employer contribution to the context" do
     expect(ei_calculator).to match(
-      a_hash_including(employer_ei_contribution: 1.4 * 54_78.to_d)
+      a_hash_including(employer_ei_contribution: (1.4 * 54.78.to_d).round(2))
     )
   end
 
@@ -21,7 +21,7 @@ RSpec.describe Taxman2023::EiCalculator do
 
     it "handles the custom employer ei multiple" do
       expect(ei_calculator).to match(
-        a_hash_including(employer_ei_contribution: 12_34.to_d)
+        a_hash_including(employer_ei_contribution: 12.34.to_d)
       )
     end
   end

@@ -28,11 +28,11 @@ module Taxman2023
           [750_00, 600 + (0.25 * (a - 72_000_00))].min
         else
           [900_00, 750 + (0.25 * (a - 200_000_00))].min
-        end
+        end.to_d
       end
 
       def s
-        [[t4 + v1, (2 * (s2 + 0)) - (t4 + v1)].min, 0].max
+        [[t4 + v1, (2 * (s2 + 0)) - (t4 + v1)].min, 0].max.to_d
       end
 
       def s2

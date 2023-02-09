@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Taxman2023::BonusTax do
+RSpec.describe Taxman2023::BonusTaxCalculator do
   let(:context) do
     {
       p: 52,
@@ -33,11 +33,11 @@ RSpec.describe Taxman2023::BonusTax do
     let(:b) { 5_000_00 }
 
     it "calculates the federal tax on the bonus" do
-      expect(bonus_tax.calculate[:federal_tax_on_bonus]).to be_within(0.1).of 1_287_10.92.to_d
+      expect(bonus_tax.calculate[:federal_tax_on_bonus]).to be_within(0.01).of 1_287.11.to_d
     end
 
     it "calculates the provincial tax on the bonus" do
-      expect(bonus_tax.calculate[:provincial_tax_on_bonus]).to be_within(0.1).of 939_07.49.to_d
+      expect(bonus_tax.calculate[:provincial_tax_on_bonus]).to be_within(0.01).of 939.07.to_d
     end
   end
 
@@ -46,11 +46,11 @@ RSpec.describe Taxman2023::BonusTax do
     let(:b) { 123_00 }
 
     it "calculates a flat 10% federal tax on the bonus" do
-      expect(bonus_tax.calculate[:federal_tax_on_bonus]).to be_within(0.1).of 12_30.to_d
+      expect(bonus_tax.calculate[:federal_tax_on_bonus]).to be_within(0.1).of 12.30.to_d
     end
 
     it "calculates a flat 5% provincial tax on the bonus" do
-      expect(bonus_tax.calculate[:provincial_tax_on_bonus]).to be_within(0.1).of 6_15.to_d
+      expect(bonus_tax.calculate[:provincial_tax_on_bonus]).to be_within(0.1).of 6.15.to_d
     end
   end
 end

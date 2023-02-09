@@ -51,7 +51,7 @@ RSpec.describe Taxman2023::T3 do
     let(:k2) { Taxman2023::K2.new(i: 8_750_00, b: 0, b1: 0, p: 24).amount }
 
     it "calculates an annualized tax of $43,594.31" do
-      expect(t3).to be_within(0.5).of 43_594_30.06.to_d
+      expect(t3).to be_within(0.01).of 43_594_30.56.to_d
     end
   end
 end

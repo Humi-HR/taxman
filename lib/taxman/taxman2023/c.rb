@@ -13,6 +13,10 @@ module Taxman2023
       @d = d.to_d
     end
 
+    def self.params
+      %i[pi p pm d]
+    end
+
     def amount
       [cpp_max, cpp_calculated].min
     end

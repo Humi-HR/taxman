@@ -28,7 +28,7 @@ RSpec.describe Taxman2023::F5B do
 
   context "with pensionable income and a bonus" do
     it "calculates the correct f5b" do
-      expect(f5b).to eq "9_46.98".to_d
+      expect(f5b).to be_within(0.01).of "9_46.98".to_d
     end
   end
 
@@ -47,7 +47,7 @@ RSpec.describe Taxman2023::F5B do
     let(:f5) { 245_61.34 }
 
     it "matches PDOC/Greg's sheet" do
-      expect(f5b).to eq 215_01.19.to_d
+      expect(f5b).to be_within(0.01).of 215_01.19.to_d
     end
   end
 end

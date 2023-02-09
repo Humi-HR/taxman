@@ -10,8 +10,8 @@ module Taxman2023
     end
 
     def calculate
-      context.merge(employee_ei_contribution: context[:ei],
-                    employer_ei_contribution: employer_portion)
+      context.merge(employee_ei_contribution: (context[:ei] / 100).round(2),
+                    employer_ei_contribution: (employer_portion / 100).round(2))
     end
 
     private

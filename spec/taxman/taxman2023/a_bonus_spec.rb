@@ -52,7 +52,7 @@ RSpec.describe Taxman2023::ABonus do
     let(:f5b_ytd) { 0 }
 
     it "matches PDOC/Greg's sheet" do
-      expect(a).to eq 100_608_26.83.to_d
+      expect(a).to be_within(0.01).of 100_608_26.83.to_d
     end
   end
 

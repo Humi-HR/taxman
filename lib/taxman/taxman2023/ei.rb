@@ -11,6 +11,10 @@ module Taxman2023
       @d1 = d1.to_d
     end
 
+    def self.params
+      %i[ie d1]
+    end
+
     def amount
       [ei_max, ei_calculated].min
     end

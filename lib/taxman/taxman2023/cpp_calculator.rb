@@ -10,8 +10,8 @@ module Taxman2023
     end
 
     def calculate
-      context.merge(employee_cpp_contribution: context[:c],
-                    employer_cpp_contribution: context[:c])
+      context.merge(employee_cpp_contribution: (context[:c] / 100).round(2),
+                    employer_cpp_contribution: (context[:c] / 100).round(2))
     end
   end
 end
