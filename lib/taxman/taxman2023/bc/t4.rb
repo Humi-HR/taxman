@@ -1,21 +1,20 @@
 # frozen_string_literal: true
 
 module Taxman2023
-  module Nl
+  module Bc
     # Calculates the annualized provincial tax
     class T4 < T4Generic
-      LOWEST_RATE = 0.0870.to_d
-      DEFAULT_TD1 = 10_382_00.to_d
+      LOWEST_RATE = 0.0506.to_d
+      DEFAULT_TD1 = 11_981_00.to_d
 
       RATES_AND_CONSTANTS = {
-        41_457_00.to_d => [LOWEST_RATE, 0.0.to_d],
-        82_913_00.to_d => [0.1450, 2_405_00.to_d],
-        148_027_00.to_d => [0.1580, 3_482_00.to_d],
-        207_239_00.to_d => [0.1780, 6_443_00.to_d],
-        264_750_00.to_d => [0.1980, 10_588_00.to_d],
-        529_500_00.to_d => [0.2080, 13_235_00.to_d],
-        1_059_000_00.to_d => [0.2130, 15_883_00.to_d],
-        BigDecimal("Infinity") => [0.2180, 21_178_00.to_d]
+        45_654_00.to_d => [LOWEST_RATE, 0.0.to_d],
+        91_310_00.to_d => [0.0770, 1_205_00.to_d],
+        104_835_00.to_d => [0.1050, 3_762_00.to_d],
+        127_299_00.to_d => [0.1229, 5_638_00.to_d],
+        172_602_00.to_d => [0.1470, 8_706_00.to_d],
+        240_716_00.to_d => [0.1680, 12_331_00.to_d],
+        BigDecimal("Infinity") => [0.2050, 21_238_00.to_d]
       }.freeze
     end
   end

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Taxman2023
-  module Nl
+  module Nu
     # Calculates the annualized provincial tax
     class T4 < T4Generic
       LOWEST_RATE = 0.0870.to_d

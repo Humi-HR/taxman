@@ -2,7 +2,7 @@
 
 # rubocop:disable RSpec/MultipleMemoizedHelpers
 RSpec.describe Taxman2023::Nl::T4 do
-  let(:t4) { described_class.new(a: a, tcp: tcp, k2p: k2p, k3p: k3p).amount }
+  let(:t4) { described_class.new(a: a, hd: 0, tcp: tcp, k2p: k2p, k3p: k3p).amount }
   let(:a) { 0 } # Annualized income (comes from `a` calculator)
   let(:b) { 0 } # Taxable non periodic income in the period
   let(:b1) { 0 } # YTD Bonus income

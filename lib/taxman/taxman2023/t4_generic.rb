@@ -4,23 +4,26 @@ module Taxman2023
   # Calculates the basic annualized provincial tax
   class T4Generic
     attr_reader :a,
+                :hd,
                 :k2p,
                 :k3p
 
     def initialize(
       a:,
+      hd:,
       k2p:,
       k3p:,
       tcp: nil
     )
       @a = a.to_d # Annualized income
+      @hd = hd.to_d
       @tcp = tcp&.to_d # Personal exemption from provincial TD1, or we use the basic exemption
       @k2p = k2p.to_d # Tax credit for cpp contributions
       @k3p = k3p.to_d # Other non-refundable provincial tax credits
     end
 
     def self.params
-      %i[a k2p k3p tcp]
+      %i[a hd k2p k3p tcp]
     end
 
     def amount
