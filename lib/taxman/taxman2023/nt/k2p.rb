@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module Taxman2023
-  module On
-    # Calculates the k2p factor for Ontario
+  module Nt
+    # Calculates the k2p factor for the NWT
     class K2p < K2Generic
       def rate
         T4::LOWEST_RATE

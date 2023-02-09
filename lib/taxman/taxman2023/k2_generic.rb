@@ -6,21 +6,26 @@ module Taxman2023
     attr_reader :i, # Income in the period
                 :b, # Bonus in the period
                 :b1, # Bonus YTD
-                :p, # Number of periods
-                :rate # Lowest tax rate in jurisdiction
+                :p # Number of periods
 
     def initialize(
       i:,
       b:,
       b1:,
-      p:,
-      rate:
+      p:
     )
       @i = i.to_d
       @b = b.to_d
       @b1 = b1.to_d
       @p = p
-      @rate = rate.to_d
+    end
+
+    def self.params
+      %i[i b b1 p]
+    end
+
+    def rate
+      0.0505 # Ontario lol
     end
 
     def amount
