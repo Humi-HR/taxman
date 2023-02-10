@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Taxman2023::Yt::T4 do
   let(:t4) { described_class.new(a: a, hd: 0, tcp: nil, k2p: 0, k3p: 0) }
 
