@@ -5,6 +5,8 @@ module Taxman2023
     # Calculates the annualized provincial tax
     class T4 < T4Generic
       LOWEST_RATE = 0.0640.to_d
+      CEA = 1_368_00.to_d
+      K4P_RATE = BigDecimal("0.064")
 
       RATES_AND_CONSTANTS = {
         53_359_00.to_d => [LOWEST_RATE, 0.0.to_d],
@@ -16,6 +18,10 @@ module Taxman2023
 
       def tcp
         @tcp ||= Bpaf.new(a: a, hd: hd).amount
+      end
+
+      def k4p
+        [K4P_RATE * a, K4P_RATE * CEA].min
       end
     end
   end
