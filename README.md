@@ -4,6 +4,11 @@ Theme song: [Taxman](https://www.youtube.com/watch?v=l0zaebtU-CA)
 
 Hopefully Taxman works out better for us than waxman :(
 
+
+## 2023
+
+All the 2023 numbers come [CRA](from https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas/t4127-jan/t4127-jan-payroll-deductions-formulas-computer-programs.html#toc38)
+
 ## Installation
 
 Install the gem and add to the application's Gemfile by executing:
