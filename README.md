@@ -11,9 +11,15 @@ All the 2023 numbers come [CRA](from https://www.canada.ca/en/revenue-agency/ser
 
 ## Installation
 
-Install the gem and add to the application's Gemfile by executing:
+To make a change to taxman (and deploy that change in payroll) you need to do the following:
 
-    $ bundle add taxman
+1. Bump the version number in `lib/taxman/version.rb`
+2. `bundle exec rake release`
+3. Copy the gemfile `taxman-$VERSION.gem` from `pkg/` into the payroll repo
+4. From `payroll/`, run `gem unpack taxman-$VERSION.gem --target /vendor/gems/
+5. From `payroll/`, run `bundle update taxman`
+
+Process to be improved!
 
 ## Usage
 
