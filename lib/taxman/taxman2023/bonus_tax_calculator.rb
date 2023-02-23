@@ -28,7 +28,7 @@ module Taxman2023
                         .amount
 
       taxes_with_bonus = TaxCalculator.new(context: context.merge(a: a_bonus)).calculate
-      taxes_without_bonus = TaxCalculator.new(context: context.merge(a: a_without_bonus)).calculate
+      taxes_without_bonus = TaxCalculator.new(context: context.merge(a: a_without_bonus, b: 0, b1: 0)).calculate
 
       federal_tax = (taxes_with_bonus[:t1] - taxes_without_bonus[:t1])
       provincial_tax = (taxes_with_bonus[:t2] - taxes_without_bonus[:t2])

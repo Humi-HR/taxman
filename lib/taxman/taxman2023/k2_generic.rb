@@ -25,7 +25,7 @@ module Taxman2023
     end
 
     def rate
-      0.0505 # Ontario lol
+      raise StandardError "You must implement rate in subclass"
     end
 
     def amount
