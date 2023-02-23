@@ -30,7 +30,7 @@ module Taxman2023
     def amount
       return 0 if a <= 0
 
-      (r * a) - k - k1 - k2 - k3 - k4
+      [(r * a) - k - k1 - k2 - k3 - k4, 0].max
     end
 
     def r
