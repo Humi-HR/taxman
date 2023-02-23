@@ -1,8 +1,11 @@
 # frozen_string_literal: true
 
 RSpec.describe Taxman2023::K2Generic do
-  let(:k2p) { described_class.new(i: i, b: b, b1: b1, p: p).amount }
+  let(:k2p_obj) { described_class.new(i: i, b: b, b1: b1, p: p) }
+  let(:k2p) { k2p_obj.amount }
   let(:b1) { 0 }
+
+  before { allow(k2p_obj).to receive(:rate).and_return(0.0505) }
 
   context "with $54k salary monthly, $1k bonus" do
     let(:i) { 4_500_00 }
