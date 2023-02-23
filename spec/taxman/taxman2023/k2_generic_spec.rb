@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable RSpec/MultipleMemoizedHelpers
 RSpec.describe Taxman2023::K2Generic do
   let(:k2p_obj) { described_class.new(i: i, b: b, b1: b1, p: p) }
   let(:k2p) { k2p_obj.amount }
@@ -51,3 +52,4 @@ RSpec.describe Taxman2023::K2Generic do
     end
   end
 end
+# rubocop:enable RSpec/MultipleMemoizedHelpers
