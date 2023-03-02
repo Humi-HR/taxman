@@ -14,6 +14,6 @@ RSpec.describe Taxman2023::CppInput do
   let(:pm) { 12 }
 
   it "converts its inputs into CRA form" do
-    expect(cpp_input.translate).to eq({ pi: 3_500_00.to_d, d: 114_00.to_d, pm: 12 })
+    expect(cpp_input.translate).to eq({ pi: 3_500_00.to_d, d: 114_00.to_d, pm: 12, b_pensionable: 0 })
   end
 end

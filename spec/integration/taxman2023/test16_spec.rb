@@ -15,16 +15,16 @@ RSpec.describe Taxman2023::Calculate do
   let(:p) do
     Taxman2023::PeriodInput.new(
       taxable_periodic_income: 400,
-      taxable_non_periodic_income: 0,
+      taxable_non_periodic_income: 2_500,
       province: "nl"
     )
   end
 
   let(:y) do
     Taxman2023::YearInput.new(
-      ytd_bonus: 0,
+      ytd_bonus: 2_500,
       pay_periods: 12,
-      f5b_ytd: 0,
+      f5b_ytd: 9.75,
       employer_ei_multiple: 1.4
     )
   end
@@ -40,6 +40,7 @@ RSpec.describe Taxman2023::Calculate do
   let(:c) do
     Taxman2023::CppInput.new(
       pensionable_income_this_period: 2_900,
+      pensionable_non_periodic_income_this_period: 2_500,
       ytd_contributions: 19.34,
       contribution_months_this_year: 9
     )

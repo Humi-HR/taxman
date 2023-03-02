@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 RSpec.describe Taxman2023::C do
-  subject(:c) { described_class.new(pi: pi, p: p, pm: pm, d: d).amount }
+  subject(:c) { described_class.new(pi: pi, p: p, pm: pm, d: d, b_pensionable: b_pensionable).amount }
 
   let(:p) { 12 }
   let(:pm) { 12 }
+  let(:b_pensionable) { 0 }
 
   context "when the employee has already reached the cpp maximum for the year" do
     let(:d) { Taxman2023::C::CPP_MAX }
