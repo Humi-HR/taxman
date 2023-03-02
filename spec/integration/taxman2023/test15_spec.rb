@@ -23,9 +23,9 @@ RSpec.describe Taxman2023::Calculate do
 
   let(:y) do
     Taxman2023::YearInput.new(
-      ytd_bonus: 0,
+      ytd_bonus: 1000,
       pay_periods: 24,
-      f5b_ytd: 0,
+      f5b_ytd: 3.90,
       employer_ei_multiple: 1.4
     )
   end

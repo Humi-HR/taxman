@@ -4,17 +4,18 @@ module Taxman2023
   # Calculates the CPP contribution for the period
   class C
     CPP_MAX = 3_754_45.to_d
-    attr_reader :pi, :p, :pm, :d
+    attr_reader :p, :pm, :d, :i, :b
 
-    def initialize(pi:, p:, pm:, d:)
-      @pi = pi.to_d
+    def initialize(p:, pm:, d:, i:, b:)
       @p = p.to_d
       @pm = pm.to_d
       @d = d.to_d
+      @i = i.to_d
+      @b = b.to_d
     end
 
     def self.params
-      %i[pi p pm d]
+      %i[p pm d i b]
     end
 
     def amount
@@ -26,9 +27,8 @@ module Taxman2023
     end
 
     def cpp_calculated
-      cpp = (pi - (3_500_00.to_d / p)) * 0.0595
-
-      [cpp, 0].max
+      cpp = (i - (3_500_00.to_d / p)) * 0.0595
+      [cpp, 0].max + (b * 0.0595)
     end
   end
 end

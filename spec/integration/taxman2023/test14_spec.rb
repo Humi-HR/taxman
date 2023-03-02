@@ -15,7 +15,7 @@ RSpec.describe Taxman2023::Calculate do
   let(:p) do
     Taxman2023::PeriodInput.new(
       taxable_periodic_income: 208,
-      taxable_non_periodic_income: 300, # This makes no sense to me!!!!
+      taxable_non_periodic_income: 300,
       rsp_deductions: 50,
       province: "bc"
     )
@@ -23,9 +23,9 @@ RSpec.describe Taxman2023::Calculate do
 
   let(:y) do
     Taxman2023::YearInput.new(
-      ytd_bonus: 0,
+      ytd_bonus: 500,
       pay_periods: 26,
-      f5b_ytd: 0,
+      f5b_ytd: 1.95,
       employer_ei_multiple: 1.4
     )
   end

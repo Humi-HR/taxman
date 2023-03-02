@@ -14,8 +14,9 @@ RSpec.describe Taxman2023::Calculate do
 
   let(:p) do
     Taxman2023::PeriodInput.new(
-      taxable_periodic_income: 100,
-      taxable_non_periodic_income: 504,
+      taxable_periodic_income: 604,
+      taxable_non_periodic_income: 10_000,
+      rsp_deductions: 500,
       province: "ab"
     )
   end
@@ -39,7 +40,7 @@ RSpec.describe Taxman2023::Calculate do
 
   let(:c) do
     Taxman2023::CppInput.new(
-      pensionable_income_this_period: 10_604,
+      pensionable_income_this_period: 10_104,
       ytd_contributions: 7.78,
       contribution_months_this_year: 12
     )
@@ -58,6 +59,14 @@ RSpec.describe Taxman2023::Calculate do
 
   it "matches PDOC's provincial tax" do
     expect(calculate[:provincial_tax]).to eq 0
+  end
+
+  it "matches PDOC's federal tax on bonus" do
+    expect(calculate[:federal_tax_on_bonus]).to be_within(0.1).of 0
+  end
+
+  it "matches PDOC's provincial tax on bonus" do
+    expect(calculate[:provincial_tax_on_bonus]).to be_within(0.1).of 0
   end
 
   it "matches PDOC's CPP deduction" do
