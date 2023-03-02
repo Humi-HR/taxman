@@ -41,6 +41,7 @@ RSpec.describe Taxman2023::Calculate do
   let(:c) do
     Taxman2023::CppInput.new(
       pensionable_income_this_period: 508,
+      pensionable_non_periodic_income_this_period: 300,
       ytd_contributions: 15.56,
       contribution_months_this_year: 12
     )
