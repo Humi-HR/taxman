@@ -132,5 +132,57 @@ RSpec.describe Taxman2023::Calculate do
       )
     end
   end
+
+  context "with $80k, biweekly schedule, td_offset & tdp_offseet of $1,000" do
+    let(:p) do
+      Taxman2023::PeriodInput.new(
+        taxable_periodic_income: 3_076.92,
+        taxable_non_periodic_income: 0, province: "sk"
+      )
+    end
+
+    let(:y) do
+      Taxman2023::YearInput.new(
+        ytd_bonus: 0,
+        pay_periods: 26,
+        f5b_ytd: 0,
+        employer_ei_multiple: 1.4
+      )
+    end
+
+    let(:t) do
+      Taxman2023::Td1Input.new(
+        federal_personal_amount_offset: 1_000,
+        provincial_personal_amount_offset: 1_000
+      )
+    end
+
+    let(:c) do
+      Taxman2023::CppInput.new(
+        pensionable_income_this_period: 3_076.92,
+        ytd_contributions: 0,
+        contribution_months_this_year: 12
+      )
+    end
+
+    let(:e) do
+      Taxman2023::EiInput.new(
+        insurable_income_this_period: 3_076.92,
+        employees_ytd_contributions: 0
+      )
+    end
+
+    it "calculates the federal tax owed" do
+      expect(calculate.call).to match(
+        a_hash_including(federal_tax: 387.85)
+      )
+    end
+
+    it "calculates the provincial tax owed" do
+      expect(calculate.call).to match(
+        a_hash_including(provincial_tax: 250.68)
+      )
+    end
+  end
 end
 # rubocop:enable RSpec/MultipleMemoizedHelpers

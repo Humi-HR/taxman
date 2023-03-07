@@ -17,7 +17,7 @@ module Taxman2023
       }.freeze
 
       def tcp
-        @tcp ||= Bpaf.new(a: a, hd: hd).amount
+        @tcp ||= Bpaf.new(a: a, hd: hd).amount + @tcp_offset
       end
 
       def k4p
