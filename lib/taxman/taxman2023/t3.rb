@@ -15,16 +15,19 @@ module Taxman2023
       BigDecimal("Infinity") => [0.330.to_d, 23_194_00.to_d]
     }.freeze
 
-    def initialize(a:, hd:, k2:, tc: nil, k3: 0)
+    # rubocop:disable Metrics/ParameterLists
+    def initialize(a:, hd:, k2:, tc: nil, k3: 0, tc_offset: 0)
       @a = a.to_d
       @hd = hd.to_d
       @k2 = k2.to_d
       @k3 = k3.to_d # Other federal non-refundable tax credits
       @tc = tc&.to_d
+      @tc_offset = tc_offset&.to_d
     end
+    # rubocop:enable Metrics/ParameterLists
 
     def self.params
-      %i[a hd k2 k3 tc]
+      %i[a hd k2 k3 tc tc_offset]
     end
 
     def amount
@@ -50,7 +53,7 @@ module Taxman2023
     end
 
     def tc
-      @tc ||= Bpaf.new(a: a, hd: hd).amount
+      @tc ||= Bpaf.new(a: a, hd: hd).amount + @tc_offset
     end
 
     def k4

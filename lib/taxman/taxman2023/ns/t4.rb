@@ -15,7 +15,7 @@ module Taxman2023
       }.freeze
 
       def tcp
-        @tcp ||= Bpans.new(a: a).amount
+        @tcp ||= Bpans.new(a: a).amount + @tcp_offset
       end
     end
   end
