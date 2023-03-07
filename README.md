@@ -14,11 +14,12 @@ All the 2023 numbers come from the [CRA](https://www.canada.ca/en/revenue-agency
 To make a change to taxman (and deploy that change in payroll) you need to do the following:
 
 1. Bump the version number in `lib/taxman/version.rb`
-2. `bundle exec rake release`
-3. Copy the gemfile `taxman-$VERSION.gem` from `pkg/` into the payroll repo
-4. From `payroll/`, run `gem unpack taxman-$VERSION.gem --target /vendor/gems/`
-5. From `payroll/`, run `bundle update taxman`
-6. (Optional) remove the old version from `payroll/vendor/gems/taxman-$OLD-VERSION`
+2. Run `bundle` to update the taxman Gemfile
+3. `bundle exec rake release` - it will ask for Rubygems credentials but you can ignore
+4. Copy the gemfile `taxman-$VERSION.gem` from `pkg/` into the payroll repo
+5. From `payroll/`, run `gem unpack taxman-$VERSION.gem --target vendor/gems/`
+6. From `payroll/`, run `bundle update taxman`
+7. Remove the old version from `payroll/vendor/gems/taxman-$OLD-VERSION` - `git rm -r vendor/gems/taxman-$OLD-VERSION`
 
 Process to be improved!
 
