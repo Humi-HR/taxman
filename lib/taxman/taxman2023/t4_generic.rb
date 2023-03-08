@@ -43,7 +43,7 @@ module Taxman2023
     end
 
     def tcp
-      @tcp ||= self.class::DEFAULT_TD1 + @tcp_offset
+      @tcp ||= [self.class::DEFAULT_TD1 + @tcp_offset, 0].max
     end
 
     def v
