@@ -53,7 +53,7 @@ module Taxman2023
     end
 
     def tc
-      @tc ||= Bpaf.new(a: a, hd: hd).amount + @tc_offset
+      @tc ||= [Bpaf.new(a: a, hd: hd).amount + @tc_offset, 0].max
     end
 
     def k4
