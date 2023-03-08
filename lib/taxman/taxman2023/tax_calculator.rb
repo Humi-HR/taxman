@@ -76,6 +76,8 @@ module Taxman2023
 
       context[:federal_tax] = ((context[:t1] / context[:p]) / 100).round(2)
       context[:provincial_tax] = ((context[:t2] / context[:p]) / 100).round(2)
+      context[:additional_tax] = (context[:l] / 100).round(2)
+      context[:total_tax] = (context[:t] / 100).round(2)
 
       context
     end
