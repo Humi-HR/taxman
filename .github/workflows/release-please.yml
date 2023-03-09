@@ -18,4 +18,3 @@ jobs:
           release-type: ruby
           package-name: taxman
           version-file: lib/taxman/version.rb
-          release-as: 1.5.0
