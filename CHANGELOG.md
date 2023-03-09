@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.2](https://github.com/Humi-HR/taxman/compare/v1.6.1...v1.6.2) (2023-03-09)
+
+
+### Bug Fixes
+
+* pay-453 Correct token name ([bb9ecd1](https://github.com/Humi-HR/taxman/commit/bb9ecd1950a2ace885f1ff121a34123729be412b))
+
 ## [1.6.1](https://github.com/Humi-HR/taxman/compare/v1.6.0...v1.6.1) (2023-03-09)
 
 
