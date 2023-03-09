@@ -7,7 +7,7 @@ permissions:
   contents: write
   pull-requests: write
 
-name: release-please
+name: Release
 
 jobs:
   release-please:
@@ -16,4 +16,5 @@ jobs:
       - uses: google-github-actions/release-please-action@v3
         with:
           release-type: ruby
-          package-name: release-please-action
+          package-name: taxman
+          version-file: lib/taxman/version.rb
