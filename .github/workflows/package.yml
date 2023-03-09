@@ -23,5 +23,5 @@ jobs:
       - name: Publish Gem
         uses: jstastny/publish-gem-to-github@v2.3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           owner: Humi-HR
