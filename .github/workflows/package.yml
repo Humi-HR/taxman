@@ -1,8 +1,7 @@
-name: Publish Gem
-
 on:
-  release:
-    types: [published]
+  release: [published]
+
+name: Package
 
 env:
   REGISTRY: https://rubygems.pkg.github.com
@@ -10,6 +9,7 @@ env:
 
 jobs:
   build-and-push-gem:
+    needs: [release-please]
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -24,3 +24,5 @@ jobs:
         with:
           github_token: ${{secrets.GITHUB_TOKEN}
           owner: Humi-HR
+
+
