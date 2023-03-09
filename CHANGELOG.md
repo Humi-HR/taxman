@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.6.0](https://github.com/Humi-HR/taxman/compare/v1.5.0...v1.6.0) (2023-03-09)
+
+
+### Features
+
+* pay-453 Push packages ([7268f91](https://github.com/Humi-HR/taxman/commit/7268f915522929b6a55d47c6128ee93f13b81c02))
+
+
+### Bug Fixes
+
+* pay-453 Create release w/ token (triggers other workflow) ([9995a9d](https://github.com/Humi-HR/taxman/commit/9995a9dad01317df0b4315d2ed05f20956b1e4ba))
+* pay-453 Fix whitespace ([49f9494](https://github.com/Humi-HR/taxman/commit/49f9494a14153610426f73595e8bcb10a5e5689d))
+* pay-453 Name jobs ([f50b609](https://github.com/Humi-HR/taxman/commit/f50b6098fbf942a1dde19173412efbdfb726e52f))
+
 ## [1.5.0](https://github.com/Humi-HR/taxman/compare/v1.3.0...v1.5.0) (2023-03-09)
 
 
