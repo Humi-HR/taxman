@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.1](https://github.com/Humi-HR/taxman/compare/v1.6.0...v1.6.1) (2023-03-09)
+
+
+### Bug Fixes
+
+* pay-453 Fix package workflow ([ae08d6a](https://github.com/Humi-HR/taxman/commit/ae08d6a280c69f9e0f1df5e47f889920428d9de8))
+
 ## [1.6.0](https://github.com/Humi-HR/taxman/compare/v1.5.0...v1.6.0) (2023-03-09)
 
 
