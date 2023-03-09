@@ -1,0 +1,26 @@
+name: Create and publish a Ruby gem
+
+on:
+  release:
+    types: [published]
+
+env:
+  REGISTRY: https://rubygems.pkg.github.com
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  build-and-push-gem:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Publish Gem
+        uses: jstastny/publish-gem-to-github@v2.3
+        with:
+          github_token: ${{secrets.GITHUB_TOKEN}
+          owner: Humi-HR
