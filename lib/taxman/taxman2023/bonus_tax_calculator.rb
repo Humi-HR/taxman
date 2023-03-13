@@ -11,7 +11,14 @@ module Taxman2023
     end
 
     def calculate
-      a = A.new(**context.slice(*A.params))
+      # The calculation of A for bonus calculations needs to use the last non
+      # zero amount of I, should I for the payroll be zero. See PAY-425 for
+      # details
+      a = if context[:i].zero?
+            A.new(**context.merge(i: context[:previous_i]).slice(*A.params))
+          else
+            A.new(**context.slice(*A.params))
+          end
 
       current_bonus = CurrentBonusTerm.new(**context.slice(*CurrentBonusTerm.params))
       current_without_bonus = CurrentBonusTerm.new(b: 0, f3: 0, f5b: 0)
