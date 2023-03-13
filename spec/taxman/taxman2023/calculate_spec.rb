@@ -184,5 +184,49 @@ RSpec.describe Taxman2023::Calculate do
       )
     end
   end
+
+  context "with 0 periodic income but previous periodic income" do
+    let(:p) do
+      Taxman2023::PeriodInput.new(
+        taxable_periodic_income: 0,
+        previous_taxable_periodic_income: 2_500,
+        taxable_non_periodic_income: 1_000,
+        province: "on"
+      )
+    end
+
+    let(:y) do
+      Taxman2023::YearInput.new(
+        ytd_bonus: 0,
+        pay_periods: 26,
+        f5b_ytd: 0,
+        employer_ei_multiple: 1.4
+      )
+    end
+
+    let(:t) { Taxman2023::Td1Input.new }
+
+    let(:c) do
+      Taxman2023::CppInput.new(
+        pensionable_income_this_period: 1_000,
+        pensionable_non_periodic_income_this_period: 1_000,
+        ytd_contributions: 3_754.45,
+        contribution_months_this_year: 12
+      )
+    end
+
+    let(:e) do
+      Taxman2023::EiInput.new(
+        insurable_income_this_period: 1_000,
+        employees_ytd_contributions: 1_002.45
+      )
+    end
+
+    it "calculates the federal bonus tax owed" do
+      expect(calculate.call).to match(
+        a_hash_including(federal_tax_on_bonus: 195.13)
+      )
+    end
+  end
 end
 # rubocop:enable RSpec/MultipleMemoizedHelpers

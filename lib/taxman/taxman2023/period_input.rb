@@ -11,9 +11,11 @@ module Taxman2023
       rsp_deductions: 0,
       alimony: 0,
       rsp_deductions_from_bonus: 0,
+      previous_taxable_periodic_income: 0,
       union_dues: 0
     )
       @i = taxable_periodic_income
+      @previous_i = previous_taxable_periodic_income
       @b = taxable_non_periodic_income
       @f = rsp_deductions
       @f2 = alimony
@@ -25,6 +27,7 @@ module Taxman2023
     def translate
       {
         i: (@i * 100).to_d,
+        previous_i: (@previous_i * 100).to_d,
         b: (@b * 100).to_d,
         f: (@f * 100).to_d,
         f2: (@f2 * 100).to_d,

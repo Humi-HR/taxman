@@ -9,6 +9,7 @@ RSpec.describe Taxman2023::PeriodInput do
       rsp_deductions: 3,
       alimony: 5,
       rsp_deductions_from_bonus: 6,
+      previous_taxable_periodic_income: 7,
       union_dues: 9,
       province: "on"
     )
@@ -22,6 +23,7 @@ RSpec.describe Taxman2023::PeriodInput do
         f: 3_00.to_d,
         f2: 5_00.to_d,
         f3: 6_00.to_d,
+        previous_i: 7_00.to_d,
         u1: 9_00.to_d,
         province: "ON"
       }
@@ -41,6 +43,7 @@ RSpec.describe Taxman2023::PeriodInput do
       expect(period_input.translate).to eq(
         {
           i: 50_00.to_d,
+          previous_i: 0.to_d,
           b: 100_00.to_d,
           f: 0.to_d,
           f2: 0.to_d,
