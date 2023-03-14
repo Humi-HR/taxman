@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.0](https://github.com/Humi-HR/taxman/compare/v1.6.2...v1.7.0) (2023-03-14)
+
+
+### Features
+
+* pay-457 Add license ([bb5f905](https://github.com/Humi-HR/taxman/commit/bb5f905e2e2e4af12723e431c309c75dd031af5a))
+
 ## [1.6.2](https://github.com/Humi-HR/taxman/compare/v1.6.1...v1.6.2) (2023-03-09)
 
 
