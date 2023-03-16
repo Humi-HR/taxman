@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.8.0](https://github.com/Humi-HR/taxman/compare/v1.7.0...v1.8.0) (2023-03-16)
+
+
+### Features
+
+* Added documentation on release flow ([0d66f7e](https://github.com/Humi-HR/taxman/commit/0d66f7e34bd34c07cf115bfe63910853521f4714))
+* Bonus taxes with no periodic income ([4edb741](https://github.com/Humi-HR/taxman/commit/4edb74149e85ba9ce5b99ddd8af2bf8a25264295))
+
 ## [1.7.0](https://github.com/Humi-HR/taxman/compare/v1.6.2...v1.7.0) (2023-03-14)
 
 
