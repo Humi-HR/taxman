@@ -9,17 +9,32 @@ Hopefully Taxman works out better for us than waxman :(
 
 All the 2023 numbers come from the [CRA](https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas/t4127-jan/t4127-jan-payroll-deductions-formulas-computer-programs.html#toc38).
 
-## Installation
+## Release flow and installation
 
-To make a change to taxman (and deploy that change in payroll) you need to do the following:
+The release flow of the gem depends on the `release-please` Github Action,
+which uses commit message prefixes to update the semantic version number
+(`major.minor.patch`) and create a release.
 
-1. Bump the version number in `lib/taxman/version.rb`
-2. Run `bundle` to update the taxman Gemfile
-3. `bundle exec rake release` - it will ask for Rubygems credentials but you can ignore
-4. Copy the gemfile `taxman-$VERSION.gem` from `pkg/` into the payroll repo
-5. From `payroll/`, run `gem unpack taxman-$VERSION.gem --target vendor/gems/`
-6. From `payroll/`, run `bundle update taxman`
-7. Remove the old version from `payroll/vendor/gems/taxman-$OLD-VERSION` - `git rm -r vendor/gems/taxman-$OLD-VERSION`
+Prepend your commit message with:
+  - `feat:` For feature changes bumping the minor version
+  - `fix:` For bug fixes bumping the patch version
+  - `feat!:` For feature changes bumping the major version
+  - `fix!:` For bug fixes bumping the major version
+
+A new PR will be opened once at least one feature or fix has been merged. This
+PR will:
+  - Bump the version number based on the merged content since last release
+  - Generate new CHANGELOG.md entries
+
+After this release PR has been merged, a release will be generated from an
+automatic github action, creating the gem that can be installed either manually
+or via the gemserver path.
+
+To manually install the gem (legacy, though still used for a short while more):
+
+1. From `payroll/`, run `gem unpack taxman-$VERSION.gem --target vendor/gems/`
+1. From `payroll/`, run `bundle update taxman`
+1. Remove the old version from `payroll/vendor/gems/taxman-$OLD-VERSION` - `git rm -r vendor/gems/taxman-$OLD-VERSION`
 
 Process to be improved!
 
