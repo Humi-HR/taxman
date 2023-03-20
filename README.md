@@ -2,6 +2,9 @@
 
 Theme song: [Taxman](https://www.youtube.com/watch?v=l0zaebtU-CA)
 
+Hopefully Taxman works out better for us than waxman :(
+
+
 ## 2023
 
 All the 2023 numbers come from the [CRA](https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas/t4127-jan/t4127-jan-payroll-deductions-formulas-computer-programs.html#toc38).
@@ -13,17 +16,15 @@ which uses commit message prefixes to update the semantic version number
 (`major.minor.patch`) and create a release.
 
 Prepend your commit message with:
-
-- `feat:` For feature changes bumping the minor version
-- `fix:` For bug fixes bumping the patch version
-- `feat!:` For feature changes bumping the major version
-- `fix!:` For bug fixes bumping the major version
+  - `feat:` For feature changes bumping the minor version
+  - `fix:` For bug fixes bumping the patch version
+  - `feat!:` For feature changes bumping the major version
+  - `fix!:` For bug fixes bumping the major version
 
 A new PR will be opened once at least one feature or fix has been merged. This
 PR will:
-
-- Bump the version number based on the merged content since last release
-- Generate new CHANGELOG.md entries
+  - Bump the version number based on the merged content since last release
+  - Generate new CHANGELOG.md entries
 
 After this release PR has been merged, a release will be generated from an
 automatic github action, creating the gem that can be installed either manually
@@ -39,15 +40,15 @@ Process to be improved!
 
 ## Usage
 
-To calculate the taxes for a given employee and period, there are five helper classes you must construct.
+To calulate the taxes for a given employee and period, there are five helper classes you must construct.
 
-- PeriodInput
-- YearInput
-- TD1 Input
-- CPPInput
-- EiInput
+  - PeriodInput
+  - YearInput
+  - TD1 Input
+  - CPPInput
+  - EiInput
 
-These build the required parameters for tax calculation. Once constructed, pass these to `Taxman2023::Calculate` and call `call`. You will receive back a hash with the keys `federal_taxes`, `provincial_taxes`, `employee_cpp`, `employer_cpp`, `total_bonus_taxes`, `employer_ei` and `employee_ei` - the values will be BigDecimal dollar amounts. The return hash will also contain the details of the tax calculation - these can be stored and inspected for debugging purposes.
+These build the required parameters for tax calculation.  Once constructed, pass these to `Taxman2023::Calculate` and call `call`.  You will receive back a hash with the keys `federal_taxes`, `provincial_taxes`, `employee_cpp`, `employer_cpp`, `total_bonus_taxes`, `employer_ei` and `employee_ei` - the values will be BigDecimal dollar amounts.  The return hash will also contain the details of the tax calculation - these can be stored and inspected for debugging purposes.
 
 ## Development
 
