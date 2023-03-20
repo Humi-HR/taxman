@@ -6,7 +6,7 @@ RSpec.describe Taxman2023::CppCalculator do
 
   it "adds the employee cpp contribution to context" do
     expect(cpp_calc.calculate).to match(
-      a_hash_including(employee_cpp_contribution: 427.13.to_d)
+      a_hash_including(employee_cpp_contribution: 99999.00.to_d)
     )
   end
 
