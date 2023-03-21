@@ -2,9 +2,6 @@
 
 Theme song: [Taxman](https://www.youtube.com/watch?v=l0zaebtU-CA)
 
-Hopefully Taxman works out better for us than waxman :(
-
-
 ## 2023
 
 All the 2023 numbers come from the [CRA](https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas/t4127-jan/t4127-jan-payroll-deductions-formulas-computer-programs.html#toc38).
@@ -40,7 +37,7 @@ Process to be improved!
 
 ## Usage
 
-To calulate the taxes for a given employee and period, there are five helper classes you must construct.
+To calculate the taxes for a given employee and period, there are five helper classes you must construct.
 
   - PeriodInput
   - YearInput
