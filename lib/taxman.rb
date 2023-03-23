@@ -3,6 +3,7 @@
 require_relative "taxman/version"
 
 # Tax factors
+require_relative "taxman/taxman2023/cpp/constants"
 require_relative "taxman/taxman2023/f5"
 require_relative "taxman/taxman2023/f5_a"
 require_relative "taxman/taxman2023/f5_b"
