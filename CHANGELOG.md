@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.9.0](https://github.com/Humi-HR/taxman/compare/v1.8.0...v1.9.0) (2023-03-23)
+
+
+### Features
+
+* pay-488 Export the CPP and EI constants for PIER ([e3e32fc](https://github.com/Humi-HR/taxman/commit/e3e32fc1c49e42f163bdb2b6e008882f82ce82f8))
+
 ## [1.8.0](https://github.com/Humi-HR/taxman/compare/v1.7.0...v1.8.0) (2023-03-16)
 
 
