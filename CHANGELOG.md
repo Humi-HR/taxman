@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.0](https://github.com/Humi-HR/taxman/compare/v1.9.0...v1.10.0) (2023-03-23)
+
+
+### Features
+
+* pay-488 Add support for 2022/CPP+EI ([e45232c](https://github.com/Humi-HR/taxman/commit/e45232cc02584fa2cbec723a9df34f23ed3b0a19))
+
 ## [1.9.0](https://github.com/Humi-HR/taxman/compare/v1.8.0...v1.9.0) (2023-03-23)
 
 
