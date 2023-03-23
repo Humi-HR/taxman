@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "bigdecimal/util"
-
 module Taxman2023
   module Cpp
     # Bag to hold all of the CPP constants for 2023

@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "bigdecimal/util"
-
 module Taxman2023
   # Calculates the F5A factor
   class F5A
