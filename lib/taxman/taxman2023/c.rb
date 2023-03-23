@@ -3,7 +3,6 @@
 module Taxman2023
   # Calculates the CPP contribution for the period
   class C
-    CPP_MAX = 3_754_45.to_d
     attr_reader :pi, :p, :pm, :d, :b_pensionable
 
     def initialize(pi:, p:, pm:, d:, b_pensionable:)
@@ -23,7 +22,7 @@ module Taxman2023
     end
 
     def cpp_max
-      [(CPP_MAX * pm / 12) - d, 0].max
+      [(Cpp::MAX * pm / 12) - d, 0].max
     end
 
     # Calculates the CPP for an employee.
@@ -35,9 +34,9 @@ module Taxman2023
     # tested scenarios.
     def cpp_calculated
       i_pensionable = pi - b_pensionable
-      cpp = (i_pensionable - (3_500_00.to_d / p)) * 0.0595
+      cpp = (i_pensionable - (Cpp::BASIC_EXEMPTION / p)) * Cpp::RATE
 
-      [cpp, 0].max + (b_pensionable * 0.0595)
+      [cpp, 0].max + (b_pensionable * Cpp::RATE)
     end
   end
 end
