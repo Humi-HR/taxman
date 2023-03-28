@@ -2,6 +2,7 @@
 
 require "bigdecimal/util"
 require_relative "taxman/version"
+require_relative "taxman/taxman2021"
 require_relative "taxman/taxman2022"
 require_relative "taxman/taxman2023"
 
