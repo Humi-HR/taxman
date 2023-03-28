@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.11.0](https://github.com/Humi-HR/taxman/compare/v1.10.0...v1.11.0) (2023-03-28)
+
+
+### Features
+
+* pay-501 Add FY2021 support for CPP+EI ([2389cb2](https://github.com/Humi-HR/taxman/commit/2389cb22c934241b1888dfa6a6d6be580969b6b1))
+
 ## [1.10.0](https://github.com/Humi-HR/taxman/compare/v1.9.0...v1.10.0) (2023-03-23)
 
 
