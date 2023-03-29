@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.12.0](https://github.com/Humi-HR/taxman/compare/v1.11.0...v1.12.0) (2023-03-29)
+
+
+### Features
+
+* Raise error on unsupported province ([dc59101](https://github.com/Humi-HR/taxman/commit/dc59101ebba89f6983f6dc5839cdfc630e7a370d))
+
 ## [1.11.0](https://github.com/Humi-HR/taxman/compare/v1.10.0...v1.11.0) (2023-03-28)
 
 
