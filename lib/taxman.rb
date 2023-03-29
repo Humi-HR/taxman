@@ -10,4 +10,6 @@ module Taxman
   class Error < StandardError; end
 
   class ContextMissing < StandardError; end
+
+  class UnsupportedProvince < StandardError; end
 end

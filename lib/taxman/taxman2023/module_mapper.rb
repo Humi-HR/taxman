@@ -21,7 +21,9 @@ module Taxman2023
     }.freeze
 
     def self.map(province)
-      MODULE_MAP[province]
+      MODULE_MAP[province].tap do |p|
+        raise Taxman::UnsupportedProvince, "Province `#{province}` is not supported" unless p
+      end
     end
   end
 end

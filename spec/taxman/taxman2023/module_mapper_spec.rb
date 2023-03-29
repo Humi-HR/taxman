@@ -18,4 +18,12 @@ RSpec.describe Taxman2023::ModuleMapper do
       expect(mapper).to eq Taxman2023::Nl
     end
   end
+
+  context "when given QC" do
+    let(:province) { "QC" }
+
+    it "maps to the correct module" do
+      expect { mapper }.to raise_error Taxman::UnsupportedProvince
+    end
+  end
 end
