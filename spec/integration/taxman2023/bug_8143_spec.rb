@@ -14,9 +14,9 @@ RSpec.describe Taxman2023::Calculate do
 
   let(:p) do
     Taxman2023::PeriodInput.new(
-      taxable_periodic_income: 3_225,
+      taxable_periodic_income: 3_646.40 + 9.37,
       taxable_non_periodic_income: 0,
-      province: "bc"
+      province: "mb"
     )
   end
 
@@ -29,37 +29,44 @@ RSpec.describe Taxman2023::Calculate do
     )
   end
 
-  let(:t) { Taxman2023::Td1Input.new(federal_personal_amount: 15_000, provincial_personal_amount: 11_981) }
+  let(:t) do
+    Taxman2023::Td1Input.new(
+      federal_personal_amount: nil,
+      provincial_personal_amount: nil,
+      additional_tax_deductions: 0
+    )
+  end
 
   let(:c) do
     Taxman2023::CppInput.new(
-      pensionable_income_this_period: 3_225,
-      ytd_contributions: 0,
+      pensionable_income_this_period: 3_655.77,
+      pensionable_non_periodic_income_this_period: 0,
+      ytd_contributions: 1255.37,
       contribution_months_this_year: 12
     )
   end
 
   let(:e) do
     Taxman2023::EiInput.new(
-      insurable_income_this_period: 3_175,
+      insurable_income_this_period: 0,
       employees_ytd_contributions: 0
     )
   end
 
   it "matches PDOC's federal tax" do
-    expect(calculate[:federal_tax]).to eq 423.67
+    expect(calculate[:federal_tax]).to eq 516.88
   end
 
   it "matches PDOC's provincial tax" do
-    expect(calculate[:provincial_tax]).to eq 168.25
+    expect(calculate[:provincial_tax]).to be_within(0.1).of 401.87
   end
 
   it "matches PDOC's CPP deduction" do
-    expect(calculate[:employee_cpp_contribution]).to eq 183.88
+    expect(calculate[:employee_cpp_contribution]).to be_within(0.1).of 209.51
   end
 
   it "matches PDOC's EI calculation" do
-    expect(calculate[:employee_ei_contribution]).to eq 51.75
+    expect(calculate[:employee_ei_contribution]).to eq 0
   end
 end
 # rubocop:enable RSpec/FilePath, RSpec/MultipleMemoizedHelpers

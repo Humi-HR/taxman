@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# rubocop:disable RSpec/MultipleMemoizedHelpers
 RSpec.describe Taxman2023::ABonus do
   let(:a) do
     described_class.new(

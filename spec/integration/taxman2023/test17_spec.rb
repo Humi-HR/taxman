@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# rubocop:disable RSpec/FilePath, RSpec/MultipleMemoizedHelpers
+# rubocop:disable RSpec/FilePath
 RSpec.describe Taxman2023::Calculate do
   let(:calculate) do
     described_class.new(
@@ -49,6 +49,7 @@ RSpec.describe Taxman2023::Calculate do
   let(:e) do
     Taxman2023::EiInput.new(
       insurable_income_this_period: 100_500.00,
+      insurable_non_periodic_income_this_period: 100_000.00,
       employees_ytd_contributions: 163.00
     )
   end
@@ -75,6 +76,10 @@ RSpec.describe Taxman2023::Calculate do
 
   it "matches PDOC's EI calculation" do
     expect(calculate[:employee_ei_contribution]).to eq 839.45
+  end
+
+  it "matches the f5b" do
+    expect(calculate[:f5b]).to be_within(1).of 541_75
   end
 end
 # rubocop:enable RSpec/FilePath, RSpec/MultipleMemoizedHelpers

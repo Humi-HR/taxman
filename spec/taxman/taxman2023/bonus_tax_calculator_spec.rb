@@ -21,7 +21,15 @@ RSpec.describe Taxman2023::BonusTaxCalculator do
       c: 472_00.to_d,
       k3: 0, # Other authorized per period federal deductions
       k3p: 0, # Other authorized per period provincial deductions
-      l: 0
+      l: 0,
+      pi: i + b,
+      pi_periodic: i,
+      ie: i + b,
+      ie_periodic: i,
+      b_pensionable: b,
+      b_insurable: b,
+      b1_pensionable: 1_000_00,
+      b1_insurable: 1_000_00
     }
   end
 

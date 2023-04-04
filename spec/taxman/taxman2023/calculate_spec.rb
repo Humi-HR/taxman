@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# rubocop:disable RSpec/MultipleMemoizedHelpers
 RSpec.describe Taxman2023::Calculate do
   let(:calculate) do
     described_class.new(
@@ -14,7 +13,11 @@ RSpec.describe Taxman2023::Calculate do
 
   context "with $156k, weekly schedule, $1k bonus YTD, $5k bonus current" do
     let(:p) do
-      Taxman2023::PeriodInput.new(taxable_periodic_income: 3_000, taxable_non_periodic_income: 5_000, province: "on")
+      Taxman2023::PeriodInput.new(
+        taxable_periodic_income: 3_000,
+        taxable_non_periodic_income: 5_000,
+        province: "on"
+      )
     end
 
     let(:y) do
@@ -31,6 +34,7 @@ RSpec.describe Taxman2023::Calculate do
     let(:c) do
       Taxman2023::CppInput.new(
         pensionable_income_this_period: 8_000,
+        pensionable_non_periodic_income_this_period: 5_000,
         ytd_contributions: 0,
         contribution_months_this_year: 12
       )
@@ -39,6 +43,7 @@ RSpec.describe Taxman2023::Calculate do
     let(:e) do
       Taxman2023::EiInput.new(
         insurable_income_this_period: 8_000,
+        insurable_non_periodic_income_this_period: 5_000,
         employees_ytd_contributions: 0
       )
     end
@@ -90,7 +95,8 @@ RSpec.describe Taxman2023::Calculate do
     let(:p) do
       Taxman2023::PeriodInput.new(
         taxable_periodic_income: 3_076.92,
-        taxable_non_periodic_income: 21_619, province: "sk"
+        taxable_non_periodic_income: 21_619,
+        province: "sk"
       )
     end
 
@@ -218,6 +224,7 @@ RSpec.describe Taxman2023::Calculate do
     let(:e) do
       Taxman2023::EiInput.new(
         insurable_income_this_period: 1_000,
+        insurable_non_periodic_income_this_period: 1_000,
         employees_ytd_contributions: 1_002.45
       )
     end

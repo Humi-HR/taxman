@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# rubocop:disable RSpec/MultipleMemoizedHelpers
 RSpec.describe Taxman2023::On::T4 do
   let(:t4) { described_class.new(a: a, hd: 0, tcp: tcp, k2p: k2p, k3p: k3p).amount }
   let(:a) { 0 } # Annualized income (comes from `a` calculator)
@@ -9,6 +8,20 @@ RSpec.describe Taxman2023::On::T4 do
   let(:p) { 12 } # Number of periods in the year
   let(:tcp) { nil } # Provincial personal exemption, nil to use the table
   let(:k3p) { 0 } # Other non-refundable provincial tax credits
+
+  let(:k2_params) do
+    {
+      pi: i,
+      pi_periodic: i,
+      b_pensionable: b,
+      b1_pensionable: b1,
+      ie: i,
+      ie_periodic: i,
+      b_insurable: b,
+      b1_insurable: b1,
+      p: p
+    }
+  end
 
   context "with no income in the period" do
     let(:k2p) { 0 }
@@ -20,6 +33,9 @@ RSpec.describe Taxman2023::On::T4 do
 
   context "with $54k salary" do
     let(:i) { 4_500_00 }
+    let(:b) { 0 }
+    let(:b1) { 0 }
+    let(:p) { 12 }
     let(:f5a) { 250_40 * (0.01 / 0.0595) } # F5=C*(0.01/0.0595) C from PDOC
     let(:a) do
       Taxman2023::A.new(
@@ -34,7 +50,7 @@ RSpec.describe Taxman2023::On::T4 do
       ).amount
     end
 
-    let(:k2p) { Taxman2023::On::K2p.new(i: i, b: 0, b1: 0, p: 12).amount }
+    let(:k2p) { Taxman2023::On::K2p.new(**k2_params).amount }
 
     # https://docs.google.com/spreadsheets/d/1q0tv_4IMqdL23wLRg49VikhXRC5tsy7oxGc5at71fzw/edit#gid=89378561
     it "calculates an annualized provincial tax deduction of $2,106.92" do

@@ -16,6 +16,7 @@ module Taxman2023
     def translate
       {
         pi: (@pi * 100).to_d,
+        pi_periodic: (@pi * 100).to_d - (@b_pensionable * 100).to_d,
         b_pensionable: (@b_pensionable * 100).to_d,
         d: (@d * 100).to_d,
         pm: @pm

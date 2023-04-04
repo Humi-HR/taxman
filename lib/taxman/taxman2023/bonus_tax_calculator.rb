@@ -35,7 +35,9 @@ module Taxman2023
                         .amount
 
       taxes_with_bonus = TaxCalculator.new(context: context.merge(a: a_bonus)).calculate
-      taxes_without_bonus = TaxCalculator.new(context: context.merge(a: a_without_bonus, b: 0)).calculate
+      taxes_without_bonus = TaxCalculator
+                            .new(context: context.merge(zeroed_bonus_terms(context, a_without_bonus)))
+                            .calculate
 
       federal_tax = (taxes_with_bonus[:t1] - taxes_without_bonus[:t1])
       provincial_tax = (taxes_with_bonus[:t2] - taxes_without_bonus[:t2])
@@ -51,6 +53,8 @@ module Taxman2023
       }
     end
 
+    private
+
     def small_pay_amount(b)
       federal_tax = (b * 0.1)
       provincial_tax = (b * 0.05)
@@ -63,6 +67,16 @@ module Taxman2023
         taxes_with_bonus: {},
         taxes_without_bonus: {}
       }
+    end
+
+    def current_bonus_terms
+      %i[b b_pensionable b_insurable]
+    end
+
+    def zeroed_bonus_terms(context, a_without_bonus)
+      context
+        .merge(a: a_without_bonus)
+        .merge(current_bonus_terms.to_h { |term| [term, 0] })
     end
   end
 end

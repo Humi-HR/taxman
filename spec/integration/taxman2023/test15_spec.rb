@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# rubocop:disable RSpec/FilePath, RSpec/MultipleMemoizedHelpers
+# rubocop:disable RSpec/FilePath
 RSpec.describe Taxman2023::Calculate do
   let(:calculate) do
     described_class.new(

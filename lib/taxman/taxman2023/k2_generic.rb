@@ -3,25 +3,44 @@
 module Taxman2023
   # Calculates the generic k2 factor
   class K2Generic
-    attr_reader :i, # Income in the period
-                :b, # Bonus in the period
-                :b1, # Bonus YTD
+    attr_reader :pi, # Pensionable income in the period
+                :pi_periodic, # Pensionable periodic income this period
+                :b_pensionable, # Pensionable bonus in the period
+                :b1_pensionable, # Pensionable bonus YTD
+                :ie, # Insurable income in the period
+                :ie_periodic, # Insurable periodic income this period
+                :b_insurable, # Insurable bonus in the period
+                :b1_insurable, # Insurable bonus YTD
                 :p # Number of periods
 
+    # rubocop:disable Metrics/ParameterLists
     def initialize(
-      i:,
-      b:,
-      b1:,
+      pi:,
+      pi_periodic:,
+      b_pensionable:,
+      b1_pensionable:,
+      ie:,
+      ie_periodic:,
+      b_insurable:,
+      b1_insurable:,
       p:
     )
-      @i = i.to_d
-      @b = b.to_d
-      @b1 = b1.to_d
+      @pi = pi.to_d
+      @pi_periodic = pi_periodic.to_d
+      @b_pensionable = b_pensionable.to_d
+      @b1_pensionable = b1_pensionable.to_d
+
+      @ie = ie.to_d
+      @ie_periodic = ie_periodic.to_d
+      @b_insurable = b_insurable.to_d
+      @b1_insurable = b1_insurable.to_d
+
       @p = p
     end
+    # rubocop:enable Metrics/ParameterLists
 
     def self.params
-      %i[i b b1 p]
+      %i[pi pi_periodic b_pensionable b1_pensionable ie ie_periodic b_insurable b1_insurable p]
     end
 
     def rate
@@ -41,7 +60,7 @@ module Taxman2023
     end
 
     def cpp_portion
-      ((i + ((b + b1) / p)) - (3_500_00.to_d / p)) * 0.0595
+      ((pi_periodic + ((b_pensionable + b1_pensionable) / p)) - (Cpp::BASIC_EXEMPTION / p)) * Cpp::RATE
     end
 
     def ei_credit
@@ -49,11 +68,11 @@ module Taxman2023
     end
 
     def max_ei_credit
-      1_002_45.to_d
+      Ei::EI_MAX
     end
 
     def ei_portion
-      (i + ((b + b1) / p)) * 0.0163
+      (ie_periodic + ((b_insurable + b1_insurable) / p)) * Ei::EMPLOYEE_RATE
     end
 
     def lower_cpp_rate
