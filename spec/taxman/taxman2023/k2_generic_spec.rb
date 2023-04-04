@@ -1,10 +1,23 @@
 # frozen_string_literal: true
 
-# rubocop:disable RSpec/MultipleMemoizedHelpers
 RSpec.describe Taxman2023::K2Generic do
-  let(:k2p_obj) { described_class.new(i: i, b: b, b1: b1, p: p) }
+  let(:k2p_obj) { described_class.new(**k2_params) }
   let(:k2p) { k2p_obj.amount }
   let(:b1) { 0 }
+
+  let(:k2_params) do
+    {
+      pi: i + b,
+      pi_periodic: i,
+      b_pensionable: b,
+      b1_pensionable: b1,
+      ie: i + b,
+      ie_periodic: i,
+      b_insurable: b,
+      b1_insurable: b1,
+      p: p
+    }
+  end
 
   before { allow(k2p_obj).to receive(:rate).and_return(0.0505) }
 

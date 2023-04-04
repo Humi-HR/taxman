@@ -19,13 +19,15 @@ RSpec.describe Taxman2023::YearInput do
     expect(year_input.translate).to eq(
       {
         b1: 1_00.to_d,
+        b1_insurable: 1_00.to_d,
+        b1_pensionable: 1_00.to_d,
         f1: 2_00.to_d,
         f4: 3_00.to_d,
         p: 12,
         f5b_ytd: 4_00.to_d,
         employer_ei_multiple: 1.3.to_d,
-        k3: 1_000_00,
-        k3p: 978_00
+        k3: 1_000_00.to_d,
+        k3p: 978_00.to_d
       }
     )
   end
@@ -37,6 +39,8 @@ RSpec.describe Taxman2023::YearInput do
       expect(year_input.translate).to eq(
         {
           b1: 1_00.to_d,
+          b1_pensionable: 1_00.to_d,
+          b1_insurable: 1_00.to_d,
           f5b_ytd: 2_00.to_d,
           p: 26,
           f1: 0,

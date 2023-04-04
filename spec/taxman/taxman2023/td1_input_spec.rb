@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 # rubocop:disable RSpec/ExampleLength
-# rubocop:disable RSpec/MultipleMemoizedHelpers
 RSpec.describe Taxman2023::Td1Input do
   let(:td1_input) do
     described_class.new(

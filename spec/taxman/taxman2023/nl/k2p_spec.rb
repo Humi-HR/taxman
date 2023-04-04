@@ -1,9 +1,22 @@
 # frozen_string_literal: true
 
 RSpec.describe Taxman2023::Nl::K2p do
-  let(:k2p) { described_class.new(i: i, b: b, b1: b1, p: p).amount }
+  let(:k2p) { described_class.new(**k2_params).amount }
   let(:b) { 0 }
   let(:b1) { 0 }
+  let(:k2_params) do
+    {
+      pi: i,
+      pi_periodic: i,
+      b_pensionable: b,
+      b1_pensionable: b1,
+      ie: i,
+      ie_periodic: i,
+      b_insurable: b,
+      b1_insurable: b1,
+      p: p
+    }
+  end
 
   context "with $84k salary monthly" do
     let(:i) { 7_000_00 }

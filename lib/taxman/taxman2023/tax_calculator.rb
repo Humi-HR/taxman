@@ -28,6 +28,12 @@ module Taxman2023
       k3p
       province
       l
+      pi
+      ie
+      b_pensionable
+      b_insurable
+      b1_pensionable
+      b1_insurable
     ].freeze
 
     def initialize(context:)

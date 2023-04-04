@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# rubocop:disable Metrics/ParameterLists
+# rubocop:disable Metrics/ParameterLists, Metrics/MethodLength
 module Taxman2023
   # This input collects the ytd and general inputs
   class YearInput
@@ -12,9 +12,13 @@ module Taxman2023
       annual_deductions: 0, # F1
       ytd_rsp_bonus_deductions: 0, # F4
       other_federal_deductions: 0, # K3
-      other_provincial_deductions: 0 # K3P
+      other_provincial_deductions: 0, # K3P
+      ytd_pensionable_bonus: nil,
+      ytd_insurable_bonus: nil
     )
       @b1 = ytd_bonus
+      @b1_pensionable = ytd_pensionable_bonus || ytd_bonus
+      @b1_insurable = ytd_insurable_bonus || ytd_bonus
       @f1 = annual_deductions
       @f4 = ytd_rsp_bonus_deductions
       @p = pay_periods
@@ -27,6 +31,8 @@ module Taxman2023
     def translate
       {
         b1: (@b1 * 100).to_d,
+        b1_pensionable: (@b1_pensionable * 100).to_d,
+        b1_insurable: (@b1_insurable * 100).to_d,
         f1: (@f1 * 100).to_d,
         f4: (@f4 * 100).to_d,
         p: @p,
@@ -38,4 +44,4 @@ module Taxman2023
     end
   end
 end
-# rubocop:enable Metrics/ParameterLists
+# rubocop:enable Metrics/ParameterLists, Metrics/MethodLength
