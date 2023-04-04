@@ -12,7 +12,7 @@ RSpec.describe Taxman2023::EiInput do
   let(:ie) { 3_500 }
   let(:d1) { 1_000 }
   let(:b_insurable) { 500 }
-  
+
   let(:cra_form) do
     {
       ie: 3_500_00.to_d,
