@@ -231,7 +231,7 @@ RSpec.describe Taxman2023::Calculate do
 
     it "calculates the federal bonus tax owed" do
       expect(calculate.call).to match(
-        a_hash_including(federal_tax_on_bonus: 195.13)
+        a_hash_including(federal_tax_on_bonus: 202.56)
       )
     end
   end

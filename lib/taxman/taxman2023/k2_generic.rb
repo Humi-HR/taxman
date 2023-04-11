@@ -60,7 +60,10 @@ module Taxman2023
     end
 
     def cpp_portion
-      ((pi_periodic + ((b_pensionable + b1_pensionable) / p)) - (Cpp::BASIC_EXEMPTION / p)) * Cpp::RATE
+      [
+        ((pi_periodic + ((b_pensionable + b1_pensionable) / p)) - (Cpp::BASIC_EXEMPTION / p)) * Cpp::RATE,
+        0
+      ].max
     end
 
     def ei_credit
