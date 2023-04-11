@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.12.2](https://github.com/Humi-HR/taxman/compare/v1.12.1...v1.12.2) (2023-04-11)
+
+
+### Bug Fixes
+
+* bug-8196 Cpp portion of K2 can't be negative ([89994f6](https://github.com/Humi-HR/taxman/commit/89994f609a3a13c54075bd72efa63c7676bb9a04))
+
 ## [1.12.0](https://github.com/Humi-HR/taxman/compare/v1.11.0...v1.12.0) (2023-03-29)
 
 
