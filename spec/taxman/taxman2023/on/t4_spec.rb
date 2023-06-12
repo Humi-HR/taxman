@@ -8,6 +8,8 @@ RSpec.describe Taxman2023::On::T4 do
   let(:p) { 12 } # Number of periods in the year
   let(:tcp) { nil } # Provincial personal exemption, nil to use the table
   let(:k3p) { 0 } # Other non-refundable provincial tax credits
+  let(:d) { 0 } # YTD CPP contribution
+  let(:d1) { 0 } # YTD EI contribution
 
   let(:k2_params) do
     {
@@ -19,7 +21,9 @@ RSpec.describe Taxman2023::On::T4 do
       ie_periodic: i,
       b_insurable: b,
       b1_insurable: b1,
-      p: p
+      p: p,
+      d: d,
+      d1: d1
     }
   end
 

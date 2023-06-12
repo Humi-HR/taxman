@@ -4,6 +4,8 @@ RSpec.describe Taxman2023::TaxCalculator do
   let(:i) { 3_000_00.to_d }
   let(:b) { 5_000_00.to_d }
   let(:b1) { 1_000_00.to_d }
+  let(:d) { 0 } # YTD CPP contribution
+  let(:d1) { 0 } # YTD EI contribution
   let(:partial_context) do
     {
       p: 52,
@@ -32,7 +34,9 @@ RSpec.describe Taxman2023::TaxCalculator do
       b_pensionable: b,
       b1_pensionable: b1,
       b_insurable: b,
-      b1_insurable: b1
+      b1_insurable: b1,
+      d: d,
+      d1: d1
     }
   end
   let(:context) do
