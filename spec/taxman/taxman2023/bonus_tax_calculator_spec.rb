@@ -29,7 +29,9 @@ RSpec.describe Taxman2023::BonusTaxCalculator do
       b_pensionable: b,
       b_insurable: b,
       b1_pensionable: 1_000_00,
-      b1_insurable: 1_000_00
+      b1_insurable: 1_000_00,
+      d: 0,
+      d1: 0
     }
   end
 

@@ -234,6 +234,12 @@ RSpec.describe Taxman2023::Calculate do
         a_hash_including(federal_tax_on_bonus: 202.56)
       )
     end
+
+    it "calculates the provincial bonus tax owed" do
+      expect(calculate.call).to match(
+        a_hash_including(provincial_tax_on_bonus: 90.68)
+      )
+    end
   end
 end
 # rubocop:enable RSpec/MultipleMemoizedHelpers

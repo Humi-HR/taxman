@@ -4,6 +4,8 @@ RSpec.describe Taxman2023::K2Generic do
   let(:k2p_obj) { described_class.new(**k2_params) }
   let(:k2p) { k2p_obj.amount }
   let(:b1) { 0 }
+  let(:d) { 0 } # YTD CPP contribution
+  let(:d1) { 0 } # YTD EI contribution
 
   let(:k2_params) do
     {
@@ -15,7 +17,9 @@ RSpec.describe Taxman2023::K2Generic do
       ie_periodic: i,
       b_insurable: b,
       b1_insurable: b1,
-      p: p
+      p: p,
+      d: d,
+      d1: d1
     }
   end
 

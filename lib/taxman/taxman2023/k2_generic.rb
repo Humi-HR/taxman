@@ -23,7 +23,9 @@ module Taxman2023
       ie_periodic:,
       b_insurable:,
       b1_insurable:,
-      p:
+      p:,
+      d:,
+      d1:
     )
       @pi = pi.to_d
       @pi_periodic = pi_periodic.to_d
@@ -36,11 +38,14 @@ module Taxman2023
       @b1_insurable = b1_insurable.to_d
 
       @p = p
+
+      @d = d
+      @d1 = d1
     end
     # rubocop:enable Metrics/ParameterLists
 
     def self.params
-      %i[pi pi_periodic b_pensionable b1_pensionable ie ie_periodic b_insurable b1_insurable p]
+      %i[pi pi_periodic b_pensionable b1_pensionable ie ie_periodic b_insurable b1_insurable p d d1]
     end
 
     def rate
@@ -52,6 +57,9 @@ module Taxman2023
     end
 
     def cpp_credit
+      # If the contribution has already been reached, return max
+      return max_cpp_credit if @d >= max_cpp_credit
+
       p * cpp_portion * lower_cpp_rate / higher_cpp_rate
     end
 
@@ -67,6 +75,9 @@ module Taxman2023
     end
 
     def ei_credit
+      # If the contribution has already been reached, return max
+      return max_ei_credit if @d1 >= max_ei_credit
+
       p * ei_portion
     end
 
