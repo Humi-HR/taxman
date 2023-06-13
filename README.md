@@ -10,7 +10,7 @@ All the 2023 numbers come from the [CRA](https://www.canada.ca/en/revenue-agency
 
 The release flow of the gem depends on the `release-please` Github Action,
 which uses commit message prefixes to update the semantic version number
-(`major.minor.patch`) and create a release.
+(`major.minor.patch`) and create a release like `v[major].[minor].[patch]`.
 
 Prepend your commit message with:
   - `feat:` For feature changes bumping the minor version
