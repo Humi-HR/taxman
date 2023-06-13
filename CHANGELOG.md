@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.12.3](https://github.com/Humi-HR/taxman/compare/v1.12.2...v1.12.3) (2023-06-13)
+
+
+### Bug Fixes
+
+* Always use MAX CPP/EI amounts when reached ([556d84a](https://github.com/Humi-HR/taxman/commit/556d84aebb14be23b1fd306340bdfc612fc839d9))
+
 ## [1.12.2](https://github.com/Humi-HR/taxman/compare/v1.12.1...v1.12.2) (2023-04-11)
 
 
