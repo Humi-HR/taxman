@@ -5,7 +5,7 @@ module Taxman2023
     # Calculates the annualized provincial tax
     class T4 < T4Generic
       LOWEST_RATE = 0.1080.to_d
-      DEFAULT_TD1 = 10_855_00.to_d
+      DEFAULT_TD1 = 19_145_00.to_d
 
       RATES_AND_CONSTANTS = {
         36_842_00.to_d => [LOWEST_RATE, 0.0.to_d],
