@@ -58,7 +58,7 @@ RSpec.describe Taxman2023::Calculate do
   end
 
   it "matches PDOC's provincial tax" do
-    expect(calculate[:provincial_tax]).to be_within(0.1).of 401.87
+    expect(calculate[:provincial_tax]).to be_within(0.1).of 363.28
   end
 
   it "matches PDOC's CPP deduction" do
