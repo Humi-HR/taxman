@@ -2,6 +2,7 @@
 
 # rubocop:disable RSpec/FilePath
 RSpec.describe Taxman2023::Calculate do
+  # NOTE EI EXEMPT ON PDOC
   let(:calculate) do
     described_class.new(
       period_input: p,
@@ -46,6 +47,7 @@ RSpec.describe Taxman2023::Calculate do
     )
   end
 
+  # NOTE EI EXEMPT ON PDOC
   let(:e) do
     Taxman2023::EiInput.new(
       insurable_income_this_period: 0,
@@ -58,7 +60,7 @@ RSpec.describe Taxman2023::Calculate do
   end
 
   it "matches PDOC's provincial tax" do
-    expect(calculate[:provincial_tax]).to be_within(0.1).of 363.28
+    expect(calculate[:provincial_tax]).to be_within(0.1).of 367.44
   end
 
   it "matches PDOC's CPP deduction" do
