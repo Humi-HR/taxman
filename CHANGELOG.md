@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.12.4](https://github.com/Humi-HR/taxman/compare/v1.12.3...v1.12.4) (2023-07-12)
+
+
+### Bug Fixes
+
+* Explain the resulting version number ([f909fff](https://github.com/Humi-HR/taxman/commit/f909fffd571a6c4629a4e342bffde0087f08f958))
+* MB personal exemption change ([a092eab](https://github.com/Humi-HR/taxman/commit/a092eabdecc8833322ba839ce9c9e181895bb087))
+* New MB personal exemption ([5ed8c06](https://github.com/Humi-HR/taxman/commit/5ed8c060e95fd8b39e08911d7b30f58c5f296a23))
+
 ## [1.12.3](https://github.com/Humi-HR/taxman/compare/v1.12.2...v1.12.3) (2023-06-13)
 
 
