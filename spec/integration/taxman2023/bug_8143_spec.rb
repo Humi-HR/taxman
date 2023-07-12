@@ -2,7 +2,7 @@
 
 # rubocop:disable RSpec/FilePath
 RSpec.describe Taxman2023::Calculate do
-  # NOTE: EI EXEMPT ON PDOC
+  # NOTE: EI EXEMPT ON PDOC 
   let(:calculate) do
     described_class.new(
       period_input: p,
