@@ -39,8 +39,14 @@ module Taxman2023
                             .new(context: context.merge(zeroed_bonus_terms(context, a_without_bonus)))
                             .calculate
 
-      federal_tax = (taxes_with_bonus[:t1] - taxes_without_bonus[:t1])
-      provincial_tax = (taxes_with_bonus[:t2] - taxes_without_bonus[:t2])
+      # While not explicitly defined in T4127, the bonus taxes is the
+      # difference when calculating taxes with and without bonus, though it is
+      # only implied that taxes with bonuses should be a larger amount.
+      # It is possible for this difference to be negative with no taxable
+      # income (tax exempt) and a custom tax deduction. While not stated, bonus
+      # taxes should not be negative.
+      federal_tax = [(taxes_with_bonus[:t1] - taxes_without_bonus[:t1]), 0].max
+      provincial_tax = [(taxes_with_bonus[:t2] - taxes_without_bonus[:t2]), 0].max
       total_tax = federal_tax + provincial_tax
       # Remove the calculated taxes from the result, since TaxCalculator spreads out over the
       # year and we're taking all of the taxes on the bonus this period
