@@ -45,6 +45,8 @@ module Taxman2023
       # It is possible for this difference to be negative with no taxable
       # income (tax exempt) and a custom tax deduction. While not stated, bonus
       # taxes should not be negative.
+      # We likely handle tax exempt wrong, and should fix it:
+      # https://gethumi.atlassian.net/browse/PAY-972
       federal_tax = [(taxes_with_bonus[:t1] - taxes_without_bonus[:t1]), 0].max
       provincial_tax = [(taxes_with_bonus[:t2] - taxes_without_bonus[:t2]), 0].max
       total_tax = federal_tax + provincial_tax
