@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.12.5](https://github.com/Humi-HR/taxman/compare/v1.12.4...v1.12.5) (2023-08-09)
+
+
+### Bug Fixes
+
+* Add comment with PAY ticket ([3a93a07](https://github.com/Humi-HR/taxman/commit/3a93a079c8932043b1f6a9c64c8a154dcff1e8a2))
+* Ensure bonus taxes cannot be negative ([75ea185](https://github.com/Humi-HR/taxman/commit/75ea18534d7c1268dbdccb3c81f9df4f103d6f3e))
+
 ## [1.12.4](https://github.com/Humi-HR/taxman/compare/v1.12.3...v1.12.4) (2023-07-12)
 
 
