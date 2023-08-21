@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Taxman2023
-  # This input collects the factors specific to cpp calculation
+  # This input collects the factors specific to cpp and qpp calculation
   class PensionInput
     def initialize(pensionable_income_this_period:,
                    ytd_cpp_contributions:,
