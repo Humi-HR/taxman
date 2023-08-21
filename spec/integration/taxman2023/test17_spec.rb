@@ -7,7 +7,7 @@ RSpec.describe Taxman2023::Calculate do
       period_input: p,
       year_input: y,
       td1_input: t,
-      cpp_input: c,
+      pension_input: c,
       ei_input: e
     ).call
   end
@@ -38,10 +38,11 @@ RSpec.describe Taxman2023::Calculate do
   end
 
   let(:c) do
-    Taxman2023::CppInput.new(
+    Taxman2023::PensionInput.new(
       pensionable_income_this_period: 100_500.00,
       pensionable_non_periodic_income_this_period: 100_000.00,
-      ytd_contributions: 514.90,
+      ytd_cpp_contributions: 514.90,
+      ytd_qpp_contributions: 0,
       contribution_months_this_year: 12
     )
   end

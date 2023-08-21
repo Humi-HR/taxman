@@ -4,29 +4,30 @@
 module Taxman2023
   # The main entry point to the tax calculator
   class Calculate
-    attr_reader :period_input, :year_input, :td1_input, :cpp_input, :ei_input, :context
+    attr_reader :period_input, :year_input, :td1_input, :pension_input, :ei_input, :context
 
     def initialize(
       period_input:,
       year_input:,
       td1_input:,
-      cpp_input:,
+      pension_input:,
       ei_input:
     )
       @period_input = period_input
       @year_input = year_input
       @td1_input = td1_input
-      @cpp_input = cpp_input
+      @pension_input = pension_input
       @ei_input = ei_input
     end
 
     def call
       @context = {}
-      [period_input, year_input, td1_input, cpp_input, ei_input].each do |input|
+      [period_input, year_input, td1_input, pension_input, ei_input].each do |input|
         context.merge!(input.translate)
       end
 
       context[:c] = C.new(**context.slice(*C.params)).amount
+      context[:qc_c] = QcC.new(**context.slice(*QcC.params)).amount
       context[:ei] = Ei.new(**context.slice(*Ei.params)).amount
       context[:f5] = F5.new(**context.slice(*F5.params)).amount
       context[:f5a] = F5A.new(**context.slice(*F5A.params)).amount
@@ -42,6 +43,7 @@ module Taxman2023
         .except(*bonus_symbols))
       context.merge!(BonusTaxCalculator.new(context: context).calculate) if context[:b] >= 0
       context.merge!(CppCalculator.new(context: context).calculate)
+      context.merge!(QppCalculator.new(context: context).calculate)
       context.merge!(EiCalculator.new(context: context).calculate)
 
       context

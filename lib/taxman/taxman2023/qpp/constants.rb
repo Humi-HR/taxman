@@ -12,10 +12,10 @@ module Taxman2023
     class Constants
       def self.to_h
         {
-          cpp_basic_exemption: BASIC_EXEMPTION / 100,
-          cpp_employee_rate: RATE,
-          cpp_employer_matching: BigDecimal("1.0"),
-          cpp_maximum_pensionable: MAXIMUM_PENSIONABLE / 100
+          qpp_basic_exemption: BASIC_EXEMPTION / 100,
+          qpp_employee_rate: RATE,
+          qpp_employer_matching: BigDecimal("1.0"),
+          qpp_maximum_pensionable: MAXIMUM_PENSIONABLE / 100
         }
       end
     end
