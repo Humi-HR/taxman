@@ -7,9 +7,12 @@ RSpec.describe Taxman2023::Calculate do
       year_input: y,
       td1_input: t,
       pension_input: c,
+      qpip_input: q,
       ei_input: e
     )
   end
+
+  let(:q) { Taxman2023::QpipInput.new }
 
   context "with $156k, weekly schedule, $1k bonus YTD, $5k bonus current" do
     let(:p) do

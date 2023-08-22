@@ -4,30 +4,37 @@
 module Taxman2023
   # The main entry point to the tax calculator
   class Calculate
-    attr_reader :period_input, :year_input, :td1_input, :pension_input, :ei_input, :context
+    attr_reader :period_input, :year_input, :td1_input, :pension_input,
+                :qpip_input, :ei_input, :context
 
+    # rubocop:disable Metrics/ParameterLists
     def initialize(
       period_input:,
       year_input:,
       td1_input:,
+      ei_input:,
       pension_input:,
-      ei_input:
+      qpip_input: Taxman2023::QpipInput.new
     )
       @period_input = period_input
       @year_input = year_input
       @td1_input = td1_input
       @pension_input = pension_input
+      @qpip_input = qpip_input
       @ei_input = ei_input
     end
+    # rubocop:enable Metrics/ParameterLists
 
     def call
       @context = {}
-      [period_input, year_input, td1_input, pension_input, ei_input].each do |input|
+      [period_input, year_input, td1_input, pension_input, qpip_input, ei_input].each do |input|
         context.merge!(input.translate)
       end
 
       context[:c] = C.new(**context.slice(*C.params)).amount
       context[:qc_c] = QcC.new(**context.slice(*QcC.params)).amount
+      context[:qc_ap] = QcAp.new(**context.slice(*QcAp.params)).amount
+      context[:qc_ap1] = QcAp1.new(**context.slice(*QcAp1.params)).amount
       context[:ei] = Ei.new(**context.slice(*Ei.params)).amount
       context[:f5] = F5.new(**context.slice(*F5.params)).amount
       context[:f5a] = F5A.new(**context.slice(*F5A.params)).amount
