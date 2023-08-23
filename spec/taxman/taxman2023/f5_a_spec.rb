@@ -3,16 +3,26 @@
 # F5A = F5 * ((PI - B)/PI)
 RSpec.describe Taxman2023::F5A do
   # We're taking the examples from https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas/t4127-jan/t4127-jan-payroll-deductions-formulas-computer-programs.html#toc97
-  let(:f5a) { described_class.new(pi: pi, b: b, f5: f5).amount }
+  let(:f5a) { described_class.new(pi: pi, b: b, f5: f5, f5q: f5q, province: province).amount }
 
   let(:f5) { 8_93.0 }
+  let(:f5q) { 8_30.21 }
   let(:pi) { 960_00.0 }
+  let(:province) { "ON" }
 
   context "when no bonus income" do
     let(:b) { 0 }
 
     it "is equal to f5" do
       expect(f5a).to eq f5
+    end
+
+    context "when province is Quebec" do
+      let(:province) { "QC" }
+
+      it "is equal to f5q" do
+        expect(f5a).to eq f5q
+      end
     end
   end
 
@@ -32,6 +42,15 @@ RSpec.describe Taxman2023::F5A do
 
     it "calculates the correct f5a" do
       expect(f5a).to be_within(0.01).of "42_61.42".to_d
+    end
+
+    context "when province is Quebec" do
+      let(:province) { "QC" }
+      let(:f5q) { 48_42.18 }
+
+      it "calculates the correct f5a" do
+        expect(f5a).to be_within(0.01).of "39_61.78".to_d
+      end
     end
   end
 end
