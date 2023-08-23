@@ -37,6 +37,7 @@ module Taxman2023
       context[:qc_ap1] = QcAp1.new(**context.slice(*QcAp1.params)).amount
       context[:ei] = Ei.new(**context.slice(*Ei.params)).amount
       context[:f5] = F5.new(**context.slice(*F5.params)).amount
+      context[:f5q] = F5Q.new(**context.slice(*F5Q.params)).amount
       context[:f5a] = F5A.new(**context.slice(*F5A.params)).amount
       context[:f5b] = F5B.new(**context.slice(*F5B.params)).amount
 

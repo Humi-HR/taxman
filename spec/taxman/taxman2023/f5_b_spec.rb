@@ -3,11 +3,13 @@
 # F5B = F5 * (B/PI)
 RSpec.describe Taxman2023::F5B do
   # We're taking the examples from https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas/t4127-jan/t4127-jan-payroll-deductions-formulas-computer-programs.html#toc97
-  let(:f5b) { described_class.new(pi: pi, b: b, f5: f5).amount }
+  let(:f5b) { described_class.new(pi: pi, b: b, f5: f5, f5q: f5q, province: province).amount }
 
   let(:f5) { 52_08.40 }
+  let(:f5q) { 48_42.18 }
   let(:pi) { 5_500_00 }
   let(:b)  { 1_000_00 }
+  let(:province) { "ON" }
 
   context "with no bonus income" do
     let(:b) { 0 }
@@ -30,6 +32,14 @@ RSpec.describe Taxman2023::F5B do
     it "calculates the correct f5b" do
       expect(f5b).to be_within(0.01).of "9_46.98".to_d
     end
+
+    context "when province is Quebec" do
+      let(:province) { "QC" }
+
+      it "calculates the correct f5b" do
+        expect(f5b).to be_within(0.01).of "8_80.39".to_d
+      end
+    end
   end
 
   context "when all of the income is bonus" do
@@ -37,6 +47,14 @@ RSpec.describe Taxman2023::F5B do
 
     it "is equal to f5" do
       expect(f5b).to eq f5
+    end
+
+    context "when province is Quebec" do
+      let(:province)  { "QC" }
+
+      it "is equal to f5q" do
+        expect(f5b).to eq f5q
+      end
     end
   end
 
@@ -48,6 +66,15 @@ RSpec.describe Taxman2023::F5B do
 
     it "matches PDOC/Greg's sheet" do
       expect(f5b).to be_within(0.01).of 215_01.19.to_d
+    end
+
+    context "when province is Quebec" do
+      let(:province) { "QC" }
+      let(:f5q) { 228_34.37 }
+
+      it "matches PDOC/Greg's sheet" do
+        expect(f5b).to be_within(0.01).of 199_89.38.to_d
+      end
     end
   end
 end
