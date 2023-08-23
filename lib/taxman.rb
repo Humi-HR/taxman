@@ -13,17 +13,7 @@ module Taxman
 
   class UnsupportedProvince < StandardError; end
 
-  AB = "AB"
-  BC = "BC"
-  MB = "MB"
-  NB = "NB"
-  NL = "NL"
-  NS = "NS"
-  NT = "NT"
-  NU = "NU"
-  ON = "ON"
-  PE = "PE"
-  QC = "QC"
-  SK = "SK"
-  YT = "YT"
+  %w[AB BC MB NB NL NS NT NU ON PE QC SK YT].each do |province|
+    const_set(province, province)
+  end
 end
