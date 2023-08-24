@@ -21,7 +21,7 @@ module Taxman2023
     def amount
       return 0.to_d if pi <= 0
 
-      f = if province == "QC"
+      f = if province == Taxman::QC
             f5q
           else
             f5

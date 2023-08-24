@@ -3,18 +3,18 @@
 module Taxman2023
   # Calculates the F5Q factor
   class F5Q
-    attr_reader :c
+    attr_reader :qc_c
 
-    def initialize(c:)
-      @c = c
+    def initialize(qc_c:)
+      @qc_c = qc_c
     end
 
     def self.params
-      [:c]
+      [:qc_c]
     end
 
     def amount
-      c * (BigDecimal("0.01") / BigDecimal("0.0640"))
+      qc_c * (BigDecimal("0.01") / BigDecimal("0.0640"))
     end
   end
 end
