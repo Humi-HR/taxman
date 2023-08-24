@@ -3,18 +3,21 @@
 module Taxman2023
   # Calculates the CPP contribution for the period
   class C
-    attr_reader :pi, :p, :pm, :d, :b_pensionable
+    attr_reader :pi, :p, :pm, :d, :dq, :b_pensionable
 
-    def initialize(pi:, p:, pm:, d:, b_pensionable:)
+    # rubocop:disable Metrics/ParameterLists
+    def initialize(pi:, p:, pm:, d:, b_pensionable:, dq:)
       @pi = pi.to_d
       @p = p.to_d
       @pm = pm.to_d
       @d = d.to_d
+      @dq = dq.to_d
       @b_pensionable = b_pensionable.to_d
     end
+    # rubocop:enable Metrics/ParameterLists
 
     def self.params
-      %i[pi p pm d b_pensionable]
+      %i[pi p pm d b_pensionable dq]
     end
 
     def amount
@@ -22,7 +25,7 @@ module Taxman2023
     end
 
     def cpp_max
-      [(Cpp::MAX * pm / 12) - d, 0].max
+      [(Cpp::MAX * pm / 12) - ((dq * (Cpp::RATE / Qpp::RATE)) + d), 0].max
     end
 
     # Calculates the CPP for an employee.
