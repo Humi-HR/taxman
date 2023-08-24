@@ -21,6 +21,7 @@ RSpec.describe Taxman2023::PensionInput do
       d: 114_00.to_d,
       b_pensionable: 0.to_d,
       pi_periodic: 3_500_00.to_d,
+      dq: 441_00.to_d,
       pm: 12,
       qc_a5: 441_00.to_d,
       qc_b2_pensionable: 0.to_d,
