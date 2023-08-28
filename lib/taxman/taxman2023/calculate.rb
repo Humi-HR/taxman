@@ -43,6 +43,14 @@ module Taxman2023
 
       context[:a] = A.new(**context.slice(*A.params)).amount
 
+      context[:qc_g] = context[:i]
+      context[:qc_h] = QcH.amount(context)
+      context[:qc_cs] = QcCS.amount(context)
+      context[:qc_csa] = QcCSA.amount(context)
+      context[:qc_j] = QcJ.amount(context)
+      context[:qc_j1] = QcJ1.amount(context)
+      context[:qc_i] = QcI.amount(context)
+
       # The non bonus tax calculation should not have the bonus, but we need it for the bonus tax calculation
       # Could definitely need a refactor
       context

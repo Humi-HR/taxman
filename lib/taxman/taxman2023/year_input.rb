@@ -14,7 +14,8 @@ module Taxman2023
       other_federal_deductions: 0, # K3
       other_provincial_deductions: 0, # K3P
       ytd_pensionable_bonus: nil,
-      ytd_insurable_bonus: nil
+      ytd_insurable_bonus: nil,
+      qc_pay_periods_remaining_in_year: 0
     )
       @b1 = ytd_bonus
       @b1_pensionable = ytd_pensionable_bonus || ytd_bonus
@@ -26,6 +27,7 @@ module Taxman2023
       @employer_ei_multiple = employer_ei_multiple
       @k3 = other_federal_deductions
       @k3p = other_provincial_deductions
+      @qc_pr = qc_pay_periods_remaining_in_year
     end
 
     def translate
@@ -39,7 +41,8 @@ module Taxman2023
         f5b_ytd: (@f5b_ytd * 100).to_d,
         employer_ei_multiple: @employer_ei_multiple.to_d,
         k3: (@k3 * 100).to_d,
-        k3p: (@k3p * 100).to_d
+        k3p: (@k3p * 100).to_d,
+        qc_pr: @qc_pr
       }
     end
   end
