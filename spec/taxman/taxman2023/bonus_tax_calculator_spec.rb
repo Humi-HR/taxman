@@ -17,7 +17,7 @@ RSpec.describe Taxman2023::BonusTaxCalculator do
       f3: 0,
       b1: 1_000_00,
       f4: 0,
-      province: "ON",
+      province: province,
       c: 472_00.to_d,
       k3: 0, # Other authorized per period federal deductions
       k3p: 0, # Other authorized per period provincial deductions
@@ -36,6 +36,7 @@ RSpec.describe Taxman2023::BonusTaxCalculator do
   end
 
   let(:bonus_tax) { described_class.new(context: context) }
+  let(:province) { "ON" }
 
   # see https://docs.google.com/spreadsheets/d/1q0tv_4IMqdL23wLRg49VikhXRC5tsy7oxGc5at71fzw/edit#gid=1753621230
   context "with $3k a week, $5k of bonus and $1k of YTD bonus" do
