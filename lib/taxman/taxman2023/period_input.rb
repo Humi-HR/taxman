@@ -43,12 +43,12 @@ module Taxman2023
         f2: (@f2 * 100).to_d,
         f3: (@f3 * 100).to_d,
         u1: (@u1 * 100).to_d,
-        province: @province.strip.upcase
+        province: @province.strip.upcase,
         qc_d: (@qc_d * 100).to_d,
         qc_s3: (@qc_s3 * 100).to_d,
         qc_b2: (@qc_b2 * 100).to_d,
         qc_j2: (@qc_j2 * 100).to_d,
-        qc_j3: (@qc_j3 * 100).to_d,
+        qc_j3: (@qc_j3 * 100).to_d
       }
     end
   end
