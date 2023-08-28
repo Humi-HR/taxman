@@ -56,7 +56,7 @@ module Taxman2023
       context[:k4] = t3.k4
       context[:cea] = t3.cea
 
-      context[:t1] = context[:t3] # Since we don't support the LCF
+      context[:t1] = T1.new(**context.slice(*T1.params)).amount
 
       # Prep factors for T2 & T4
       context[:k2p] = k2p_class.new(**context.slice(*K2.params)).amount
