@@ -30,6 +30,7 @@ module Taxman2023
         pi_periodic: pensionable_periodic_income_this_period,
         b_pensionable: pensionable_non_periodic_income_this_period,
         d: cpp_ytd,
+        dq: qpp_ytd,
 
         # TP-1015.3
         qc_s3: pensionable_income_this_period,
