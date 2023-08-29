@@ -4,21 +4,21 @@
 module Taxman2023
   # The main entry point to the tax calculator
   class Calculate
-    attr_reader :period_input, :year_input, :td1_input, :pension_input,
+    attr_reader :period_input, :year_input, :personal_tax_input, :pension_input,
                 :qpip_input, :ei_input, :context
 
     # rubocop:disable Metrics/ParameterLists
     def initialize(
       period_input:,
       year_input:,
-      td1_input:,
+      personal_tax_input:,
       ei_input:,
       pension_input:,
       qpip_input: Taxman2023::QpipInput.new
     )
       @period_input = period_input
       @year_input = year_input
-      @td1_input = td1_input
+      @personal_tax_input = personal_tax_input
       @pension_input = pension_input
       @qpip_input = qpip_input
       @ei_input = ei_input
@@ -27,7 +27,7 @@ module Taxman2023
 
     def call
       @context = {}
-      [period_input, year_input, td1_input, pension_input, qpip_input, ei_input].each do |input|
+      [period_input, year_input, personal_tax_input, pension_input, qpip_input, ei_input].each do |input|
         context.merge!(input.translate)
       end
 
