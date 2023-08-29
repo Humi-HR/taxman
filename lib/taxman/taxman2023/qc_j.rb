@@ -4,14 +4,14 @@ module Taxman2023
   # Deductions shown on line 19 of form TP-1015.3-V
   class QcJ < Factor
     def self.params
-      %i[p j3 pr]
+      %i[p qc_j3 qc_pr]
     end
     attr_reader *params
 
     def amount
-      return j3 if p == pr # first pay period in year
+      return qc_j3 if p == qc_pr # first pay period in year
 
-      (p * j3) / pr
+      (p * qc_j3) / qc_pr
     end
   end
 end

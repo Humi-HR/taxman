@@ -5,12 +5,14 @@ module Taxman2023
   # earnings for the pay period, excluding gratuities, retroactive pay or similar lump-sum payments
   class QcCSA < Factor
     def self.params
-      %i[qc_cs qc_s3 qc_b2]
+      %i[qc_cs qc_s3 b]
     end
     attr_reader *params
 
     def amount
-      qc_cs * ((qc_s3 - qc_b2) / qc_s3)
+      return 0 if qc_s3.zero? # avoid NaN
+
+      qc_cs * ((qc_s3 - b) / qc_s3)
     end
   end
 end

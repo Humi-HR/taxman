@@ -13,11 +13,7 @@ module Taxman2023
       rsp_deductions_from_bonus: 0,
       previous_taxable_periodic_income: 0,
       union_dues: 0,
-      qc_taxable_periodic_income: 0,
-      qc_gross_pensionable_earnings: 0,
-      qc_lump_sum_payments: 0,
-      qc_authorized_deductions: 0,
-      qc_line_19_deductions: 0
+      qc_taxable_periodic_income: 0
     )
       @i = taxable_periodic_income
       @previous_i = previous_taxable_periodic_income
@@ -27,11 +23,8 @@ module Taxman2023
       @f3 = rsp_deductions_from_bonus
       @u1 = union_dues
       @province = province
+      @qc_g = taxable_periodic_income
       @qc_d = qc_taxable_periodic_income
-      @qc_s3 = qc_gross_pensionable_earnings
-      @qc_b2 = qc_lump_sum_payments
-      @qc_j2 = qc_authorized_deductions
-      @qc_j3 = qc_line_19_deductions
     end
 
     def translate
@@ -44,11 +37,8 @@ module Taxman2023
         f3: (@f3 * 100).to_d,
         u1: (@u1 * 100).to_d,
         province: @province.strip.upcase,
-        qc_d: (@qc_d * 100).to_d,
-        qc_s3: (@qc_s3 * 100).to_d,
-        qc_b2: (@qc_b2 * 100).to_d,
-        qc_j2: (@qc_j2 * 100).to_d,
-        qc_j3: (@qc_j3 * 100).to_d
+        qc_g: (@qc_g * 100).to_d,
+        qc_d: (@qc_d * 100).to_d
       }
     end
   end
