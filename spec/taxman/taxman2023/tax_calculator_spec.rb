@@ -36,7 +36,8 @@ RSpec.describe Taxman2023::TaxCalculator do
       b_insurable: b,
       b1_insurable: b1,
       d: d,
-      d1: d1
+      d1: d1,
+      qc_pr: 52
     }
   end
   let(:context) do

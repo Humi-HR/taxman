@@ -85,6 +85,14 @@ module Taxman2023
       context[:additional_tax] = (context[:l] / 100).round(2)
       context[:total_tax] = (context[:t] / 100).round(2)
 
+      # TP-1015.3 I and prerequisite factors
+      context[:qc_h] = QcH.amount(context)
+      context[:qc_cs] = QcCS.amount(context)
+      context[:qc_csa] = QcCSA.amount(context)
+      context[:qc_j] = QcJ.amount(context)
+      context[:qc_j1] = QcJ1.amount(context)
+      context[:qc_i] = QcI.amount(context)
+
       context
     end
 

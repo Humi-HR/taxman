@@ -12,8 +12,7 @@ module Taxman2023
       alimony: 0,
       rsp_deductions_from_bonus: 0,
       previous_taxable_periodic_income: 0,
-      union_dues: 0,
-      qc_taxable_periodic_income: 0
+      union_dues: 0
     )
       @i = taxable_periodic_income
       @previous_i = previous_taxable_periodic_income
@@ -24,7 +23,8 @@ module Taxman2023
       @u1 = union_dues
       @province = province
       @qc_g = taxable_periodic_income
-      @qc_d = qc_taxable_periodic_income
+      @qc_d = taxable_periodic_income
+      @qc_b2 = taxable_non_periodic_income
     end
 
     def translate
@@ -38,7 +38,8 @@ module Taxman2023
         u1: (@u1 * 100).to_d,
         province: @province.strip.upcase,
         qc_g: (@qc_g * 100).to_d,
-        qc_d: (@qc_d * 100).to_d
+        qc_d: (@qc_d * 100).to_d,
+        qc_b2: (@qc_b2 * 100).to_d
       }
     end
   end
