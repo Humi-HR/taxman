@@ -34,8 +34,6 @@ RSpec.describe Taxman2023::PersonalTaxDeductionsInput do
           qc_e2: 0.to_d,
           qc_j: 0.to_d,
           qc_j1: 0.to_d,
-          qc_j2: 0.to_d,
-          qc_j3: 0.to_d,
           qc_k1: 0.to_d,
           qc_k2: 0.to_d,
           qc_l: 0.to_d
@@ -60,8 +58,6 @@ RSpec.describe Taxman2023::PersonalTaxDeductionsInput do
           qc_e2: 0.to_d,
           qc_j: 0.to_d,
           qc_j1: 0.to_d,
-          qc_j2: 0.to_d,
-          qc_j3: 0.to_d,
           qc_k1: 0.to_d,
           qc_k2: 0.to_d,
           qc_l: 0.to_d
