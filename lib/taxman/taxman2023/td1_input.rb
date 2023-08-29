@@ -13,8 +13,8 @@ module Taxman2023
       provincial_personal_amount_offset: 0,
       deduction_for_zone: 0,
       additional_tax_deductions: 0,
-      qc_authorized_deductions: 0,
-      qc_line_19_deductions: 0
+      qc_line_19_deductions: 0,
+      qc_authorized_deductions: 0
     )
       @tc = federal_personal_amount
       @tcp = provincial_personal_amount
@@ -22,8 +22,8 @@ module Taxman2023
       @tcp_offset = provincial_personal_amount_offset
       @hd = deduction_for_zone
       @l = additional_tax_deductions
-      @qc_j2 = qc_authorized_deductions
-      @qc_j3 = qc_line_19_deductions
+      @qc_j = qc_line_19_deductions
+      @qc_j1 = qc_authorized_deductions
     end
     # rubocop:enable Metrics/ParameterLists
 
@@ -35,8 +35,8 @@ module Taxman2023
         tcp_offset: (@tcp_offset * 100).to_d,
         hd: (@hd * 100).to_d,
         l: (@l * 100).to_d,
-        qc_j2: (@qc_j2 * 100).to_d,
-        qc_j3: (@qc_j3 * 100).to_d
+        qc_j: (@qc_j * 100).to_d,
+        qc_j1: (@qc_j1 * 100).to_d
       }
     end
 

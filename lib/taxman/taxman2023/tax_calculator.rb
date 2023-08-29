@@ -89,8 +89,6 @@ module Taxman2023
       context[:qc_h] = QcH.amount(context)
       context[:qc_cs] = QcCS.amount(context)
       context[:qc_csa] = QcCSA.amount(context)
-      context[:qc_j] = QcJ.amount(context)
-      context[:qc_j1] = QcJ1.amount(context)
       context[:qc_i] = QcI.amount(context)
 
       context

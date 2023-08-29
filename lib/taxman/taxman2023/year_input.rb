@@ -27,7 +27,6 @@ module Taxman2023
       @employer_ei_multiple = employer_ei_multiple
       @k3 = other_federal_deductions
       @k3p = other_provincial_deductions
-      @qc_pr = pay_periods_remaining_in_year
     end
 
     def translate
@@ -41,8 +40,7 @@ module Taxman2023
         f5b_ytd: (@f5b_ytd * 100).to_d,
         employer_ei_multiple: @employer_ei_multiple.to_d,
         k3: (@k3 * 100).to_d,
-        k3p: (@k3p * 100).to_d,
-        qc_pr: [@qc_pr, 1].max # includes current so has to be > 0
+        k3p: (@k3p * 100).to_d
       }
     end
   end
