@@ -15,9 +15,9 @@ module Taxman2023
       additional_tax_deductions: 0,
       tp_1015_line_7_indexed_value_of_personal_tax_credits: 17_183,
       tp_1015_line_9_non_indexed_value_of_personal_tax_credits: 0,
-      tp_1015_line_19_deductions_before_first_period: 0,
-      tp_1015_line_19_deductions_after_first_period: 0,
-      tp_1015_line_11_additional_source_deductions: 0
+      tp_1015_line_11_additional_source_deductions: 0,
+      tp_1015_line_19_deductions: 0,
+      tp_1016_annual_deductions: 0
     )
       @tc = federal_personal_amount
       @tcp = provincial_personal_amount
@@ -28,8 +28,8 @@ module Taxman2023
       @qc_e1 = tp_1015_line_7_indexed_value_of_personal_tax_credits
       @qc_e2 = tp_1015_line_9_non_indexed_value_of_personal_tax_credits
       @qc_l = tp_1015_line_11_additional_source_deductions
-      @qc_j = tp_1015_line_19_deductions_before_first_period
-      @qc_j3 = tp_1015_line_19_deductions_after_first_period
+      @qc_j = tp_1015_line_19_deductions
+      @qc_j1 = tp_1016_annual_deductions
     end
     # rubocop:enable Metrics/MethodLength,Metrics/ParameterLists
 
@@ -45,9 +45,7 @@ module Taxman2023
         qc_e1: (@qc_e1 * 100).to_d,
         qc_e2: (@qc_e2 * 100).to_d,
         qc_j: (@qc_j * 100).to_d,
-        qc_j1: 0.to_d, # Not supported
-        qc_j2: 0.to_d, # Not supported
-        qc_j3: (@qc_j3 * 100).to_d,
+        qc_j1: (@qc_j1 * 100).to_d, # Not supported in main app
         qc_k1: 0.to_d, # Not supported
         qc_k2: 0.to_d, # Not supported
         qc_l: (@qc_l * 100).to_d
