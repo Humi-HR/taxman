@@ -77,6 +77,12 @@ module Taxman2023
       context[:v2] = t2.v2
       context[:s] = t2.s
 
+      # TP-1015.3 I and prerequisite factors
+      context[:qc_h] = QcH.amount(context)
+      context[:qc_cs] = QcCS.amount(context)
+      context[:qc_csa] = QcCSA.amount(context)
+      context[:qc_i] = QcI.amount(context)
+
       # Set T
       context[:t] = T.new(**context.slice(*T.params)).amount
 
@@ -84,12 +90,6 @@ module Taxman2023
       context[:provincial_tax] = ((context[:t2] / context[:p]) / 100).round(2)
       context[:additional_tax] = (context[:l] / 100).round(2)
       context[:total_tax] = (context[:t] / 100).round(2)
-
-      # TP-1015.3 I and prerequisite factors
-      context[:qc_h] = QcH.amount(context)
-      context[:qc_cs] = QcCS.amount(context)
-      context[:qc_csa] = QcCSA.amount(context)
-      context[:qc_i] = QcI.amount(context)
 
       context
     end
