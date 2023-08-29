@@ -43,7 +43,7 @@ RSpec.describe Taxman2023::QcI do
   end
 
   context "with deductions greater than income" do
-    let(:qc_j) { (4_500_00 * 12)  + 1000}
+    let(:qc_j) { (4_500_00 * 12) + 1000 }
 
     it "is zero" do
       expect(qc_i).to be_zero
