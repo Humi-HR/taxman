@@ -14,8 +14,7 @@ module Taxman2023
       other_federal_deductions: 0, # K3
       other_provincial_deductions: 0, # K3P
       ytd_pensionable_bonus: nil,
-      ytd_insurable_bonus: nil,
-      pay_periods_remaining_in_year: 0
+      ytd_insurable_bonus: nil
     )
       @b1 = ytd_bonus
       @b1_pensionable = ytd_pensionable_bonus || ytd_bonus
