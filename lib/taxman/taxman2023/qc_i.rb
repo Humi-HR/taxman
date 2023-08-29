@@ -6,10 +6,10 @@ module Taxman2023
     def self.params
       %i[p qc_g f qc_h qc_csa qc_j qc_j1]
     end
-    attr_reader *params
+    attr_reader(*params)
 
     def amount
-      [(p * (qc_g - f - qc_h - qc_csa) - qc_j - qc_j1), 0].max
+      [((p * (qc_g - f - qc_h - qc_csa)) - qc_j - qc_j1), 0].max
     end
   end
 end

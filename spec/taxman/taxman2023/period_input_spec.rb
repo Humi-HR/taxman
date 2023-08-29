@@ -55,7 +55,7 @@ RSpec.describe Taxman2023::PeriodInput do
           province: "ON",
           qc_g: 50_00.to_d,
           qc_d: 50_00.to_d,
-          qc_b2: 100_00.to_d  
+          qc_b2: 100_00.to_d
         }
       )
     end

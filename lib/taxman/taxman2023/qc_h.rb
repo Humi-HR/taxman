@@ -8,7 +8,7 @@ module Taxman2023
     def self.params
       %i[qc_d p]
     end
-    attr_reader *params
+    attr_reader(*params)
 
     def amount
       [(0.06 * qc_d), EMPLOYMENT_INCOME_MAXIMUM_DEDUCTION].min / p

@@ -6,7 +6,7 @@ module Taxman2023
     def self.params
       %i[qc_c]
     end
-    attr_reader *params
+    attr_reader(*params)
 
     def amount
       qc_c * (0.01 / 0.0640)
