@@ -25,7 +25,10 @@ RSpec.describe Taxman2023::PeriodInput do
         f3: 6_00.to_d,
         previous_i: 7_00.to_d,
         u1: 9_00.to_d,
-        province: "ON"
+        province: "ON",
+        qc_g: 1_00.to_d,
+        qc_d: 1_00.to_d,
+        qc_b2: 2_00.to_d
       }
     )
   end
@@ -49,7 +52,10 @@ RSpec.describe Taxman2023::PeriodInput do
           f2: 0.to_d,
           f3: 0.to_d,
           u1: 0.to_d,
-          province: "ON"
+          province: "ON",
+          qc_g: 50_00.to_d,
+          qc_d: 50_00.to_d,
+          qc_b2: 100_00.to_d  
         }
       )
     end
