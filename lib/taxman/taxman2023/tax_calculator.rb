@@ -79,8 +79,8 @@ module Taxman2023
 
       # TP-1015.3 I and prerequisite factors
       context[:qc_h] = QcH.amount(context)
-      context[:qc_cs] = QcCS.amount(context)
-      context[:qc_csa] = QcCSA.amount(context)
+      context[:qc_cs] = QcCs.amount(context)
+      context[:qc_csa] = QcCsa.amount(context)
       context[:qc_i] = QcI.amount(context)
 
       # Set T

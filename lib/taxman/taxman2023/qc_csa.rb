@@ -3,7 +3,7 @@
 module Taxman2023
   # Deduction of additional employee QPP contributions on the employee’s gross pensionable
   # earnings for the pay period, excluding gratuities, retroactive pay or similar lump-sum payments
-  class QcCSA < Factor
+  class QcCsa < Factor
     def self.params
       %i[qc_cs qc_s3 qc_b2]
     end
