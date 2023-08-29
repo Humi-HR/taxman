@@ -5,7 +5,7 @@ RSpec.describe Taxman2023::Calculate do
     described_class.new(
       period_input: p,
       year_input: y,
-      td1_input: t,
+      personal_tax_input: t,
       pension_input: c,
       qpip_input: q,
       ei_input: e
@@ -32,7 +32,7 @@ RSpec.describe Taxman2023::Calculate do
       )
     end
 
-    let(:t) { Taxman2023::Td1Input.new }
+    let(:t) { Taxman2023::PersonalTaxDeductionsInput.new }
 
     let(:c) do
       Taxman2023::PensionInput.new(
@@ -113,7 +113,7 @@ RSpec.describe Taxman2023::Calculate do
       )
     end
 
-    let(:t) { Taxman2023::Td1Input.new }
+    let(:t) { Taxman2023::PersonalTaxDeductionsInput.new }
 
     let(:c) do
       Taxman2023::PensionInput.new(
@@ -162,7 +162,7 @@ RSpec.describe Taxman2023::Calculate do
     end
 
     let(:t) do
-      Taxman2023::Td1Input.new(
+      Taxman2023::PersonalTaxDeductionsInput.new(
         federal_personal_amount_offset: 1_000,
         provincial_personal_amount_offset: 1_000
       )
@@ -216,7 +216,7 @@ RSpec.describe Taxman2023::Calculate do
       )
     end
 
-    let(:t) { Taxman2023::Td1Input.new }
+    let(:t) { Taxman2023::PersonalTaxDeductionsInput.new }
 
     let(:c) do
       Taxman2023::PensionInput.new(

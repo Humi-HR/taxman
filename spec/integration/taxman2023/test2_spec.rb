@@ -6,7 +6,7 @@ RSpec.describe Taxman2023::Calculate do
     described_class.new(
       period_input: p,
       year_input: y,
-      td1_input: t,
+      personal_tax_input: t,
       pension_input: c,
       ei_input: e
     ).call
@@ -29,7 +29,12 @@ RSpec.describe Taxman2023::Calculate do
     )
   end
 
-  let(:t) { Taxman2023::Td1Input.new(federal_personal_amount: 15_000, provincial_personal_amount: 11_981) }
+  let(:t) do
+    Taxman2023::PersonalTaxDeductionsInput.new(
+      federal_personal_amount: 15_000,
+      provincial_personal_amount: 11_981
+    )
+  end
 
   let(:c) do
     Taxman2023::PensionInput.new(
