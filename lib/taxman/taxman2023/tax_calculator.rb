@@ -77,6 +77,12 @@ module Taxman2023
       context[:v2] = t2.v2
       context[:s] = t2.s
 
+      # TP-1015.3 I and prerequisite factors
+      context[:qc_h] = QcH.amount(context)
+      context[:qc_cs] = QcCs.amount(context)
+      context[:qc_csa] = QcCsa.amount(context)
+      context[:qc_i] = QcI.amount(context)
+
       # Set T
       context[:t] = T.new(**context.slice(*T.params)).amount
 
