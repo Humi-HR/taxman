@@ -58,6 +58,45 @@ module Taxman2023
 
       context[:t1] = T1.new(**context.slice(*T1.params)).amount
 
+      # Calculate provincial taxes for Quebec or the rest of Canada
+      if context[:province] == Taxman::QC
+        calculate_provincial_qc_taxes
+
+        # Set provincial tax amount
+        # TODO: context[:provincial_tax] = (context[:qc_a] / 100).round(2)
+
+        # Set zero amounts for later used T4127 calculations
+        context[:t2] = 0
+      else
+        calculate_provincial_non_qc_taxes
+
+        # Set provincial tax amount
+        context[:provincial_tax] = ((context[:t2] / context[:p]) / 100).round(2)
+      end
+
+      # Set T
+      context[:t] = T.new(**context.slice(*T.params)).amount
+
+      context[:federal_tax] = ((context[:t1] / context[:p]) / 100).round(2)
+      context[:additional_tax] = (context[:l] / 100).round(2)
+      context[:total_tax] = (context[:t] / 100).round(2)
+
+      context
+    end
+
+    private
+
+    def calculate_provincial_qc_taxes
+      # TP-1015.3 I and prerequisite factors
+      context[:qc_h] = QcH.amount(context)
+      context[:qc_cs] = QcCs.amount(context)
+      context[:qc_csa] = QcCsa.amount(context)
+      context[:qc_i] = QcI.amount(context)
+      context[:qc_e] = QcE.amount(context)
+      context[:qc_y] = QcY.amount(context)
+    end
+
+    def calculate_provincial_non_qc_taxes
       # Prep factors for T2 & T4
       context[:k2p] = k2p_class.new(**context.slice(*K2.params)).amount
 
@@ -76,27 +115,7 @@ module Taxman2023
       context[:v1] = t2.v1
       context[:v2] = t2.v2
       context[:s] = t2.s
-
-      # Quebec taxes - TP-1015.3
-      context[:qc_h] = QcH.amount(context)
-      context[:qc_cs] = QcCs.amount(context)
-      context[:qc_csa] = QcCsa.amount(context)
-      context[:qc_i] = QcI.amount(context)
-      context[:qc_e] = QcE.amount(context)
-      context[:qc_y] = QcY.amount(context)
-
-      # Set T
-      context[:t] = T.new(**context.slice(*T.params)).amount
-
-      context[:federal_tax] = ((context[:t1] / context[:p]) / 100).round(2)
-      context[:provincial_tax] = ((context[:t2] / context[:p]) / 100).round(2)
-      context[:additional_tax] = (context[:l] / 100).round(2)
-      context[:total_tax] = (context[:t] / 100).round(2)
-
-      context
     end
-
-    private
 
     def check_required_context
       REQUIRED_CONTEXT.each do |param|
