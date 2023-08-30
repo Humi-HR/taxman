@@ -48,6 +48,8 @@ module Taxman2023
         qc_j1: (@qc_j1 * 100).to_d, # Not supported in main app
         qc_k1: 0.to_d, # Not supported
         qc_k2: 0.to_d, # Not supported
+        qc_q: 0.to_d, # Not supported
+        qc_q1: 0.to_d, # Not supported
         qc_l: (@qc_l * 100).to_d
       }
     end
