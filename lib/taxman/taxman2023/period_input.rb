@@ -22,8 +22,11 @@ module Taxman2023
       @f3 = rsp_deductions_from_bonus
       @u1 = union_dues
       @province = province
+      @qc_g = @qc_d = taxable_periodic_income
+      @qc_b2 = taxable_non_periodic_income
     end
 
+    # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
     def translate
       {
         i: (@i * 100).to_d,
@@ -33,9 +36,13 @@ module Taxman2023
         f2: (@f2 * 100).to_d,
         f3: (@f3 * 100).to_d,
         u1: (@u1 * 100).to_d,
-        province: @province.strip.upcase
+        province: @province.strip.upcase,
+        qc_g: (@qc_g * 100).to_d,
+        qc_d: (@qc_d * 100).to_d,
+        qc_b2: (@qc_b2 * 100).to_d
       }
     end
+    # rubocop:enable Metrics/MethodLength, Metrics/AbcSize
   end
 end
 # rubocop:enable Metrics/ParameterLists
