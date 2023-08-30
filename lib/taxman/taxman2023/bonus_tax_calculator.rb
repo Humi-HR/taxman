@@ -46,7 +46,12 @@ module Taxman2023
       # We likely handle tax exempt wrong, and should fix it:
       # https://gethumi.atlassian.net/browse/PAY-972
       federal_tax = [(taxes_with_bonus[:t1] - taxes_without_bonus[:t1]), 0].max
-      provincial_tax = [(taxes_with_bonus[:t2] - taxes_without_bonus[:t2]), 0].max
+
+      if context[:province] == Taxman::QC
+        # TODO: provincial_tax = qc_a1
+      else
+        provincial_tax = [(taxes_with_bonus[:t2] - taxes_without_bonus[:t2]), 0].max
+      end
 
       # Apply flat taxes for small pay
       federal_tax, provincial_tax = small_pay_amounts(
