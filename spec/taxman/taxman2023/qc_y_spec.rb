@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 RSpec.describe Taxman2023::QcY do
-  let(:params) { { qc_i: qc_i, qc_k1: 0, qc_e: qc_e, p: 24, qc_q: 0, qc_q1: 0 } }
+  let(:params) { { qc_i: qc_i, qc_k1: 0, qc_e: qc_e, p: 12, qc_q: 0, qc_q1: 0 } }
   let(:qc_y) { described_class.amount(params) }
   let(:qc_i) { 0 }
-  let(:qc_e) { 0 }
+  let(:qc_e) { 17_183_00 }
 
   context "with no annual income" do
     it "calculates no taxes owing" do
@@ -13,10 +13,10 @@ RSpec.describe Taxman2023::QcY do
   end
 
   context "with annual income" do
-    let(:qc_i) { 90_000_00 }
+    let(:qc_i) { 58_092_00 }
 
     it "calculates taxes owing" do
-      expect(qc_y).to be_positive
+      expect(qc_y).to eq(6_168_86)
     end
   end
 
