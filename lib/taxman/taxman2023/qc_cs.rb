@@ -9,7 +9,7 @@ module Taxman2023
     attr_reader(*params)
 
     def amount
-      qc_c * (0.01 / 0.0640)
+      qc_c * (0.01 / Taxman2023::Qpp::RATE)
     end
   end
 end
