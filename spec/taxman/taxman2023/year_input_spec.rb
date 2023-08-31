@@ -12,7 +12,10 @@ RSpec.describe Taxman2023::YearInput do
       employer_ei_multiple: 1.3,
       other_federal_deductions: 1_000,
       other_provincial_deductions: 978,
-      ytd_deductions_for_employment_income: 753
+      ytd_deductions_for_employment_income: 753,
+      ytd_rsp_deductions: 111,
+      ytd_gross_earnings: 222,
+      ytd_csa: 333
     )
   end
 
@@ -29,7 +32,10 @@ RSpec.describe Taxman2023::YearInput do
         employer_ei_multiple: 1.3.to_d,
         k3: 1_000_00.to_d,
         k3p: 978_00.to_d,
-        qc_h1: 753_00.to_d
+        qc_f1: 111_00.to_d,
+        qc_g1: 222_00.to_d,
+        qc_h1: 753_00.to_d,
+        qc_csa1: 333_00.to_d
       }
     )
   end
@@ -50,7 +56,10 @@ RSpec.describe Taxman2023::YearInput do
           employer_ei_multiple: 1.4.to_d,
           k3: 0,
           k3p: 0,
-          qc_h1: 0
+          qc_f1: 0,
+          qc_g1: 0,
+          qc_h1: 0,
+          qc_csa1: 0
         }
       )
     end
