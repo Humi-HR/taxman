@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Taxman2023
-  # Income tax for the year
+  # Income tax for the year taking into account variables B1 and B2
   class QcY1Y2 < Factor
     def self.params
       %i[qc_i1 qc_b1 qc_b2 qc_csb1 qc_csb qc_k1 qc_e p qc_q qc_q1]
