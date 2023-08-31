@@ -77,4 +77,4 @@ RSpec.describe Taxman2023::Calculate do
     expect(calculate[:employee_ei_contribution]).to eq 39.12
   end
 end
-# rubocop:enable RSpec/FilePath, RSpec/MultipleMemoizedHelpers
+# rubocop:enable RSpec/FilePath

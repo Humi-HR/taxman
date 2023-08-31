@@ -249,4 +249,3 @@ RSpec.describe Taxman2023::Calculate do
     end
   end
 end
-# rubocop:enable RSpec/MultipleMemoizedHelpers

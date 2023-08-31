@@ -69,4 +69,3 @@ RSpec.describe Taxman2023::K2Generic do
     end
   end
 end
-# rubocop:enable RSpec/MultipleMemoizedHelpers

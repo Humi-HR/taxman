@@ -76,4 +76,4 @@ RSpec.describe Taxman2023::Calculate do
     expect(calculate[:provincial_tax_on_bonus]).to eq 566.25
   end
 end
-# rubocop:enable RSpec/FilePath, RSpec/MultipleMemoizedHelpers
+# rubocop:enable RSpec/FilePath
