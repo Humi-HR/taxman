@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# rubocop:disable RSpec/ExampleLength
 RSpec.describe Taxman2023::PeriodInput do
   let(:period_input) do
     described_class.new(
@@ -61,4 +60,3 @@ RSpec.describe Taxman2023::PeriodInput do
     end
   end
 end
-# rubocop:enable RSpec/ExampleLength

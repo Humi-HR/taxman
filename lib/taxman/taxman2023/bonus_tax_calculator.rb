@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# rubocop:disable Metrics/MethodLength, Metrics/AbcSize
 module Taxman2023
   # Calculates the federal and provincial bonus taxes
   class BonusTaxCalculator
@@ -102,4 +101,3 @@ module Taxman2023
     end
   end
 end
-# rubocop:enable Metrics/MethodLength, Metrics/AbcSize

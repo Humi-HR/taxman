@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# rubocop:disable Metrics/ParameterLists, Metrics/MethodLength
 module Taxman2023
   # This input collects the ytd and general inputs
   class YearInput
@@ -38,7 +37,6 @@ module Taxman2023
       @qc_csb1 = ytd_csb
     end
 
-    # rubocop:disable Metrics/AbcSize
     def translate
       {
         b1: (@b1 * 100).to_d,
@@ -58,7 +56,5 @@ module Taxman2023
         qc_csb1: (@qc_csb1 * 100).to_d
       }
     end
-    # rubocop:enable Metrics/AbcSize
   end
 end
-# rubocop:enable Metrics/ParameterLists, Metrics/MethodLength

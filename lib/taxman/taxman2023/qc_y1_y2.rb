@@ -8,7 +8,7 @@ module Taxman2023
     end
     attr_reader(*params)
 
-    def amount # rubocop:disable Metrics/AbcSize
+    def amount
       [(qc_t * income_amounts) - qc_k - qc_k1 - (0.14 * qc_e) - (0.15 * p * qc_q) - (0.15 * p * qc_q1), 0].max
     end
 

@@ -13,7 +13,6 @@ module Taxman2023
                 :b1_insurable, # Insurable bonus YTD
                 :p # Number of periods
 
-    # rubocop:disable Metrics/ParameterLists, Metrics/MethodLength
     def initialize(
       pi:,
       pi_periodic:,
@@ -42,7 +41,6 @@ module Taxman2023
       @d = d
       @d1 = d1
     end
-    # rubocop:enable Metrics/ParameterLists, Metrics/MethodLength
 
     def self.params
       %i[pi pi_periodic b_pensionable b1_pensionable ie ie_periodic b_insurable b1_insurable p d d1]

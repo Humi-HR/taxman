@@ -5,7 +5,6 @@ module Taxman2023
   class C
     attr_reader :pi, :p, :pm, :d, :dq, :b_pensionable
 
-    # rubocop:disable Metrics/ParameterLists
     def initialize(pi:, p:, pm:, d:, b_pensionable:, dq:)
       @pi = pi.to_d
       @p = p.to_d
@@ -14,7 +13,6 @@ module Taxman2023
       @dq = dq.to_d
       @b_pensionable = b_pensionable.to_d
     end
-    # rubocop:enable Metrics/ParameterLists
 
     def self.params
       %i[pi p pm d b_pensionable dq]

@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# rubocop:disable Metrics/ParameterLists
 module Taxman2023
   # This input collects the factors specific to the current pay period
   class PeriodInput
@@ -26,7 +25,6 @@ module Taxman2023
       @qc_b2 = taxable_non_periodic_income
     end
 
-    # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
     def translate
       {
         i: (@i * 100).to_d,
@@ -42,7 +40,5 @@ module Taxman2023
         qc_b2: (@qc_b2 * 100).to_d
       }
     end
-    # rubocop:enable Metrics/MethodLength, Metrics/AbcSize
   end
 end
-# rubocop:enable Metrics/ParameterLists

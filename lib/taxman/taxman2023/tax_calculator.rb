@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# rubocop:disable Metrics/AbcSize, Metrics/MethodLength
 module Taxman2023
   # Calculate the federal and provincial taxes
   # Requires A, F5A, F5B and C to have already been set in context
@@ -141,4 +140,3 @@ module Taxman2023
     end
   end
 end
-# rubocop:enable Metrics/AbcSize, Metrics/MethodLength
