@@ -9,11 +9,11 @@ RSpec.describe Taxman2023::QcH do
       )
       .amount
   end
-  let(:qc_d) { 4_500_00 }
+  let(:qc_d) { 5_000_00 }
   let(:p) { 12 }
 
   it "calculates" do
-    expect(qc_h).to be_positive
+    expect(qc_h.to_f.truncate).to eq(109_58)
   end
 
   context "with large d" do
