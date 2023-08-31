@@ -86,7 +86,7 @@ RSpec.describe Taxman2023::TaxCalculator do
       )
     end
 
-    it "matches the provincial taxes on PDOC/Greg's sheet" do
+    it "matches the expected provincial taxes" do
       expect(tax[:provincial_tax]).to be_within(0.1).of 514.07.to_d
     end
   end
