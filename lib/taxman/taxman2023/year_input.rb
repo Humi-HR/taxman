@@ -18,7 +18,8 @@ module Taxman2023
       ytd_deductions_for_employment_income: 0,
       ytd_rsp_deductions: 0,
       ytd_gross_earnings: 0,
-      ytd_csa: 0
+      ytd_csa: 0,
+      ytd_csb: 0
     )
       @b1 = ytd_bonus
       @b1_pensionable = ytd_pensionable_bonus || ytd_bonus
@@ -34,6 +35,7 @@ module Taxman2023
       @qc_g1 = ytd_gross_earnings
       @qc_h1 = ytd_deductions_for_employment_income
       @qc_csa1 = ytd_csa
+      @qc_csb1 = ytd_csb
     end
 
     # rubocop:disable Metrics/AbcSize
@@ -52,7 +54,8 @@ module Taxman2023
         qc_f1: (@qc_f1 * 100).to_d,
         qc_g1: (@qc_g1 * 100).to_d,
         qc_h1: (@qc_h1 * 100).to_d,
-        qc_csa1: (@qc_csa1 * 100).to_d
+        qc_csa1: (@qc_csa1 * 100).to_d,
+        qc_csb1: (@qc_csb1 * 100).to_d
       }
     end
     # rubocop:enable Metrics/AbcSize
