@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# rubocop:disable RSpec/FilePath
 RSpec.describe Taxman2023::Calculate do
   let(:calculate) do
     described_class.new(
@@ -79,4 +78,3 @@ RSpec.describe Taxman2023::Calculate do
     expect(calculate[:employee_ei_contribution]).to eq 172.85
   end
 end
-# rubocop:enable RSpec/FilePath

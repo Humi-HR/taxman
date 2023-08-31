@@ -8,7 +8,6 @@ module Taxman2023
                 :k2p,
                 :k3p
 
-    # rubocop:disable Metrics/ParameterLists
     def initialize(
       a:,
       hd:,
@@ -24,7 +23,6 @@ module Taxman2023
       @k2p = k2p.to_d # Tax credit for cpp contributions
       @k3p = k3p.to_d # Other non-refundable provincial tax credits
     end
-    # rubocop:enable Metrics/ParameterLists
 
     def self.params
       %i[a hd k2p k3p tcp tcp_offset]
