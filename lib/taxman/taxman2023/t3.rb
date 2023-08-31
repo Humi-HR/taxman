@@ -15,7 +15,6 @@ module Taxman2023
       BigDecimal("Infinity") => [0.330.to_d, 23_194_00.to_d]
     }.freeze
 
-    # rubocop:disable Metrics/ParameterLists
     def initialize(a:, hd:, k2:, tc: nil, k3: 0, tc_offset: 0)
       @a = a.to_d
       @hd = hd.to_d
@@ -24,7 +23,6 @@ module Taxman2023
       @tc = tc&.to_d
       @tc_offset = tc_offset&.to_d
     end
-    # rubocop:enable Metrics/ParameterLists
 
     def self.params
       %i[a hd k2 k3 tc tc_offset]

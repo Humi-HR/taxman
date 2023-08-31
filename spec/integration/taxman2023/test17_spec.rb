@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# rubocop:disable RSpec/FilePath
 RSpec.describe Taxman2023::Calculate do
   let(:calculate) do
     described_class.new(
@@ -83,4 +82,3 @@ RSpec.describe Taxman2023::Calculate do
     expect(calculate[:f5b]).to be_within(1).of 541_75
   end
 end
-# rubocop:enable RSpec/FilePath

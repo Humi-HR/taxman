@@ -1,13 +1,11 @@
 # frozen_string_literal: true
 
-# rubocop:disable Metrics/AbcSize, Metrics/MethodLength
 module Taxman2023
   # The main entry point to the tax calculator
   class Calculate
     attr_reader :period_input, :year_input, :personal_tax_input, :pension_input,
                 :qpip_input, :ei_input, :context
 
-    # rubocop:disable Metrics/ParameterLists
     def initialize(
       period_input:,
       year_input:,
@@ -23,7 +21,6 @@ module Taxman2023
       @qpip_input = qpip_input
       @ei_input = ei_input
     end
-    # rubocop:enable Metrics/ParameterLists
 
     def call
       @context = {}
@@ -66,4 +63,3 @@ module Taxman2023
     end
   end
 end
-# rubocop:enable Metrics/AbcSize, Metrics/MethodLength

@@ -5,7 +5,6 @@ module Taxman2023
   class PersonalTaxDeductionsInput
     # If nil is passed for either of the personal amounts, we
     # will calculate them using the standard formula
-    # rubocop:disable Metrics/MethodLength,Metrics/ParameterLists
     def initialize(
       federal_personal_amount: nil,
       provincial_personal_amount: nil,
@@ -31,9 +30,7 @@ module Taxman2023
       @qc_j = tp_1015_line_19_deductions
       @qc_j1 = tp_1016_annual_deductions
     end
-    # rubocop:enable Metrics/MethodLength,Metrics/ParameterLists
 
-    # rubocop:disable Metrics/MethodLength,Metrics/AbcSize
     def translate
       {
         tc: tc,
@@ -53,7 +50,6 @@ module Taxman2023
         qc_l: (@qc_l * 100).to_d
       }
     end
-    # rubocop:enable Metrics/MethodLength,Metrics/AbcSize
 
     def tc
       @tc.nil? ? nil : (@tc * 100).to_d

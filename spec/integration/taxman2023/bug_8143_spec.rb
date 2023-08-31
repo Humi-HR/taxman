@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# rubocop:disable RSpec/FilePath
 RSpec.describe Taxman2023::Calculate do
   # NOTE: EI EXEMPT ON PDOC
   let(:calculate) do
@@ -72,4 +71,3 @@ RSpec.describe Taxman2023::Calculate do
     expect(calculate[:employee_ei_contribution]).to eq 0
   end
 end
-# rubocop:enable RSpec/FilePath

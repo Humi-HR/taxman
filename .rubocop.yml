@@ -23,5 +23,20 @@ Style/StringLiteralsInInterpolation:
 RSpec/MultipleMemoizedHelpers:
   Enabled: false
 
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/ParameterLists:
+  Enabled: false
+
+RSpec/FilePath:
+  SpecSuffixOnly: true
+
 Layout/LineLength:
   Max: 120
+
+Metrics/MethodLength:
+  Max: 40
+
+RSpec/ExampleLength:
+  Max: 20

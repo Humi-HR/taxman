@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# rubocop:disable RSpec/ExampleLength
 RSpec.describe Taxman2023::PersonalTaxDeductionsInput do
   let(:deductions_input) do
     described_class.new(
@@ -70,4 +69,3 @@ RSpec.describe Taxman2023::PersonalTaxDeductionsInput do
     end
   end
 end
-# rubocop:enable RSpec/ExampleLength

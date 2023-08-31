@@ -15,7 +15,6 @@ module Taxman2023
       @contribution_months_this_year = contribution_months_this_year
     end
 
-    # rubocop:disable Metrics/MethodLength
     def translate
       pensionable_income_this_period = (@pensionable_income_this_period * 100).to_d
       pensionable_non_periodic_income_this_period = (@pensionable_non_periodic_income_this_period * 100).to_d
@@ -43,6 +42,5 @@ module Taxman2023
         pm: @contribution_months_this_year
       }
     end
-    # rubocop:enable Metrics/MethodLength
   end
 end

@@ -16,7 +16,6 @@ module Taxman2023
       %i[p i f f2 f5a u1 hd f1]
     end
 
-    # rubocop:disable Metrics/ParameterLists
     def initialize(
       p:,
       i:,
@@ -36,7 +35,6 @@ module Taxman2023
       @hd = hd.to_d
       @f1 = f1.to_d
     end
-    # rubocop:enable Metrics/ParameterLists
 
     def amount
       a = (p * (i - f - f2 - f5a - u1)) - hd - f1
