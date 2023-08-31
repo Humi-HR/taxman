@@ -71,4 +71,3 @@ RSpec.describe Taxman2023::PersonalTaxDeductionsInput do
   end
 end
 # rubocop:enable RSpec/ExampleLength
-# rubocop:enable RSpec/MultipleMemoizedHelpers
