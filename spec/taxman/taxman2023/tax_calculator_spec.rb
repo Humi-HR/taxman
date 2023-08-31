@@ -6,7 +6,8 @@ RSpec.describe Taxman2023::TaxCalculator do
   let(:b1) { 1_000_00.to_d }
   let(:d) { 0 } # YTD CPP contribution
   let(:d1) { 0 } # YTD EI contribution
-  let(:partial_context) do
+  let(:partial_context) { on_partial_context }
+  let(:on_partial_context) do
     {
       p: 52,
       pi_periodic: i,
@@ -60,6 +61,33 @@ RSpec.describe Taxman2023::TaxCalculator do
 
     it "raises an error" do
       expect { tax }.to raise_error Taxman::ContextMissing
+    end
+  end
+
+  context "with quebec params" do
+    let(:partial_context) { qc_partial_context }
+    let(:qc_partial_context) do
+      on_partial_context.merge(
+        p: 12,
+        qc_g: 5_000_00.to_d,
+        qc_d: 5_000_00.to_d,
+        province: "QC",
+        qc_c: 1_581_33.to_d,
+        qc_s3: 25_000.to_d,
+        qc_b2: 20_000.to_d,
+        qc_j: 0,
+        qc_j1: 0,
+        qc_k1: 0,
+        qc_e1: 17_183_00.to_d,
+        qc_e2: 0,
+        qc_q: 0,
+        qc_q1: 0,
+        qc_l: 0
+      )
+    end
+
+    it "matches the provincial taxes on PDOC/Greg's sheet" do
+      expect(tax[:provincial_tax]).to be_within(0.1).of 514.07.to_d
     end
   end
 end
