@@ -48,7 +48,11 @@ module Taxman2023
       federal_tax = [(taxes_with_bonus[:t1] - taxes_without_bonus[:t1]), 0].max
 
       provincial_tax = if context[:province] == Taxman::QC
-                         # TODO: provincial_tax = qc_a1
+                         context[:qc_i1] = QcI1.amount(context)
+                         context[:qc_y1] = QcY1Y2.amount(context.merge({ qc_b2: 0, qc_csb: 0 }))
+                         context[:qc_y2] = QcY1Y2.amount(context)
+                         context[:qc_a1] = QcA1.amount(context)
+                         context[:qc_a1]
                        else
                          [(taxes_with_bonus[:t2] - taxes_without_bonus[:t2]), 0].max
                        end
