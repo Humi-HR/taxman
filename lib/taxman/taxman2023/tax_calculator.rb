@@ -63,7 +63,7 @@ module Taxman2023
         calculate_provincial_qc_taxes
 
         # Set provincial tax amount
-        # TODO: context[:provincial_tax] = (context[:qc_a] / 100).round(2)
+        context[:provincial_tax] = (context[:qc_a] / 100).round(2)
 
         # Set zero amounts for later used T4127 calculations
         context[:t2] = 0
@@ -94,6 +94,7 @@ module Taxman2023
       context[:qc_i] = QcI.amount(context)
       context[:qc_e] = QcE.amount(context)
       context[:qc_y] = QcY.amount(context)
+      context[:qc_a] = QcA.amount(context)
     end
 
     def calculate_provincial_non_qc_taxes
