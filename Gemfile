@@ -14,3 +14,5 @@ gem "rubocop-rake"
 gem "rubocop-rspec"
 
 gem "debug", ">= 1.0.0"
+
+gem "dentaku"

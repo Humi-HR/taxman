@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'dentaku'
+
 module Taxman2023
   # Income tax for the year
   class QcY < Factor
@@ -16,7 +18,11 @@ module Taxman2023
     attr_reader(*params)
 
     def amount
-      [(qc_t * qc_i) - qc_k - qc_k1 - (0.14 * qc_e) - (0.15 * p * qc_q) - (0.15 * p * qc_q1), 0].max
+      evaluate "max((qc_t * qc_i) - qc_k - qc_k1 - (0.14 * qc_e) - (0.15 * p * qc_q) - (0.15 * p * qc_q1), 0)"
+    end
+
+    def evaluate(expression)
+      Dentaku::Calculator.new.evaluate! expression, **context
     end
 
     def qc_t
@@ -25,6 +31,13 @@ module Taxman2023
 
     def qc_k
       RATES_AND_CONSTANTS[bracket][1]
+    end
+
+    def context
+      instance_variables.inject({}) do |hash, attribute|
+        hash[attribute.to_s[1..].to_sym] = instance_variable_get(attribute)
+        hash
+      end.merge(qc_t: qc_t, qc_k: qc_k)
     end
 
     private
