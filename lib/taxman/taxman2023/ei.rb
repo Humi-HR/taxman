@@ -2,13 +2,11 @@
 
 module Taxman2023
   # Calculates the employee's ei contributions for the period
-  class Ei
+  class Ei < Factor
     EI_MAX = 1_002_45.to_d
     MAXIMUM_INSURABLE = 61_500_00.to_d
     EMPLOYEE_RATE = 0.0163.to_d
     EMPLOYER_MATCHING = 1.4.to_d
-
-    attr_reader :ie, :d1
 
     # Helper method to get the constants as a hash
     class Constants
@@ -21,14 +19,10 @@ module Taxman2023
       end
     end
 
-    def initialize(ie:, d1:)
-      @ie = ie.to_d
-      @d1 = d1.to_d
-    end
-
     def self.params
       %i[ie d1]
     end
+    attr_reader(*params)
 
     def amount
       [ei_max, ei_calculated].min

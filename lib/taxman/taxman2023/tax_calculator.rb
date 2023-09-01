@@ -43,7 +43,7 @@ module Taxman2023
       check_required_context
 
       # Prep factors for T3
-      context[:k2] = K2.new(**context.slice(*K2.params)).amount
+      context[:k2] = K2.amount(context)
 
       # Set factors from T3
       t3 = T3.new(**context.slice(*T3.params))
@@ -55,7 +55,7 @@ module Taxman2023
       context[:k4] = t3.k4
       context[:cea] = t3.cea
 
-      context[:t1] = T1.new(**context.slice(*T1.params)).amount
+      context[:t1] = T1.amount(context)
 
       # Calculate provincial taxes for Quebec or the rest of Canada
       if context[:province] == Taxman::QC
@@ -74,7 +74,7 @@ module Taxman2023
       end
 
       # Set T
-      context[:t] = T.new(**context.slice(*T.params)).amount
+      context[:t] = T.amount(context)
 
       context[:federal_tax] = ((context[:t1] / context[:p]) / 100).round(2)
       context[:additional_tax] = (context[:l] / 100).round(2)
@@ -98,7 +98,7 @@ module Taxman2023
 
     def calculate_provincial_non_qc_taxes
       # Prep factors for T2 & T4
-      context[:k2p] = k2p_class.new(**context.slice(*K2.params)).amount
+      context[:k2p] = k2p_class.amount(context)
 
       # Set factors from T4
       t4 = t4_class.new(**context.slice(*t4_class.params))

@@ -2,16 +2,11 @@
 
 module Taxman2023
   # Calculates the F5 factor
-  class F5
-    attr_reader :c
-
-    def initialize(c:)
-      @c = c
-    end
-
+  class F5 < Factor
     def self.params
-      [:c]
+      %i[c]
     end
+    attr_reader(*params)
 
     def amount
       c * (BigDecimal("0.01") / BigDecimal("0.0595"))

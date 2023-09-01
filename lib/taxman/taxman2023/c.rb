@@ -2,21 +2,11 @@
 
 module Taxman2023
   # Calculates the CPP contribution for the period
-  class C
-    attr_reader :pi, :p, :pm, :d, :dq, :b_pensionable
-
-    def initialize(pi:, p:, pm:, d:, b_pensionable:, dq:)
-      @pi = pi.to_d
-      @p = p.to_d
-      @pm = pm.to_d
-      @d = d.to_d
-      @dq = dq.to_d
-      @b_pensionable = b_pensionable.to_d
-    end
-
+  class C < Factor
     def self.params
       %i[pi p pm d b_pensionable dq]
     end
+    attr_reader(*params)
 
     def amount
       [cpp_max, cpp_calculated].min
