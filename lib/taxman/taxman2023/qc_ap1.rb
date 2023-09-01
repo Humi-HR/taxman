@@ -2,17 +2,11 @@
 
 module Taxman2023
   # Calculates the CPP contribution for the period
-  class QcAp1
-    attr_reader :qc_a7, :qc_s4
-
-    def initialize(qc_a7:, qc_s4:)
-      @qc_a7 = qc_a7.to_d
-      @qc_s4 = qc_s4.to_d
-    end
-
+  class QcAp1 < Factor
     def self.params
       %i[qc_a7 qc_s4]
     end
+    attr_reader(*params)
 
     def amount
       [qpip_max, qpip_calculated].min.ceil
