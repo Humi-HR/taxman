@@ -36,7 +36,7 @@ Layout/LineLength:
   Max: 120
 
 Metrics/MethodLength:
-  Max: 40
+  Max: 50
 
 RSpec/ExampleLength:
   Max: 20
