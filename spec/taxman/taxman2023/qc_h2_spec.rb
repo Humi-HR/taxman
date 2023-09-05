@@ -23,7 +23,7 @@ RSpec.describe Taxman2023::QcH2 do
 
   context "with maxed YTD H (qc_h1)" do
     let(:qc_d1) { 25_000_00 }
-    let(:qc_h1) { Taxman2023::QcH::EMPLOYMENT_INCOME_MAXIMUM_DEDUCTION }
+    let(:qc_h1) { 1_315_00 }
     let(:qc_pr) { 12 }
 
     it "matches expecation" do
@@ -33,7 +33,7 @@ RSpec.describe Taxman2023::QcH2 do
 
   context "with maxed YTD H (qc_h1) less 100" do
     let(:qc_d1) { 25_000_00 }
-    let(:qc_h1) { Taxman2023::QcH::EMPLOYMENT_INCOME_MAXIMUM_DEDUCTION - 100_00 }
+    let(:qc_h1) { 1_315_00 - 100_00 }
     let(:qc_pr) { 12 }
 
     it "matches expectation" do

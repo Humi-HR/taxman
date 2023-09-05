@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require "yaml"
+require "dentaku"
+
 module Taxman2023
   # Calculate the federal and provincial taxes
   # Requires A, F5A, F5B and C to have already been set in context
@@ -87,13 +90,13 @@ module Taxman2023
 
     def calculate_provincial_qc_taxes
       # TP-1015.3 I and prerequisite factors
-      context[:qc_h] = QcH.amount(context)
-      context[:qc_cs] = QcCs.amount(context)
-      context[:qc_csa] = QcCsa.amount(context)
-      context[:qc_i] = QcI.amount(context)
-      context[:qc_e] = QcE.amount(context)
-      context[:qc_y] = QcY.amount(context)
-      context[:qc_a] = QcA.amount(context)
+      calc = Dentaku::Calculator.new
+      calc.add_function(:qc_rate, :numeric, -> { QcY::RATES_AND_CONSTANTS[QcY::RATES_AND_CONSTANTS.keys.sort.find { |bracket| context[:qc_i] <= bracket }][0] }) # rubocop:disable Layout/LineLength
+      calc.add_function(:qc_constant, :numeric, -> { QcY::RATES_AND_CONSTANTS[QcY::RATES_AND_CONSTANTS.keys.sort.find { |bracket| context[:qc_i] <= bracket }][1] }) # rubocop:disable Layout/LineLength
+
+      YAML.load(File.read("factors.yml")).each do |name, formula|
+        context[name.to_sym] = calc.evaluate! formula, **context
+      end
     end
 
     def calculate_provincial_non_qc_taxes

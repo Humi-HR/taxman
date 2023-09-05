@@ -9,7 +9,7 @@ module Taxman2023
     attr_reader(*params)
 
     def amount
-      evaluate "min((0.06 * qc_d1), 131500 - qc_h1) / qc_pr"
+      [(0.06 * qc_d1), 1_315_00 - qc_h1].min / qc_pr
     end
   end
 end
