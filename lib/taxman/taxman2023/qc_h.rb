@@ -11,7 +11,7 @@ module Taxman2023
     attr_reader(*params)
 
     def amount
-      [(0.06 * qc_d), (EMPLOYMENT_INCOME_MAXIMUM_DEDUCTION / p)].min
+      evaluate "min((0.06 * qc_d), (131500 / p))"
     end
   end
 end

@@ -9,7 +9,7 @@ module Taxman2023
     attr_reader(*params)
 
     def amount
-      (qc_e1 + qc_e2).round
+      evaluate "round(qc_e1 + qc_e2)"
     end
   end
 end

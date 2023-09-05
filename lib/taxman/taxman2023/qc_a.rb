@@ -9,7 +9,7 @@ module Taxman2023
     attr_reader(*params)
 
     def amount
-      [((qc_y / p) + qc_l), 0].max
+      evaluate "max(((qc_y / p) + qc_l), 0)"
     end
   end
 end
