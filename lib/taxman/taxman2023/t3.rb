@@ -16,7 +16,6 @@ module Taxman2023
     def initialize(a:, hd:, k2:, tc: nil, k3: 0, tc_offset: 0)
       super
       @tc = tc&.to_d
-      @tc_offset = tc_offset&.to_d
     end
 
     def self.params
