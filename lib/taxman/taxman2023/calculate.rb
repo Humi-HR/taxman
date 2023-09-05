@@ -28,17 +28,17 @@ module Taxman2023
         context.merge!(input.translate)
       end
 
-      context[:c] = C.new(**context.slice(*C.params)).amount
-      context[:qc_c] = QcC.new(**context.slice(*QcC.params)).amount
-      context[:qc_ap] = QcAp.new(**context.slice(*QcAp.params)).amount
-      context[:qc_ap1] = QcAp1.new(**context.slice(*QcAp1.params)).amount
-      context[:ei] = Ei.new(**context.slice(*Ei.params)).amount
-      context[:f5] = F5.new(**context.slice(*F5.params)).amount
-      context[:f5q] = F5Q.new(**context.slice(*F5Q.params)).amount
-      context[:f5a] = F5A.new(**context.slice(*F5A.params)).amount
-      context[:f5b] = F5B.new(**context.slice(*F5B.params)).amount
+      context[:c] = C.amount(context)
+      context[:qc_c] = QcC.amount(context)
+      context[:qc_ap] = QcAp.amount(context)
+      context[:qc_ap1] = QcAp1.amount(context)
+      context[:ei] = Ei.amount(context)
+      context[:f5] = F5.amount(context)
+      context[:f5q] = F5Q.amount(context)
+      context[:f5a] = F5A.amount(context)
+      context[:f5b] = F5B.amount(context)
 
-      context[:a] = A.new(**context.slice(*A.params)).amount
+      context[:a] = A.amount(context)
 
       # The non bonus tax calculation should not have the bonus, but we need it for the bonus tax calculation
       # Could definitely need a refactor

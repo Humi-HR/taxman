@@ -2,9 +2,7 @@
 
 module Taxman2023
   # This is the annual basic federal tax
-  class T3
-    attr_reader :a, :hd, :k2, :k3
-
+  class T3 < Factor
     LOWEST_RATE = 0.150.to_d
 
     RATES_AND_CONSTANTS = {
@@ -16,17 +14,14 @@ module Taxman2023
     }.freeze
 
     def initialize(a:, hd:, k2:, tc: nil, k3: 0, tc_offset: 0)
-      @a = a.to_d
-      @hd = hd.to_d
-      @k2 = k2.to_d
-      @k3 = k3.to_d # Other federal non-refundable tax credits
+      super
       @tc = tc&.to_d
-      @tc_offset = tc_offset&.to_d
     end
 
     def self.params
       %i[a hd k2 k3 tc tc_offset]
     end
+    attr_reader(*params)
 
     def amount
       return 0 if a <= 0

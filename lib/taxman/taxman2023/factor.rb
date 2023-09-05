@@ -7,7 +7,9 @@ module Taxman2023
   class Factor
     def initialize(**params)
       self.class.params.each do |param|
-        instance_variable_set("@#{param}", params[param].to_d)
+        value = params[param]
+        value = value.to_d unless value.is_a?(String)
+        instance_variable_set("@#{param}", value)
       end
     end
 

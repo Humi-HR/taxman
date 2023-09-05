@@ -2,21 +2,12 @@
 
 module Taxman2023
   # Calculates the F5B factor
-  class F5B
-    attr_reader :pi, :b, :f5, :f5q, :province
-
+  class F5B < Factor
     # Pensionable income here _includes_ the bonus!
-    def initialize(f5:, b:, pi:, f5q:, province:)
-      @f5 = f5.to_d
-      @b = b.to_d
-      @pi = pi.to_d
-      @f5q = f5q.to_d
-      @province = province
-    end
-
     def self.params
       %i[f5 b pi f5q province]
     end
+    attr_reader(*params)
 
     def amount
       return 0.to_d if pi <= 0

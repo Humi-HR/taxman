@@ -2,20 +2,11 @@
 
 module Taxman2023
   # Calculates the F5A factor
-  class F5A
-    attr_reader :pi, :b, :f5, :f5q, :province
-
-    def initialize(pi:, b:, f5:, f5q:, province:)
-      @pi = pi.to_d
-      @b = b.to_d
-      @f5 = f5.to_d
-      @f5q = f5q.to_d
-      @province = province
-    end
-
+  class F5A < Factor
     def self.params
       %i[pi b f5 f5q province]
     end
+    attr_reader(*params)
 
     def amount
       return 0 if pi <= 0

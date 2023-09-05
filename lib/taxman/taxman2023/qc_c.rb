@@ -2,19 +2,11 @@
 
 module Taxman2023
   # Calculates the QPP contribution for the period
-  class QcC
-    attr_reader :qc_a5, :qc_s3, :p, :qc_r
-
-    def initialize(qc_a5:, qc_s3:, p:, qc_r:)
-      @p = p.to_d
-      @qc_a5 = qc_a5.to_d
-      @qc_s3 = qc_s3.to_d
-      @qc_r = qc_r.to_d
-    end
-
+  class QcC < Factor
     def self.params
       %i[qc_a5 qc_s3 p qc_r]
     end
+    attr_reader(*params)
 
     def amount
       [qpp_max, qpp_calculated].min.floor
