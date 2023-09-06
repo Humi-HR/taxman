@@ -40,6 +40,10 @@ module Taxman2023
 
       context[:a] = A.amount(context)
 
+      context[:k2q] = K2Q.amount(context)
+      context[:k2q] = K2R.amount(context)
+      context[:k2rq] = K2RQ.amount(context)
+
       # The non bonus tax calculation should not have the bonus, but we need it for the bonus tax calculation
       # Could definitely need a refactor
       context
