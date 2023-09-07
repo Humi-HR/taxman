@@ -4,6 +4,7 @@
 module Taxman2023
   require_relative "taxman2023/factor"
   require_relative "taxman2023/k2_generic"
+  require_relative "taxman2023/k2_p_generic"
   require_relative "taxman2023/t2_generic"
   require_relative "taxman2023/t4_generic"
 
