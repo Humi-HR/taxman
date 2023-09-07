@@ -3,58 +3,55 @@
 module Taxman2023
   # Calculates the generic k2 factor
   class K2Generic < Factor
-    def self.params
-      %i[pi pi_periodic b_pensionable b1_pensionable ie ie_periodic b_insurable b1_insurable p d d1]
-    end
-    attr_reader(*params)
-
-    def rate
-      raise StandardError "You must implement rate in subclass"
-    end
-
-    def amount
-      ([cpp_credit, max_cpp_credit].min * rate) + ([ei_credit, max_ei_credit].min * rate)
-    end
-
-    def cpp_credit
-      # If the contribution has already been reached, return max
-      return max_cpp_credit if @d >= max_cpp_credit
-
-      p * cpp_portion * lower_cpp_rate / higher_cpp_rate
-    end
-
-    def max_cpp_credit
-      3_123_45.to_d
-    end
-
-    def cpp_portion
+    def qc_ei_portion
       [
-        ((pi_periodic + ((b_pensionable + b1_pensionable) / p)) - (Cpp::BASIC_EXEMPTION / p)) * Cpp::RATE,
-        0
-      ].max
+        p * ei,
+        qc_ei_max
+      ].min * 0.15
     end
 
-    def ei_credit
-      # If the contribution has already been reached, return max
-      return max_ei_credit if @d1 >= max_ei_credit
-
-      p * ei_portion
+    def qc_ie_portion
+      [
+        p * ie * lower_cpp_rate,
+        qpip_max
+      ].min * 0.15
     end
 
+    # Constant helpers
     def max_ei_credit
       Ei::EI_MAX
     end
 
-    def ei_portion
-      (ie_periodic + ((b_insurable + b1_insurable) / p)) * Ei::EMPLOYEE_RATE
+    def max_cpp_credit
+      Cpp::MAX_CREDIT
+    end
+
+    def max_qpp_credit
+      Qpp::MAX_CREDIT
     end
 
     def lower_cpp_rate
-      0.0495
+      Cpp::LOWER_RATE
     end
 
     def higher_cpp_rate
-      0.0595
+      Cpp::RATE
+    end
+
+    def lower_qpp_rate
+      Qpp::LOWER_RATE
+    end
+
+    def higher_qpp_rate
+      Qpp::RATE
+    end
+
+    def qc_ei_max
+      Ei::QC_EI_MAX
+    end
+
+    def qpip_max
+      Qpp::QPIP_MAX
     end
   end
 end

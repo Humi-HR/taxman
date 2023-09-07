@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Taxman2023::K2Generic do
+RSpec.describe Taxman2023::K2P do
   let(:k2p_obj) { described_class.new(**k2_params) }
   let(:k2p) { k2p_obj.amount }
   let(:b1) { 0 }

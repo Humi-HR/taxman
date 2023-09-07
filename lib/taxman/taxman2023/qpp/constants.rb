@@ -7,6 +7,9 @@ module Taxman2023
     MAX = 4_038_40.to_d
     BASIC_EXEMPTION = 3_500_00.to_d
     RATE = 0.0640.to_d
+    LOWER_RATE = 0.0540.to_d
+    QPIP_MAX = 449_54.to_d
+    MAX_CREDIT = 3_407_40.to_d
 
     # Helper method to get the constants as a hash
     class Constants
