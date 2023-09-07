@@ -49,7 +49,7 @@ RSpec.describe Taxman2023::T3 do
         f1: 0
       ).amount
     end
-    let(:k2) { Taxman2023::K2.new(**k2_params).amount }
+    let(:k2) { Taxman2023::K2P.new(**k2_params).amount }
 
     it "calculates an annualized tax of $5,069.28" do
       expect(t3).to be_within(0.1).of 5_069_28 # This is from pdoc, they only give us cents
@@ -72,7 +72,7 @@ RSpec.describe Taxman2023::T3 do
       ).amount
     end
 
-    let(:k2) { Taxman2023::K2.new(**k2_params).amount }
+    let(:k2) { Taxman2023::K2P.new(**k2_params).amount }
 
     it "calculates an annualized tax of $43,594.31" do
       expect(t3).to be_within(0.01).of 43_594_30.56.to_d

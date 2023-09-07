@@ -8,6 +8,8 @@ module Taxman2023
     EMPLOYEE_RATE = 0.0163.to_d
     EMPLOYER_MATCHING = 1.4.to_d
 
+    QC_EI_MAX = 781_05.to_d
+
     # Helper method to get the constants as a hash
     class Constants
       def self.to_h

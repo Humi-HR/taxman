@@ -43,7 +43,7 @@ module Taxman2023
       check_required_context
 
       # Prep factors for T3
-      context[:k2] = K2.amount(context)
+      context[:k2] = K2P.amount(context)
 
       # Set factors from T3
       t3 = T3.new(**context.slice(*T3.params))

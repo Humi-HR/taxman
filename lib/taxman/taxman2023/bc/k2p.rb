@@ -3,7 +3,7 @@
 module Taxman2023
   module Bc
     # Calculates the k2p factor for BC
-    class K2p < K2Generic
+    class K2p < K2PGeneric
       def rate
         T4::LOWEST_RATE
       end
