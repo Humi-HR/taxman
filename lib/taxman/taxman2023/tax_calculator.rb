@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/ClassLength
 module Taxman2023
   # Calculate the federal and provincial taxes
   # Requires A, F5A, F5B and C to have already been set in context
@@ -43,7 +44,10 @@ module Taxman2023
       check_required_context
 
       # Prep factors for T3
-      context[:k2] = K2P.amount(context)
+      context[:k2] = K2.amount(context)
+      context[:k2q] = K2Q.amount(context)
+      context[:k2r] = K2R.amount(context)
+      context[:k2rq] = K2RQ.amount(context)
 
       # Set factors from T3
       t3 = T3.new(**context.slice(*T3.params))
@@ -140,3 +144,4 @@ module Taxman2023
     end
   end
 end
+# rubocop:enable Metrics/ClassLength
