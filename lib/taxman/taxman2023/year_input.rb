@@ -49,6 +49,7 @@ module Taxman2023
         employer_ei_multiple: @employer_ei_multiple.to_d,
         k3: (@k3 * 100).to_d,
         k3p: (@k3p * 100).to_d,
+        qc_b1: (@b1 * 100).to_d,
         qc_f1: (@qc_f1 * 100).to_d,
         qc_g1: (@qc_g1 * 100).to_d,
         qc_h1: (@qc_h1 * 100).to_d,
