@@ -49,6 +49,7 @@ module Taxman2023
       context.merge!(BonusTaxCalculator.new(context: context).calculate) if context[:b] >= 0
       context.merge!(CppCalculator.new(context: context).calculate)
       context.merge!(QppCalculator.new(context: context).calculate)
+      context.merge!(QpipCalculator.new(context: context).calculate)
       context.merge!(EiCalculator.new(context: context).calculate)
 
       context

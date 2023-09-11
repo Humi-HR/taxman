@@ -12,12 +12,12 @@ RSpec.describe Taxman2023::QcAp1 do
     end
   end
 
-  context "when the employer has reached qpip maximum for the year less $100" do
-    let(:qc_a7) { Taxman2023::Qpip::EMPLOYER_MAX - 100_00 }
+  context "when the employer has reached qpip maximum for the year less $20" do
+    let(:qc_a7) { Taxman2023::Qpip::EMPLOYER_MAX - 20_00 }
     let(:qc_s4) { 5_000_00 }
 
     it "calculates zero qpip contribution for this period" do
-      expect(c).to eq 100_00
+      expect(c).to eq 20_00
     end
   end
 
@@ -26,7 +26,7 @@ RSpec.describe Taxman2023::QcAp1 do
     let(:qc_s4) { 50_00 }
 
     it "calculates zero qpip contribution for this period" do
-      expect(c).to eq 3_46
+      expect(c).to eq 35
     end
   end
 end

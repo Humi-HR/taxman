@@ -4,9 +4,9 @@ module Taxman2023
   module Qpip
     # Bag to hold all of the CPP constants for 2023
     MAXIMUM_INSURABLE = 91_000_00.to_d
-    EMPLOYEE_RATE = 0.0494.to_d
+    EMPLOYEE_RATE = 0.00494.to_d
     EMPLOYEE_MAX = MAXIMUM_INSURABLE * EMPLOYEE_RATE
-    EMPLOYER_RATE = 0.0692.to_d
+    EMPLOYER_RATE = 0.00692.to_d
     EMPLOYER_MAX = MAXIMUM_INSURABLE * EMPLOYER_RATE
 
     # Helper method to get the constants as a hash
