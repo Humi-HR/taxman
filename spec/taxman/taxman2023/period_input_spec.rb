@@ -10,7 +10,8 @@ RSpec.describe Taxman2023::PeriodInput do
       rsp_deductions_from_bonus: 6,
       previous_taxable_periodic_income: 7,
       union_dues: 9,
-      province: "on"
+      province: "on",
+      periods_remaining_including_this_one: 17
     )
   end
 
@@ -29,7 +30,8 @@ RSpec.describe Taxman2023::PeriodInput do
         province: "ON",
         qc_g: 1_00.to_d,
         qc_d: 1_00.to_d,
-        qc_b2: 2_00.to_d
+        qc_b2: 2_00.to_d,
+        qc_pr: 17
       }
     )
   end
@@ -58,7 +60,8 @@ RSpec.describe Taxman2023::PeriodInput do
           province: "ON",
           qc_g: 50_00.to_d,
           qc_d: 50_00.to_d,
-          qc_b2: 100_00.to_d
+          qc_b2: 100_00.to_d,
+          qc_pr: 0
         }
       )
     end

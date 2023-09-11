@@ -13,7 +13,8 @@ module Taxman2023
       alimony: 0,
       rsp_deductions_from_bonus: 0,
       previous_taxable_periodic_income: 0,
-      union_dues: 0
+      union_dues: 0,
+      periods_remaining_including_this_one: 0
     )
       @i = taxable_periodic_income
       @previous_i = previous_taxable_periodic_income
@@ -27,6 +28,7 @@ module Taxman2023
       @qc_b2 = taxable_non_periodic_income
       @previously_on_cpp = previously_on_cpp
       @previously_on_qpp = previously_on_qpp
+      @qc_pr = periods_remaining_including_this_one
     end
 
     def translate
@@ -43,7 +45,8 @@ module Taxman2023
         qc_d: (@qc_d * 100).to_d,
         qc_b2: (@qc_b2 * 100).to_d,
         previously_on_cpp: @previously_on_cpp,
-        previously_on_qpp: @previously_on_qpp
+        previously_on_qpp: @previously_on_qpp,
+        qc_pr: @qc_pr
       }
     end
   end

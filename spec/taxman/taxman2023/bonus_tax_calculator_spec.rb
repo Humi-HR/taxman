@@ -33,7 +33,10 @@ RSpec.describe Taxman2023::BonusTaxCalculator do
       d: 0,
       d1: 0,
       previously_on_cpp: false,
-      previously_on_qpp: false
+      previously_on_qpp: false,
+      pm: 0,
+      ei: 0,
+      dq: 0
     }
   end
 

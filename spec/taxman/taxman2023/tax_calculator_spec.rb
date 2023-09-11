@@ -39,7 +39,10 @@ RSpec.describe Taxman2023::TaxCalculator do
       d: d,
       d1: d1,
       previously_on_cpp: false,
-      previously_on_qpp: false
+      previously_on_qpp: false,
+      pm: 0,
+      ei: 0,
+      dq: 0
     }
   end
   let(:context) do
