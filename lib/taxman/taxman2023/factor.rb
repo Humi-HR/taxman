@@ -12,7 +12,11 @@ module Taxman2023
     end
 
     def self.amount(context)
-      new(**context.slice(*params)).amount
+      parameters = params.each_with_object({}) do |param, values|
+        values[param] = context.fetch(param)
+        values
+      end
+      new(**parameters).amount
     end
   end
 end
