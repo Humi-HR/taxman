@@ -14,7 +14,6 @@ module Taxman2023
     def self.amount(context)
       parameters = params.each_with_object({}) do |param, values|
         values[param] = context.fetch(param)
-        values
       end
       new(**parameters).amount
     end
