@@ -116,7 +116,7 @@ RSpec.describe Taxman2023::Calculate do
     end
 
     it "matches k2" do
-      expect(context[:k2]).to be_within(0.1).of 61_764.58
+      expect(context[:k2_value]).to be_within(0.1).of 61_764.58
     end
   end
 end
