@@ -23,6 +23,8 @@ RSpec.describe Taxman2023::PeriodInput do
         f2: 5_00.to_d,
         f3: 6_00.to_d,
         previous_i: 7_00.to_d,
+        previously_on_cpp: false,
+        previously_on_qpp: false,
         u1: 9_00.to_d,
         province: "ON",
         qc_g: 1_00.to_d,
@@ -46,6 +48,8 @@ RSpec.describe Taxman2023::PeriodInput do
         {
           i: 50_00.to_d,
           previous_i: 0.to_d,
+          previously_on_cpp: false,
+          previously_on_qpp: false,
           b: 100_00.to_d,
           f: 0.to_d,
           f2: 0.to_d,

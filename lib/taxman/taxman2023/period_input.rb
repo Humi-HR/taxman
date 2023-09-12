@@ -7,6 +7,8 @@ module Taxman2023
       taxable_periodic_income:,
       taxable_non_periodic_income:,
       province:,
+      previously_on_cpp: false,
+      previously_on_qpp: false,
       rsp_deductions: 0,
       alimony: 0,
       rsp_deductions_from_bonus: 0,
@@ -23,6 +25,8 @@ module Taxman2023
       @province = province
       @qc_g = @qc_d = taxable_periodic_income
       @qc_b2 = taxable_non_periodic_income
+      @previously_on_cpp = previously_on_cpp
+      @previously_on_qpp = previously_on_qpp
     end
 
     def translate
@@ -37,7 +41,9 @@ module Taxman2023
         province: @province.strip.upcase,
         qc_g: (@qc_g * 100).to_d,
         qc_d: (@qc_d * 100).to_d,
-        qc_b2: (@qc_b2 * 100).to_d
+        qc_b2: (@qc_b2 * 100).to_d,
+        previously_on_cpp: @previously_on_cpp,
+        previously_on_qpp: @previously_on_qpp
       }
     end
   end
