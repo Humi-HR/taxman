@@ -34,6 +34,8 @@ module Taxman2023
       b_insurable
       b1_pensionable
       b1_insurable
+      previously_on_cpp
+      previously_on_qpp
     ].freeze
 
     def initialize(context:)
@@ -43,11 +45,7 @@ module Taxman2023
     def calculate
       check_required_context
 
-      # Prep factors for T3
-      context[:k2] = K2.amount(context)
-      context[:k2q] = K2Q.amount(context)
-      context[:k2r] = K2R.amount(context)
-      context[:k2rq] = K2RQ.amount(context)
+      calculate_k2_value(context)
 
       # Set factors from T3
       t3 = T3.new(**context.slice(*T3.params))
@@ -125,6 +123,22 @@ module Taxman2023
       REQUIRED_CONTEXT.each do |param|
         raise Taxman::ContextMissing, "`#{param}` is missing, can't run #{self.class}" unless context.include? param
       end
+    end
+
+    def calculate_k2_value(context)
+      context[:k2_value] = if context[:province] == Taxman::QC
+                             # set Quebec k2 values
+                             if context[:previously_on_cpp]
+                               K2RQ.amount(context)
+                             else
+                               K2Q.amount(context)
+                             end
+                           elsif context[:previously_on_qpp]
+                             # set Non Quebec k2 values
+                             K2R.amount(context)
+                           else
+                             K2.amount(context)
+                           end
     end
 
     def k2p_class

@@ -13,20 +13,20 @@ module Taxman2023
       BigDecimal("Infinity") => [0.330.to_d, 23_194_00.to_d]
     }.freeze
 
-    def initialize(a:, hd:, k2:, tc: nil, k3: 0, tc_offset: 0)
+    def initialize(a:, hd:, k2_value:, tc: nil, k3: 0, tc_offset: 0)
       super
       @tc = tc&.to_d
     end
 
     def self.params
-      %i[a hd k2 k3 tc tc_offset]
+      %i[a hd k2_value k3 tc tc_offset]
     end
     attr_reader(*params)
 
     def amount
       return 0 if a <= 0
 
-      [(r * a) - k - k1 - k2 - k3 - k4, 0].max
+      [(r * a) - k - k1 - k2_value - k3 - k4, 0].max
     end
 
     def r

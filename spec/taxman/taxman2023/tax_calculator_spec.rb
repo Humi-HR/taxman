@@ -37,7 +37,9 @@ RSpec.describe Taxman2023::TaxCalculator do
       b_insurable: b,
       b1_insurable: b1,
       d: d,
-      d1: d1
+      d1: d1,
+      previously_on_cpp: false,
+      previously_on_qpp: false
     }
   end
   let(:context) do
@@ -61,6 +63,20 @@ RSpec.describe Taxman2023::TaxCalculator do
 
     it "raises an error" do
       expect { tax }.to raise_error Taxman::ContextMissing
+    end
+  end
+
+  it "matches the expected T3 amount" do
+    expect(tax[:t3]).to be_within(0.1).of 2_827_972.33.to_d
+  end
+
+  context "when previously on qpp" do
+    let(:partial_context) do
+      on_partial_context.merge(previously_on_qpp: true)
+    end
+
+    it "matches the expected T3 amount" do
+      expect(tax[:t3]).to be_within(0.1).of 2_889_860.83.to_d
     end
   end
 
@@ -88,6 +104,20 @@ RSpec.describe Taxman2023::TaxCalculator do
 
     it "matches the expected provincial taxes" do
       expect(tax[:provincial_tax]).to be_within(0.1).of 514.07.to_d
+    end
+
+    it "matches the expected T3 amount" do
+      expect(tax[:t3]).to be_within(0.1).of 282_382.27.to_d
+    end
+
+    context "when previously on cpp" do
+      let(:partial_context) do
+        qc_partial_context.merge(previously_on_cpp: true)
+      end
+
+      it "matches the expected T3 amount" do
+        expect(tax[:t3]).to be_within(0.1).of 282_382.27.to_d
+      end
     end
   end
 end

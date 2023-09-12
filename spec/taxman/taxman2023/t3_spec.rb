@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe Taxman2023::T3 do
-  let(:t3) { described_class.new(a: a, hd: hd, k2: k2, tc: tc).amount }
+  let(:t3) { described_class.new(a: a, hd: hd, k2_value: k2, tc: tc).amount }
   let(:hd) { 0 }
   let(:tc) { nil }
 
