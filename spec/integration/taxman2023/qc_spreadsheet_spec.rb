@@ -86,7 +86,7 @@ RSpec.describe Taxman2023::Calculate do
   end
 
   it "matches WEBRAS's QPIP employee deduction" do
-    expect(calculate[:employee_qpip_contribution]).to eq 123
+    expect(calculate[:employee_qpip_contribution]).to eq 123.5
   end
 
   it "matches WEBRAS's QPIP employer deduction" do
