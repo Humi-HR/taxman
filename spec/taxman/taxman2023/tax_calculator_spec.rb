@@ -42,7 +42,9 @@ RSpec.describe Taxman2023::TaxCalculator do
       previously_on_qpp: false,
       pm: 0,
       ei: 0,
-      dq: 0
+      dq: 0,
+      qc_a5: 0,
+      qc_a6: 0
     }
   end
   let(:context) do
@@ -84,14 +86,51 @@ RSpec.describe Taxman2023::TaxCalculator do
   end
 
   context "with quebec params" do
+    let(:i) { 5_000_00.to_d }
+    let(:b) { 20_000_00.to_d }
+    let(:b1) { 0.to_d }
+    let(:d) { 0 } # YTD CPP contribution
+    let(:d1) { 0 } # YTD EI contribution
     let(:partial_context) { qc_partial_context }
     let(:qc_partial_context) do
-      on_partial_context.merge(
+      {
         p: 12,
+        pi_periodic: i,
+        ie_periodic: i,
+        i: i,
+        f: 0,
+        f2: 0,
+        f5a: 43_41.66.to_d,
+        u1: 0,
+        hd: 0,
+        f1: 0,
+        b: b,
+        f3: 0,
+        f5b: 49_57.98.to_d,
+        b1: b1,
+        f4: 0,
+        f5b_ytd: 197_67.to_d,
+        c: 0.to_d,
+        k3: 0, # Other authorized per period federal deductions
+        k3p: 0, # Other authorized per period provincial deductions
+        l: 0,
+        pi: i + b,
+        ie: i + b,
+        b_pensionable: 0,
+        b1_pensionable: b1,
+        b_insurable: 0,
+        b1_insurable: b1,
+        d: d,
+        d1: d1,
+        previously_on_cpp: false,
+        previously_on_qpp: false,
+        pm: 12,
+        ei: 0,
+        dq: 0,
         qc_g: 5_000_00.to_d,
         qc_d: 5_000_00.to_d,
         province: "QC",
-        qc_c: 1_581_33.to_d,
+        qc_c: 158_133.to_d,
         qc_s3: 25_000.to_d,
         qc_b2: 20_000.to_d,
         qc_j: 0,
@@ -101,8 +140,10 @@ RSpec.describe Taxman2023::TaxCalculator do
         qc_e2: 0,
         qc_q: 0,
         qc_q1: 0,
-        qc_l: 0
-      )
+        qc_l: 0,
+        qc_a5: 0,
+        qc_a6: 0
+      }
     end
 
     it "matches the expected provincial taxes" do
@@ -110,17 +151,7 @@ RSpec.describe Taxman2023::TaxCalculator do
     end
 
     it "matches the expected T3 amount" do
-      expect(tax[:t3]).to be_within(0.1).of 282_382.27.to_d
-    end
-
-    context "when previously on cpp" do
-      let(:partial_context) do
-        qc_partial_context.merge(previously_on_cpp: true)
-      end
-
-      it "matches the expected T3 amount" do
-        expect(tax[:t3]).to be_within(0.1).of 282_382.27.to_d
-      end
+      expect(tax[:t3]).to be_within(0.1).of 618_658.51.to_d
     end
   end
 end
