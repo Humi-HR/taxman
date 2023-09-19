@@ -37,7 +37,7 @@ RSpec.describe Taxman2023::Calculate do
     Taxman2023::PersonalTaxDeductionsInput.new(
       federal_personal_amount: nil,
       provincial_personal_amount: nil,
-      tp_1015_line_7_indexed_value_of_personal_tax_credits: 25000
+      tp_1015_line_7_indexed_value_of_personal_tax_credits: 25_000
     )
   end
 
