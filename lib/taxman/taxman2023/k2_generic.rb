@@ -3,55 +3,54 @@
 module Taxman2023
   # Calculates the generic k2 factor
   class K2Generic < Factor
-    def qc_ei_portion
+    def qpp_credit
+      # If the contribution has already been reached, return max
+      return Qpp::MAX_CREDIT if @qc_a5 >= Qpp::MAX_CREDIT
+
+      p * qpp_portion * Qpp::LOWER_RATE / Qpp::RATE
+    end
+
+    def qpp_portion
       [
-        p * ei,
-        qc_ei_max
-      ].min * 0.15
+        ((pi_periodic + ((b_pensionable + b1_pensionable) / p)) - (Qpp::BASIC_EXEMPTION / p)) * Qpp::RATE,
+        0
+      ].max
     end
 
-    def qc_ie_portion
+    def cpp_credit
+      # If the contribution has already been reached, return max
+      return Cpp::MAX_CREDIT if @d >= Cpp::MAX_CREDIT
+
+      p * cpp_portion * Cpp::LOWER_RATE / Cpp::RATE
+    end
+
+    def cpp_portion
       [
-        p * ie * lower_cpp_rate,
-        qpip_max
-      ].min * 0.15
+        ((pi_periodic + ((b_pensionable + b1_pensionable) / p)) - (Cpp::BASIC_EXEMPTION / p)) * Cpp::RATE,
+        0
+      ].max
     end
 
-    # Constant helpers
-    def max_ei_credit
-      Ei::EI_MAX
+    def ei_credit
+      # If the contribution has already been reached, return max
+      return Ei::QC_EI_MAX if @d1 >= Ei::QC_EI_MAX
+
+      p * ei_portion
     end
 
-    def max_cpp_credit
-      Cpp::MAX_CREDIT
+    def ei_portion
+      (ie_periodic + ((b_insurable + b1_insurable) / p)) * Ei::QC_EMPLOYEE_RATE
     end
 
-    def max_qpp_credit
-      Qpp::MAX_CREDIT
+    def ie_qpip_credit
+      # If the contribution has already been reached, return max
+      return Qpip::EMPLOYEE_MAX if @qc_a6 >= Qpip::EMPLOYEE_MAX
+
+      p * ie_qpip_portion
     end
 
-    def lower_cpp_rate
-      Cpp::LOWER_RATE
-    end
-
-    def higher_cpp_rate
-      Cpp::RATE
-    end
-
-    def lower_qpp_rate
-      Qpp::LOWER_RATE
-    end
-
-    def higher_qpp_rate
-      Qpp::RATE
-    end
-
-    def qc_ei_max
-      Ei::QC_EI_MAX
-    end
-
-    def qpip_max
-      Qpp::QPIP_MAX
+    def ie_qpip_portion
+      (ie_periodic + ((b_insurable + b1_insurable) / p)) * Qpip::EMPLOYEE_RATE
     end
   end
 end

@@ -42,6 +42,7 @@ RSpec.describe Taxman2023::Calculate do
   let(:c) do
     Taxman2023::PensionInput.new(
       pensionable_income_this_period: 25_000,
+      pensionable_non_periodic_income_this_period: 20_000,
       ytd_cpp_contributions: 0,
       ytd_qpp_contributions: 0,
       contribution_months_this_year: 12
@@ -58,13 +59,18 @@ RSpec.describe Taxman2023::Calculate do
 
   let(:e) do
     Taxman2023::EiInput.new(
-      insurable_income_this_period: 5_000,
+      insurable_income_this_period: 25_000,
+      insurable_non_periodic_income_this_period: 20_000,
       employees_ytd_contributions: 0
     )
   end
 
   it "matches PDOC's federal tax" do
     expect(calculate[:federal_tax]).to be_within(0.1).of 429.44
+  end
+
+  it "matches PDOC's federal tax on bonus" do
+    expect(calculate[:federal_tax_on_bonus]).to be_within(0.1).of 3_330.26
   end
 
   it "matches WEBRAS's provincial tax" do
@@ -88,7 +94,6 @@ RSpec.describe Taxman2023::Calculate do
   end
 
   it "matches PDOC's EI calculation" do
-    skip "Waiting for implementation details"
-    expect(calculate[:employee_ei_contribution]).to eq 381.00
+    expect(calculate[:employee_ei_contribution]).to eq 317.50
   end
 end

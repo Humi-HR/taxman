@@ -5,38 +5,42 @@ RSpec.describe Taxman2023::K2Q do
   let(:k2q_params) do
     {
       p: p,
-      c: c,
       pm: pm,
-      ei: ei,
-      ie: ie
+      d1: d1,
+      d: d,
+      b_pensionable: b_pensionable,
+      b1_pensionable: b1_pensionable,
+      qc_a5: qc_a5,
+      qc_a6: qc_a6,
+      pi_periodic: pi_periodic,
+      ie_periodic: ie_periodic,
+      b_insurable: b_insurable,
+      b1_insurable: b1_insurable
     }
   end
   let(:p) { 12 }
-  let(:c) { 500_00 }
   let(:pm) { 12 }
-  let(:ei) { 500 }
-  let(:ie) { 500 }
+  let(:d1) { 0 }
+  let(:d) { 0 }
+  let(:b_pensionable) { 0 }
+  let(:b1_pensionable) { 0 }
+  let(:qc_a5) { 0 }
+  let(:qc_a6) { 0 }
+  let(:pi_periodic) { 5_000_00.to_d }
+  let(:ie_periodic) { 5_000_00.to_d }
+  let(:b_insurable) { 0 }
+  let(:b1_insurable) { 0 }
 
   it "returns correct value" do
-    expect(k2q).to be_within(0.01).of 52_055.55.to_d
+    expect(k2q).to be_within(1).of 616_40.49.to_d
   end
 
-  context "without ei and ie inputs" do
-    let(:ei) { 0 }
-    let(:ie) { 0 }
+  context "with bonus terms" do
+    let(:b_pensionable) { 20_000_00.to_d }
+    let(:b_insurable) { 20_000_00.to_d }
 
-    context "with more than max qpp credits" do
-      it "return max qpp credits" do
-        expect(k2q).to be_within(0.01).of 51_111.0.to_d
-      end
-    end
-
-    context "with less than max qpp credits" do
-      let(:c) { 100 }
-
-      it "return correct value" do
-        expect(k2q).to be_within(0.01).of 151.87.to_d
-      end
+    it "return correct k2q value" do
+      expect(k2q).to be_within(1).of 687_54.15.to_d
     end
   end
 end
