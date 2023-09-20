@@ -4,7 +4,9 @@ Theme song: [Taxman](https://www.youtube.com/watch?v=l0zaebtU-CA)
 
 ## 2023
 
-All the 2023 numbers come from the [CRA](https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas/t4127-jan/t4127-jan-payroll-deductions-formulas-computer-programs.html#toc38).
+All the 2023 numbers come from the
+[CRA](https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas/t4127-jan/t4127-jan-payroll-deductions-formulas-computer-programs.html#toc38)
+and from [Revenue Quebec](https://www.revenuquebec.ca/documents/en/formulaires/tp/TP-1015.F-V%282023-01%29.pdf).
 
 ## Release flow and installation
 
@@ -41,11 +43,32 @@ To calculate the taxes for a given employee and period, there are five helper cl
 
   - PeriodInput
   - YearInput
-  - TD1 Input
-  - CPPInput
+  - PersonalTaxDeductions
+  - PensionInput
+  - QpipInput
   - EiInput
 
-These build the required parameters for tax calculation.  Once constructed, pass these to `Taxman2023::Calculate` and call `call`.  You will receive back a hash with the keys `federal_taxes`, `provincial_taxes`, `employee_cpp`, `employer_cpp`, `total_bonus_taxes`, `employer_ei` and `employee_ei` - the values will be BigDecimal dollar amounts.  The return hash will also contain the details of the tax calculation - these can be stored and inspected for debugging purposes.
+These build the required parameters for tax calculation.  Once constructed,
+pass these to `Taxman2023::Calculate` and call `call`.  You will receive back a
+hash with the keys:
+
+ - `federal_taxes`
+ - `provincial_taxes`
+ - `federal_tax_on_bonus`
+ - `provincial_tax_on_bonus`
+ - `employee_cpp`
+ - `employer_cpp`
+ - `employee_qpp`
+ - `employer_qpp`
+ - `employee_qpip`
+ - `employer_qpip`
+ - `total_bonus_taxes`
+ - `employer_ei`
+ - `employee_ei`
+
+The values will be BigDecimal dollar amounts.  The return hash will also
+contain the details of the tax calculation - these can be stored and inspected
+for debugging purposes.
 
 ## Development
 
