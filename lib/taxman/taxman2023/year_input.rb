@@ -14,6 +14,7 @@ module Taxman2023
       other_provincial_deductions: 0, # K3P
       ytd_pensionable_bonus: nil,
       ytd_insurable_bonus: nil,
+      ytd_insurable_earnings: 0,
       ytd_deductions_for_employment_income: 0,
       ytd_rsp_deductions: 0,
       ytd_gross_earnings: 0,
@@ -23,6 +24,7 @@ module Taxman2023
       @b1 = ytd_bonus
       @b1_pensionable = ytd_pensionable_bonus || ytd_bonus
       @b1_insurable = ytd_insurable_bonus || ytd_bonus
+      @ie_ytd = ytd_insurable_earnings
       @f1 = annual_deductions
       @f4 = ytd_rsp_bonus_deductions
       @p = pay_periods
@@ -42,6 +44,7 @@ module Taxman2023
         b1: (@b1 * 100).to_d,
         b1_pensionable: (@b1_pensionable * 100).to_d,
         b1_insurable: (@b1_insurable * 100).to_d,
+        ie_ytd: (@ie_ytd * 100).to_d,
         f1: (@f1 * 100).to_d,
         f4: (@f4 * 100).to_d,
         p: @p,

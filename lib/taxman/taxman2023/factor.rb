@@ -6,7 +6,7 @@ module Taxman2023
     def initialize(**params)
       self.class.params.each do |param|
         value = params[param]
-        value = value.to_d unless value.is_a?(String)
+        value = value.to_d unless value.is_a?(String) || [true, false].include?(value)
         instance_variable_set("@#{param}", value)
       end
     end
