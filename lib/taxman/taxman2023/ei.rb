@@ -22,7 +22,7 @@ module Taxman2023
     end
 
     def self.params
-      %i[ie d1 province]
+      %i[ie ie_ytd d1 province previously_on_cpp previously_on_qpp]
     end
     attr_reader(*params)
 
@@ -35,15 +35,23 @@ module Taxman2023
     end
 
     def ei_calculated
-      ie * ei_rate
+      if (previously_on_qpp && !quebec?) || (previously_on_cpp && quebec?)
+        [[MAXIMUM_INSURABLE - ie_ytd, ie].min * ei_rate, 0].max
+      else
+        ie * ei_rate
+      end
     end
 
     def ei_maximum
-      province == Taxman::QC ? QC_EI_MAX : EI_MAX
+      quebec? ? QC_EI_MAX : EI_MAX
     end
 
     def ei_rate
-      province == Taxman::QC ? QC_EMPLOYEE_RATE : EMPLOYEE_RATE
+      quebec? ? QC_EMPLOYEE_RATE : EMPLOYEE_RATE
+    end
+
+    def quebec?
+      province == Taxman::QC
     end
   end
 end
