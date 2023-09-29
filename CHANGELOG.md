@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.1.0](https://github.com/Humi-HR/taxman/compare/v2.0.0...v2.1.0) (2023-09-29)
+
+
+### Features
+
+* Add EI support when moving in/out Quebec ([bbf164b](https://github.com/Humi-HR/taxman/commit/bbf164b5a387e7edddd3f9466ed3d8d59c1d14cc))
+* Rename optional input for location ([90101aa](https://github.com/Humi-HR/taxman/commit/90101aacd5861235e4a37ac7d35501d45cdfd32e))
+
 ## [2.0.0](https://github.com/Humi-HR/taxman/compare/v1.12.5...v2.0.0) (2023-09-21)
 
 
