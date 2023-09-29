@@ -34,7 +34,7 @@ module Taxman2023
       b_insurable
       b1_pensionable
       b1_insurable
-      previously_in_non_qc
+      previously_not_in_qc
       previously_in_qc
     ].freeze
 
@@ -128,7 +128,7 @@ module Taxman2023
     def calculate_k2_value(context)
       context[:k2_value] = if context[:province] == Taxman::QC
                              # set Quebec k2 values
-                             if context[:previously_in_non_qc]
+                             if context[:previously_not_in_qc]
                                K2RQ.amount(context)
                              else
                                K2Q.amount(context)

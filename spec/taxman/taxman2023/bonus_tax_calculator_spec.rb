@@ -32,7 +32,7 @@ RSpec.describe Taxman2023::BonusTaxCalculator do
       b1_insurable: 1_000_00,
       d: 0,
       d1: 0,
-      previously_in_non_qc: false,
+      previously_not_in_qc: false,
       previously_in_qc: false,
       pm: 0,
       ei: 0,
