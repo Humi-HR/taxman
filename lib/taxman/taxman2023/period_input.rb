@@ -7,7 +7,7 @@ module Taxman2023
       taxable_periodic_income:,
       taxable_non_periodic_income:,
       province:,
-      previously_in_non_qc: false,
+      previously_not_in_qc: false,
       previously_in_qc: false,
       rsp_deductions: 0,
       alimony: 0,
@@ -26,7 +26,7 @@ module Taxman2023
       @province = province
       @qc_g = @qc_d = taxable_periodic_income
       @qc_b2 = taxable_non_periodic_income
-      @previously_in_non_qc = previously_in_non_qc
+      @previously_not_in_qc = previously_not_in_qc
       @previously_in_qc = previously_in_qc
       @qc_pr = periods_remaining_including_this_one
     end
@@ -44,7 +44,7 @@ module Taxman2023
         qc_g: (@qc_g * 100).to_d,
         qc_d: (@qc_d * 100).to_d,
         qc_b2: (@qc_b2 * 100).to_d,
-        previously_in_non_qc: @previously_in_non_qc,
+        previously_not_in_qc: @previously_not_in_qc,
         previously_in_qc: @previously_in_qc,
         qc_pr: @qc_pr
       }
