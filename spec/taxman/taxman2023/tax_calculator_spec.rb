@@ -38,8 +38,8 @@ RSpec.describe Taxman2023::TaxCalculator do
       b1_insurable: b1,
       d: d,
       d1: d1,
-      previously_on_cpp: false,
-      previously_on_qpp: false,
+      previously_in_non_qc: false,
+      previously_in_qc: false,
       pm: 0,
       ei: 0,
       dq: 0,
@@ -77,7 +77,7 @@ RSpec.describe Taxman2023::TaxCalculator do
 
   context "when previously on qpp" do
     let(:partial_context) do
-      on_partial_context.merge(previously_on_qpp: true)
+      on_partial_context.merge(previously_in_qc: true)
     end
 
     it "matches the expected T3 amount" do
@@ -122,8 +122,8 @@ RSpec.describe Taxman2023::TaxCalculator do
         b1_insurable: b1,
         d: d,
         d1: d1,
-        previously_on_cpp: false,
-        previously_on_qpp: false,
+        previously_in_non_qc: false,
+        previously_in_qc: false,
         pm: 12,
         ei: 0,
         dq: 0,

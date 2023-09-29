@@ -3,15 +3,15 @@
 RSpec.describe Taxman2023::Ei do
   let(:ei) do
     described_class.amount(ie: ie, d1: d1, ie_ytd: ie_ytd, province: province,
-                           previously_on_cpp: previously_on_cpp,
-                           previously_on_qpp: previously_on_qpp)
+                           previously_in_non_qc: previously_in_non_qc,
+                           previously_in_qc: previously_in_qc)
   end
   let(:d1) { 0 }
   let(:ie) { 0 }
   let(:ie_ytd) { 0 }
   let(:province) { Taxman::BC }
-  let(:previously_on_cpp) { false }
-  let(:previously_on_qpp) { false }
+  let(:previously_in_non_qc) { false }
+  let(:previously_in_qc) { false }
 
   context "when ei contribution limit has already been reached" do
     let(:d1) { Taxman2023::Ei::EI_MAX }
@@ -47,7 +47,7 @@ RSpec.describe Taxman2023::Ei do
   context "when having moved from Ontario to Quebec" do
     let(:ie) { 4_000_00 }
     let(:ie_ytd) { 60_000_00 }
-    let(:previously_on_cpp) { true }
+    let(:previously_in_non_qc) { true }
     let(:province) { Taxman::QC }
 
     it "uses the remaining contribution room" do
