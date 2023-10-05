@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.1](https://github.com/Humi-HR/taxman/compare/v2.1.0...v2.1.1) (2023-10-05)
+
+
+### Bug Fixes
+
+* Use single flag for tracking location ([31ba4d1](https://github.com/Humi-HR/taxman/commit/31ba4d156799c2dcee3e3975e81a442c4b1d633d))
+
 ## [2.1.0](https://github.com/Humi-HR/taxman/compare/v2.0.0...v2.1.0) (2023-09-29)
 
 
