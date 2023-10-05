@@ -38,8 +38,7 @@ RSpec.describe Taxman2023::TaxCalculator do
       b1_insurable: b1,
       d: d,
       d1: d1,
-      previously_not_in_qc: false,
-      previously_in_qc: false,
+      moved_in_or_out_qc: false,
       pm: 0,
       ei: 0,
       dq: 0,
@@ -75,9 +74,9 @@ RSpec.describe Taxman2023::TaxCalculator do
     expect(tax[:t3]).to be_within(0.1).of 2_827_972.33.to_d
   end
 
-  context "when previously on qpp" do
+  context "when previously in Quebec" do
     let(:partial_context) do
-      on_partial_context.merge(previously_in_qc: true)
+      on_partial_context.merge(moved_in_or_out_qc: true)
     end
 
     it "matches the expected T3 amount" do
@@ -122,8 +121,7 @@ RSpec.describe Taxman2023::TaxCalculator do
         b1_insurable: b1,
         d: d,
         d1: d1,
-        previously_not_in_qc: false,
-        previously_in_qc: false,
+        moved_in_or_out_qc: false,
         pm: 12,
         ei: 0,
         dq: 0,
