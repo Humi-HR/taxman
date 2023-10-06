@@ -43,7 +43,7 @@ module Taxman2023
         qc_d: (@qc_d * 100).to_d,
         qc_b2: (@qc_b2 * 100).to_d,
         moved_in_or_out_qc: @moved_in_or_out_qc,
-        qc_pr: @qc_pr
+        qc_pr: @qc_pr.to_d
       }
     end
   end
