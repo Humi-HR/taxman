@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.2](https://github.com/Humi-HR/taxman/compare/v2.1.1...v2.1.2) (2023-10-06)
+
+
+### Bug Fixes
+
+* Error on bad remaining PP type ([75b539e](https://github.com/Humi-HR/taxman/commit/75b539e33a9a8988bcd3268b53af4ebd31c396af))
+
 ## [2.1.1](https://github.com/Humi-HR/taxman/compare/v2.1.0...v2.1.1) (2023-10-05)
 
 
