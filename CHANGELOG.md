@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.2.0](https://github.com/Humi-HR/taxman/compare/v2.1.2...v2.2.0) (2023-10-31)
+
+
+### Features
+
+* Split out QC inputs for pension ([1950eff](https://github.com/Humi-HR/taxman/commit/1950effdf63f0f2c61172b739009136a74720896))
+* Split out QC period input ([247ef40](https://github.com/Humi-HR/taxman/commit/247ef409faec6a0726a86c73101508130ec0b1a1))
+
 ## [2.1.2](https://github.com/Humi-HR/taxman/compare/v2.1.1...v2.1.2) (2023-10-06)
 
 
