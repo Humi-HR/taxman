@@ -5,6 +5,8 @@ RSpec.describe Taxman2023::PeriodInput do
     described_class.new(
       taxable_periodic_income: 1,
       taxable_non_periodic_income: 2,
+      qc_taxable_periodic_income: 11,
+      qc_taxable_non_periodic_income: 22,
       rsp_deductions: 3,
       alimony: 5,
       rsp_deductions_from_bonus: 6,
@@ -27,9 +29,9 @@ RSpec.describe Taxman2023::PeriodInput do
         moved_in_or_out_qc: false,
         u1: 9_00.to_d,
         province: "ON",
-        qc_g: 1_00.to_d,
-        qc_d: 1_00.to_d,
-        qc_b2: 2_00.to_d,
+        qc_g: 11_00.to_d,
+        qc_d: 11_00.to_d,
+        qc_b2: 22_00.to_d,
         qc_pr: 17
       }
     )
@@ -56,9 +58,9 @@ RSpec.describe Taxman2023::PeriodInput do
           f3: 0.to_d,
           u1: 0.to_d,
           province: "ON",
-          qc_g: 50_00.to_d,
-          qc_d: 50_00.to_d,
-          qc_b2: 100_00.to_d,
+          qc_g: 0.to_d,
+          qc_d: 0.to_d,
+          qc_b2: 0.to_d,
           qc_pr: 0
         }
       )

@@ -7,6 +7,8 @@ module Taxman2023
       taxable_periodic_income:,
       taxable_non_periodic_income:,
       province:,
+      qc_taxable_periodic_income: 0,
+      qc_taxable_non_periodic_income: 0,
       moved_in_or_out_qc: false,
       rsp_deductions: 0,
       alimony: 0,
@@ -23,8 +25,8 @@ module Taxman2023
       @f3 = rsp_deductions_from_bonus
       @u1 = union_dues
       @province = province
-      @qc_g = @qc_d = taxable_periodic_income
-      @qc_b2 = taxable_non_periodic_income
+      @qc_g = @qc_d = qc_taxable_periodic_income
+      @qc_b2 = qc_taxable_non_periodic_income
       @moved_in_or_out_qc = moved_in_or_out_qc
       @qc_pr = periods_remaining_including_this_one
     end

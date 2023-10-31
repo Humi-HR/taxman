@@ -17,6 +17,8 @@ RSpec.describe Taxman2023::Calculate do
       rsp_deductions: 50,
       taxable_non_periodic_income: 500,
       taxable_periodic_income: 1000,
+      qc_taxable_non_periodic_income: 500,
+      qc_taxable_periodic_income: 1000,
       province: "QC",
       periods_remaining_including_this_one: 6
     )

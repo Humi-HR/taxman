@@ -18,6 +18,8 @@ RSpec.describe Taxman2023::Calculate do
     Taxman2023::PeriodInput.new(
       taxable_periodic_income: 5_000,
       taxable_non_periodic_income: 20_000,
+      qc_taxable_periodic_income: 5_000,
+      qc_taxable_non_periodic_income: 20_000,
       province: "qc",
       periods_remaining_including_this_one: 12
     )
