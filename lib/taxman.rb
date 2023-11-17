@@ -5,6 +5,7 @@ require_relative "taxman/version"
 require_relative "taxman/taxman2021"
 require_relative "taxman/taxman2022"
 require_relative "taxman/taxman2023"
+require_relative "taxman/taxman2024"
 
 # :nodoc:
 module Taxman
