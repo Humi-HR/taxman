@@ -62,4 +62,3 @@ RSpec.describe Taxman2023::Nl::T4 do
     end
   end
 end
-# rubocop:enable RSpec/MultipleMemoizedHelpers

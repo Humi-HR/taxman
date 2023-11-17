@@ -2,17 +2,11 @@
 
 module Taxman2023
   # Calculates the annualized provincial tax
-  class T2Generic
-    attr_reader :a, :t4
-
-    def initialize(a:, t4:)
-      @a = a.to_d
-      @t4 = t4.to_d # Basic annualized provincial tax
-    end
-
+  class T2Generic < Factor
     def self.params
       %i[a t4]
     end
+    attr_reader(*params)
 
     def amount
       t4 + v1 + v2 - s

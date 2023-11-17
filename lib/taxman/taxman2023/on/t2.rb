@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# rubocop:disable Metrics/AbcSize, Metrics/MethodLength, Style/ComparableClamp
 module Taxman2023
   module On
     # This calculates the T2 factor for ontario
@@ -32,7 +31,8 @@ module Taxman2023
       end
 
       def s
-        [[t4 + v1, (2 * (s2 + 0)) - (t4 + v1)].min, 0].max.to_d
+        s = [t4 + v1, (2 * (s2 + 0)) - (t4 + v1)].min
+        [s, 0].max.to_d
       end
 
       def s2
@@ -41,4 +41,3 @@ module Taxman2023
     end
   end
 end
-# rubocop:enable Metrics/AbcSize, Metrics/MethodLength, Style/ComparableClamp

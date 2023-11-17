@@ -1,5 +1,102 @@
 # Changelog
 
+## [2.2.0](https://github.com/Humi-HR/taxman/compare/v2.1.2...v2.2.0) (2023-10-31)
+
+
+### Features
+
+* Split out QC inputs for pension ([1950eff](https://github.com/Humi-HR/taxman/commit/1950effdf63f0f2c61172b739009136a74720896))
+* Split out QC period input ([247ef40](https://github.com/Humi-HR/taxman/commit/247ef409faec6a0726a86c73101508130ec0b1a1))
+
+## [2.1.2](https://github.com/Humi-HR/taxman/compare/v2.1.1...v2.1.2) (2023-10-06)
+
+
+### Bug Fixes
+
+* Error on bad remaining PP type ([75b539e](https://github.com/Humi-HR/taxman/commit/75b539e33a9a8988bcd3268b53af4ebd31c396af))
+
+## [2.1.1](https://github.com/Humi-HR/taxman/compare/v2.1.0...v2.1.1) (2023-10-05)
+
+
+### Bug Fixes
+
+* Use single flag for tracking location ([31ba4d1](https://github.com/Humi-HR/taxman/commit/31ba4d156799c2dcee3e3975e81a442c4b1d633d))
+
+## [2.1.0](https://github.com/Humi-HR/taxman/compare/v2.0.0...v2.1.0) (2023-09-29)
+
+
+### Features
+
+* Add EI support when moving in/out Quebec ([bbf164b](https://github.com/Humi-HR/taxman/commit/bbf164b5a387e7edddd3f9466ed3d8d59c1d14cc))
+* Rename optional input for location ([90101aa](https://github.com/Humi-HR/taxman/commit/90101aacd5861235e4a37ac7d35501d45cdfd32e))
+
+## [2.0.0](https://github.com/Humi-HR/taxman/compare/v1.12.5...v2.0.0) (2023-09-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* Add Quebec support
+
+### Features
+
+* Add basic inputs for QPP calculations ([2de43fe](https://github.com/Humi-HR/taxman/commit/2de43feb7acddf5e6443373f50d0c0a255b16136))
+* Add bonus taxes for Quebec ([c688609](https://github.com/Humi-HR/taxman/commit/c68860997bb85946510c1fe00ab8d61008617419))
+* Add calculation for QC H2 ([d311933](https://github.com/Humi-HR/taxman/commit/d3119332d1ceef77b80f7c008660c65a83f4769c))
+* Add full QC bonus tax calculation ([1f6baca](https://github.com/Humi-HR/taxman/commit/1f6baca53099b374ffa9e4b493d44abc0f4b522b))
+* Add I1 for use in bonus tax calculation ([c4c4611](https://github.com/Humi-HR/taxman/commit/c4c46119dc56c7b020857c582eae391a9b071fa5))
+* Add input adapter for calculating QPIP ([f4baae7](https://github.com/Humi-HR/taxman/commit/f4baae7aeeb26b16a89ef443635c9e6dba67fa10))
+* add inputs for employees transferring between cpp and qpp ([72d60cb](https://github.com/Humi-HR/taxman/commit/72d60cbe832d9b39a39c0d20e18919f2a259ae88))
+* Add new inputs for personal tax deductions ([5a281b9](https://github.com/Humi-HR/taxman/commit/5a281b99d9309f1213e1395970528d06d52bcd12))
+* Add Quebec support ([970843e](https://github.com/Humi-HR/taxman/commit/970843e1f4e0370995708b36efc7707f93b899ee))
+* Add support for calculating QPIP ([3161d68](https://github.com/Humi-HR/taxman/commit/3161d68abe2c5dff5f4faf3a1f015aa2305eff96))
+* Add support for previous QPP in CPP calc ([0692e18](https://github.com/Humi-HR/taxman/commit/0692e18a5155c99bb50a396df7da872fd582977e))
+* Add switches between QC and non-QC ([4d23300](https://github.com/Humi-HR/taxman/commit/4d23300d7246c8c0c78c9a43a33d4ba4180b5ec3))
+* calculate j & j1 in main app ([540324b](https://github.com/Humi-HR/taxman/commit/540324b450ad004a060ef151ff0e34651ff43cb3))
+* calculate qc I ([6d10e8e](https://github.com/Humi-HR/taxman/commit/6d10e8ed0f65688538a80fbb6cadd238aa6268ef))
+* Calculate QPP for employees in Quebec ([5c59f95](https://github.com/Humi-HR/taxman/commit/5c59f9587a38dd0ab8f95bf748faa08d615a6351))
+* calculate quebec income tax for the year (Y) ([0a5101b](https://github.com/Humi-HR/taxman/commit/0a5101bfbb8b9a72d77a89ee3715da0b17a2a426))
+* calculate quebec income tax to be withheld for the pay period ([4a49ed4](https://github.com/Humi-HR/taxman/commit/4a49ed4afb57238c7484f35a0620b0a480f2742a))
+* created K2Q, K2r, and K2RQ factors ([f97acb9](https://github.com/Humi-HR/taxman/commit/f97acb9898763a7bee5c432696ba4062f247c035))
+* Do not add t2 when calculating taxes in QC ([a252e38](https://github.com/Humi-HR/taxman/commit/a252e38e30508295b5a39f150496477e39583009))
+* ignore .idea folder ([c97dee6](https://github.com/Humi-HR/taxman/commit/c97dee623f510768ddd040d01438dc3b0068a3d6))
+* implement f5q calculation and update f5a and f5b ([12f501c](https://github.com/Humi-HR/taxman/commit/12f501c52104ccb63d41cb8b35cf2d78fa644cf0))
+* implement K2P Generic and add specs ([6a9a6e6](https://github.com/Humi-HR/taxman/commit/6a9a6e6f69010274e20fa62281b435858dfdfb7e))
+* Implement QC test 1 ([970d17f](https://github.com/Humi-HR/taxman/commit/970d17f1b59ab8d3b8d9da722bdb458c81476530))
+* Implement QPIP calculations ([838e3de](https://github.com/Humi-HR/taxman/commit/838e3de29ee8aabaca480b59be4781499e2f2b00))
+* Implement Quebec test 4 CRA test 28 ([f249c0d](https://github.com/Humi-HR/taxman/commit/f249c0d6af638c5b859f6f0ccce27917d32081e9))
+* Implement simple EI for QC ([1ab14d3](https://github.com/Humi-HR/taxman/commit/1ab14d3868a5a9ccf501b449b030fe23babcb50d))
+* implement test case 2 ([c1143ab](https://github.com/Humi-HR/taxman/commit/c1143abd5624b80d685c3a9ca6e834f451f5f44c))
+* Implement Y1 and Y2 calculations for bonus ([d0b7b6f](https://github.com/Humi-HR/taxman/commit/d0b7b6f4fdcc6bdffe320fba1e83e0cc254ea099))
+* Join CppInput and QppInput into PensionInput ([1f4b66d](https://github.com/Humi-HR/taxman/commit/1f4b66d2cb53d433780320489cc509307411ef50))
+* Only calculate CPP/QPP not both ([0e0ff5c](https://github.com/Humi-HR/taxman/commit/0e0ff5c71ff486879a850d29b6f8b1a4cf5f8edc))
+* Reduce federal QC taxes by 16.5% in T1 calc ([2e39000](https://github.com/Humi-HR/taxman/commit/2e39000d394127e10e5ea1ed2c55bdaff5a94db1))
+* Set flag tax for bonuses in Quebec ([796d538](https://github.com/Humi-HR/taxman/commit/796d538abbad6156dd450f2b9324d13835115bb2))
+* use correct K2 values in T3 ([eb43c90](https://github.com/Humi-HR/taxman/commit/eb43c9054890b1e23489d8c01b4d58f5af31471c))
+
+
+### Bug Fixes
+
+* Add full test for basic QC calculation ([2ce7686](https://github.com/Humi-HR/taxman/commit/2ce7686554ab3eaa24b747ba824353e202ab6cfc))
+* Avoid whole number division ([0dd99a4](https://github.com/Humi-HR/taxman/commit/0dd99a4d4b4d4ad6c5fc82dbedf105e7b767e92b))
+* Avoid whole number division ([1e40aeb](https://github.com/Humi-HR/taxman/commit/1e40aeb64907bfe2d1909b3548863d3598866f96))
+* documentation update ([791df33](https://github.com/Humi-HR/taxman/commit/791df336a8804ce09b24685b92f04b58951ec68c))
+* DRY up province codes ([e3dd6c4](https://github.com/Humi-HR/taxman/commit/e3dd6c4819109a2a4d5e7ef01d57424bd864b7c7))
+* Ensure all required factors are present ([899699b](https://github.com/Humi-HR/taxman/commit/899699bb044f767fdee0c893fecd7a786f2dc59f))
+* Fix docstrings for bonus classes ([b418fe5](https://github.com/Humi-HR/taxman/commit/b418fe56b0d8a7c74f6c49e29231c4bc600b9e99))
+* linting cleanup ([4675d83](https://github.com/Humi-HR/taxman/commit/4675d83d4d06b63aa55ac383e98ae0f1c893639c))
+* make the cops happy ([2d51bef](https://github.com/Humi-HR/taxman/commit/2d51bef145ee89043ee3d10e8424fb235a600504))
+* move all k2 related values into tax_calculator and fix naming ([0ba0ad1](https://github.com/Humi-HR/taxman/commit/0ba0ad1f3c4639f6144dc6a317b526344868b185))
+* no-doc taxman ([468c2c9](https://github.com/Humi-HR/taxman/commit/468c2c9d713a56a1ae8a477f1585ab043456e928))
+* refactor fix ([8dc7180](https://github.com/Humi-HR/taxman/commit/8dc71805eda3e83c1da77947c0a3f5b91f7f6a54))
+* Remove unneeded return ([4e20ef9](https://github.com/Humi-HR/taxman/commit/4e20ef9c54bebc4a3a1fea12e0b429798faf195f))
+* Rubify setting provincial tax ([62b748f](https://github.com/Humi-HR/taxman/commit/62b748ff29af18cb3ac5b15652639dfd2f456eeb))
+* rubocop cleanup ([43e5809](https://github.com/Humi-HR/taxman/commit/43e58099a6d29fec8fe38e49581d3add4207c69f))
+* Spread bonus contribution across year for k2 ([2103866](https://github.com/Humi-HR/taxman/commit/21038664608979b40dd115249b98087ef68d5889))
+* Test amount for qpip with decimal points ([76c9d19](https://github.com/Humi-HR/taxman/commit/76c9d19bc7b3cd4bbd512c733f9c348bdd172b08))
+* tests ([85fcbcc](https://github.com/Humi-HR/taxman/commit/85fcbcc192a1aa0dc6e81b0869c79091fd18924c))
+* use Factor base class ([10ace52](https://github.com/Humi-HR/taxman/commit/10ace5281f9266c1e03be04107f5f6fcd8c2be8f))
+* use QPP rate constant ([c0b6ac7](https://github.com/Humi-HR/taxman/commit/c0b6ac759a1d490cfceeb1a553c4572f95647c15))
+
 ## [1.12.5](https://github.com/Humi-HR/taxman/compare/v1.12.4...v1.12.5) (2023-08-09)
 
 

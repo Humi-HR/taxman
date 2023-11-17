@@ -2,22 +2,27 @@
 
 module Taxman2023
   # Calculates the T factor from the T1 and T2
-  class T
-    attr_reader :t1, :t2, :p, :l
-
-    def initialize(t1:, t2:, p:, l:)
+  class T < Factor
+    def initialize(t1:, t2:, p:, l:, province:)
+      super
       @t1 = t1
       @t2 = t2
       @p = p
       @l = l
+      @province = province
     end
 
     def self.params
-      %i[t1 t2 p l]
+      %i[t1 t2 p l province]
     end
+    attr_reader(*params)
 
     def amount
-      ((t1 + t2) / p) + l
+      if province == Taxman::QC
+        (t1 / p) + l
+      else
+        ((t1 + t2) / p) + l
+      end
     end
   end
 end

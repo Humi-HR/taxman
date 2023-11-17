@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# rubocop:disable Metrics/MethodLength, Metrics/AbcSize
 module Taxman2023
   # Calculates the federal and provincial bonus taxes
   class BonusTaxCalculator
@@ -28,8 +27,6 @@ module Taxman2023
                 .new(a: a, current_bonus_term: current_bonus, ytd_bonus_term: ytd_bonus_term)
                 .amount
 
-      return small_pay_amount(context[:b]) if a_bonus <= 5_000_00
-
       a_without_bonus = ABonus
                         .new(a: a, current_bonus_term: current_without_bonus, ytd_bonus_term: ytd_bonus_term)
                         .amount
@@ -48,7 +45,29 @@ module Taxman2023
       # We likely handle tax exempt wrong, and should fix it:
       # https://gethumi.atlassian.net/browse/PAY-972
       federal_tax = [(taxes_with_bonus[:t1] - taxes_without_bonus[:t1]), 0].max
-      provincial_tax = [(taxes_with_bonus[:t2] - taxes_without_bonus[:t2]), 0].max
+
+      provincial_tax = if context[:province] == Taxman::QC
+                         context[:qc_d1] = QcD1.amount(context)
+                         context[:qc_h2] = QcH2.amount(context)
+                         context[:qc_csb] = QcCsb.amount(context)
+                         context[:qc_i1] = QcI1.amount(context)
+                         context[:qc_y1] = QcY1Y2.amount(context.merge({ qc_b2: 0, qc_csb: 0 }))
+                         context[:qc_y2] = QcY1Y2.amount(context)
+                         context[:qc_a1] = QcA1.amount(context)
+                         context[:qc_a1]
+                       else
+                         [(taxes_with_bonus[:t2] - taxes_without_bonus[:t2]), 0].max
+                       end
+
+      # Apply flat taxes for small pay
+      federal_tax, provincial_tax = small_pay_amounts(
+        a_bonus,
+        federal_tax,
+        provincial_tax,
+        context[:b],
+        context[:province]
+      )
+
       total_tax = federal_tax + provincial_tax
       # Remove the calculated taxes from the result, since TaxCalculator spreads out over the
       # year and we're taking all of the taxes on the bonus this period
@@ -57,24 +76,25 @@ module Taxman2023
         taxes_without_bonus: taxes_without_bonus.except(:federal_taxes, :provincial_taxes),
         federal_tax_on_bonus: (federal_tax / 100).round(2),
         provincial_tax_on_bonus: (provincial_tax / 100).round(2),
-        total_bonus_tax: (total_tax / 100).round(2)
+        total_bonus_tax: (total_tax / 100).round(2),
+        qc_i1: context[:qc_i1],
+        qc_y1: context[:qc_y1],
+        qc_y2: context[:qc_y2],
+        qc_a1: context[:qc_a1]
       }
     end
 
     private
 
-    def small_pay_amount(b)
-      federal_tax = (b * 0.1)
-      provincial_tax = (b * 0.05)
-      total_tax = federal_tax + provincial_tax
-
-      {
-        federal_tax_on_bonus: (federal_tax / 100).round(2),
-        provincial_tax_on_bonus: (provincial_tax / 100).round(2),
-        total_bonus_tax: (total_tax / 100).round(2),
-        taxes_with_bonus: {},
-        taxes_without_bonus: {}
-      }
+    # Apply flat tax for small pay
+    def small_pay_amounts(a_bonus, federal_tax, provincial_tax, b, province)
+      federal_tax = b * 0.1 if a_bonus <= 5_000_00
+      if a_bonus <= 5_000_00 && province != Taxman::QC
+        provincial_tax = b * 0.05
+      elsif a_bonus <= 17_183_00 && province == Taxman::QC
+        provincial_tax = b * 0.07
+      end
+      [federal_tax, provincial_tax]
     end
 
     def current_bonus_terms
@@ -88,4 +108,3 @@ module Taxman2023
     end
   end
 end
-# rubocop:enable Metrics/MethodLength, Metrics/AbcSize

@@ -2,13 +2,13 @@
 
 module Taxman2023
   # Calculates the employee's ei contributions for the period
-  class Ei
+  class Ei < Factor
     EI_MAX = 1_002_45.to_d
+    QC_EI_MAX = 781_05.to_d
     MAXIMUM_INSURABLE = 61_500_00.to_d
     EMPLOYEE_RATE = 0.0163.to_d
+    QC_EMPLOYEE_RATE = 0.0127.to_d
     EMPLOYER_MATCHING = 1.4.to_d
-
-    attr_reader :ie, :d1
 
     # Helper method to get the constants as a hash
     class Constants
@@ -21,25 +21,37 @@ module Taxman2023
       end
     end
 
-    def initialize(ie:, d1:)
-      @ie = ie.to_d
-      @d1 = d1.to_d
-    end
-
     def self.params
-      %i[ie d1]
+      %i[ie ie_ytd d1 province moved_in_or_out_qc]
     end
+    attr_reader(*params)
 
     def amount
       [ei_max, ei_calculated].min
     end
 
     def ei_max
-      [EI_MAX - d1, 0].max
+      [ei_maximum - d1, 0].max
     end
 
     def ei_calculated
-      ie * EMPLOYEE_RATE
+      if moved_in_or_out_qc
+        [[MAXIMUM_INSURABLE - ie_ytd, ie].min * ei_rate, 0].max
+      else
+        ie * ei_rate
+      end
+    end
+
+    def ei_maximum
+      quebec? ? QC_EI_MAX : EI_MAX
+    end
+
+    def ei_rate
+      quebec? ? QC_EMPLOYEE_RATE : EMPLOYEE_RATE
+    end
+
+    def quebec?
+      province == Taxman::QC
     end
   end
 end

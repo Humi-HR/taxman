@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 RSpec.describe Taxman2023::K2 do
-  let(:k2) { described_class.new(**k2_params).amount }
+  let(:k2_obj) { described_class.new(**k2_params) }
+  let(:k2) { k2_obj.amount }
   let(:b1) { 0 }
   let(:d) { 0 } # YTD CPP contribution
   let(:d1) { 0 } # YTD EI contribution
@@ -22,13 +23,15 @@ RSpec.describe Taxman2023::K2 do
     }
   end
 
+  before { allow(k2_obj).to receive(:rate).and_return(0.0505) }
+
   context "with $54k salary monthly, $1k bonus" do
     let(:i) { 4_500_00 }
     let(:p) { 12 }
     let(:b) { 1_000_00 }
 
     it "matches PDOC/Greg's sheet" do
-      expect(k2).to be_within(0.01).of 516_86.25.to_d
+      expect(k2).to be_within(0.01).of 174_01.04.to_d
     end
   end
 
@@ -39,7 +42,7 @@ RSpec.describe Taxman2023::K2 do
     let(:b1) { 1_000_00 }
 
     it "matches PDOC/Greg's sheet" do
-      expect(k2).to be_within(0.01).of 526_73.25.to_d
+      expect(k2).to be_within(0.01).of 177_33.33.to_d
     end
   end
 
@@ -50,7 +53,7 @@ RSpec.describe Taxman2023::K2 do
     let(:b1) { 1_000_00 }
 
     it "matches PDOC/Greg's sheet" do
-      expect(k2).to be_within(0.01).of 618_88.50.to_d
+      expect(k2).to be_within(0.01).of 208_35.80.to_d
     end
   end
 
@@ -62,7 +65,7 @@ RSpec.describe Taxman2023::K2 do
     let(:b1) { 0 }
 
     it "matches PDOC/Greg's sheet" do
-      expect(k2).to be_within(0.01).of 618_88.50.to_d
+      expect(k2).to be_within(0.01).of 208_35.80.to_d
     end
   end
 end

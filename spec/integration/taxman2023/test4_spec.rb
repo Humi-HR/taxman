@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 
-# rubocop:disable RSpec/FilePath
 RSpec.describe Taxman2023::Calculate do
   let(:calculate) do
     described_class.new(
       period_input: p,
       year_input: y,
-      td1_input: t,
-      cpp_input: c,
+      personal_tax_input: t,
+      pension_input: c,
       ei_input: e
     ).call
   end
@@ -30,12 +29,18 @@ RSpec.describe Taxman2023::Calculate do
     )
   end
 
-  let(:t) { Taxman2023::Td1Input.new(federal_personal_amount: 15_000, provincial_personal_amount: 12_458) }
+  let(:t) do
+    Taxman2023::PersonalTaxDeductionsInput.new(
+      federal_personal_amount: 15_000,
+      provincial_personal_amount: 12_458
+    )
+  end
 
   let(:c) do
-    Taxman2023::CppInput.new(
+    Taxman2023::PensionInput.new(
       pensionable_income_this_period: 5_000,
-      ytd_contributions: 1_120.58,
+      ytd_cpp_contributions: 1_120.58,
+      ytd_qpp_contributions: 0,
       contribution_months_this_year: 12
     )
   end
@@ -63,4 +68,3 @@ RSpec.describe Taxman2023::Calculate do
     expect(calculate[:employee_ei_contribution]).to eq 81.50
   end
 end
-# rubocop:enable RSpec/FilePath, RSpec/MultipleMemoizedHelpers

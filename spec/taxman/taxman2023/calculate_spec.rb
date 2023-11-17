@@ -5,18 +5,21 @@ RSpec.describe Taxman2023::Calculate do
     described_class.new(
       period_input: p,
       year_input: y,
-      td1_input: t,
-      cpp_input: c,
+      personal_tax_input: t,
+      pension_input: c,
+      qpip_input: q,
       ei_input: e
     )
   end
+
+  let(:q) { Taxman2023::QpipInput.new }
 
   context "with $156k, weekly schedule, $1k bonus YTD, $5k bonus current" do
     let(:p) do
       Taxman2023::PeriodInput.new(
         taxable_periodic_income: 3_000,
         taxable_non_periodic_income: 5_000,
-        province: "on"
+        province: "ON"
       )
     end
 
@@ -29,13 +32,14 @@ RSpec.describe Taxman2023::Calculate do
       )
     end
 
-    let(:t) { Taxman2023::Td1Input.new }
+    let(:t) { Taxman2023::PersonalTaxDeductionsInput.new }
 
     let(:c) do
-      Taxman2023::CppInput.new(
+      Taxman2023::PensionInput.new(
         pensionable_income_this_period: 8_000,
         pensionable_non_periodic_income_this_period: 5_000,
-        ytd_contributions: 0,
+        ytd_cpp_contributions: 0,
+        ytd_qpp_contributions: 0,
         contribution_months_this_year: 12
       )
     end
@@ -109,12 +113,13 @@ RSpec.describe Taxman2023::Calculate do
       )
     end
 
-    let(:t) { Taxman2023::Td1Input.new }
+    let(:t) { Taxman2023::PersonalTaxDeductionsInput.new }
 
     let(:c) do
-      Taxman2023::CppInput.new(
+      Taxman2023::PensionInput.new(
         pensionable_income_this_period: 24_695.92,
-        ytd_contributions: 0,
+        ytd_cpp_contributions: 0,
+        ytd_qpp_contributions: 0,
         contribution_months_this_year: 12
       )
     end
@@ -157,16 +162,17 @@ RSpec.describe Taxman2023::Calculate do
     end
 
     let(:t) do
-      Taxman2023::Td1Input.new(
+      Taxman2023::PersonalTaxDeductionsInput.new(
         federal_personal_amount_offset: 1_000,
         provincial_personal_amount_offset: 1_000
       )
     end
 
     let(:c) do
-      Taxman2023::CppInput.new(
+      Taxman2023::PensionInput.new(
         pensionable_income_this_period: 3_076.92,
-        ytd_contributions: 0,
+        ytd_cpp_contributions: 0,
+        ytd_qpp_contributions: 0,
         contribution_months_this_year: 12
       )
     end
@@ -210,13 +216,14 @@ RSpec.describe Taxman2023::Calculate do
       )
     end
 
-    let(:t) { Taxman2023::Td1Input.new }
+    let(:t) { Taxman2023::PersonalTaxDeductionsInput.new }
 
     let(:c) do
-      Taxman2023::CppInput.new(
+      Taxman2023::PensionInput.new(
         pensionable_income_this_period: 1_000,
         pensionable_non_periodic_income_this_period: 1_000,
-        ytd_contributions: 3_754.45,
+        ytd_cpp_contributions: 3_754.45,
+        ytd_qpp_contributions: 0,
         contribution_months_this_year: 12
       )
     end
@@ -242,4 +249,3 @@ RSpec.describe Taxman2023::Calculate do
     end
   end
 end
-# rubocop:enable RSpec/MultipleMemoizedHelpers
