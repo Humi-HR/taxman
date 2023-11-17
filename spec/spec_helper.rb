@@ -12,6 +12,8 @@ RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = :expect
   end
+
+  Taxman2024::Calculate.enable
 end
 
 require "debug"
