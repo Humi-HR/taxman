@@ -23,6 +23,8 @@ module Taxman2024
     end
 
     def call
+      raise_unless_enabled
+
       @context = {}
       [period_input, year_input, personal_tax_input, pension_input, qpip_input, ei_input].each do |input|
         context.merge!(input.translate)
@@ -61,6 +63,18 @@ module Taxman2024
 
     def context_without_bonus(context)
       context.merge(bonus_symbols.to_h { |sym| [sym, 0] })
+    end
+
+    def raise_unless_enabled
+      raise "2024 not enabled" unless self.class.enabled?
+    end
+
+    def self.enable
+      @enabled = true
+    end
+
+    def self.enabled?
+      !!@enabled
     end
   end
 end
