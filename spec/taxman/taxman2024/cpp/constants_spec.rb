@@ -4,7 +4,7 @@ RSpec.describe Taxman2024::Cpp::Constants do
   let(:constants) { described_class.to_h }
 
   it "has the maximum pensionable income for a year" do
-    expect(constants[:cpp_maximum_pensionable]).to eq 66_600
+    expect(constants[:cpp_maximum_pensionable]).to eq 68_500
   end
 
   it "has the basic exemption" do

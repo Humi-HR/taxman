@@ -24,7 +24,7 @@ module Taxman2024
     end
 
     def max_cpp_credit
-      3_123_45.to_d
+      Cpp::MAX_CREDIT
     end
 
     def cpp_portion
