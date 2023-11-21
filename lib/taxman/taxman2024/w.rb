@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
 module Taxman2024
-  # Calculates the F5 factor
-  class F5 < Factor
+  # used in C2 calculation
+  class W < Factor
     def self.params
-      %i[c c2]
+      %i[pi_ytd pm]
     end
     attr_reader(*params)
 
     def amount
-      (c * (BigDecimal("0.01") / BigDecimal("0.0595"))) + c2
+      [pi_ytd, Cpp::MAXIMUM_PENSIONABLE * (pm / 12)].max
     end
   end
 end
