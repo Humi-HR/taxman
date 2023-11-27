@@ -54,7 +54,7 @@ module Taxman2024
     end
 
     def cea
-      1_368_00.to_d
+      1_433_00.to_d
     end
 
     private
