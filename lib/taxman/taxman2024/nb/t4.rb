@@ -9,9 +9,9 @@ module Taxman2024
 
       RATES_AND_CONSTANTS = {
         49_958_00.to_d => [LOWEST_RATE, 0.0.to_d],
-        99_916_00.to_d => [0.1400, 2_195_00.to_d],
-        185_064_00.to_d => [0.1600, 4_104_00.to_d],
-        BigDecimal("Infinity") => [0.1950, 10_290_00.to_d]
+        99_916_00.to_d => [0.1400, 2_298_00.to_d],
+        185_064_00.to_d => [0.1600, 4_296_00.to_d],
+        BigDecimal("Infinity") => [0.1950, 10_774_00.to_d]
       }.freeze
     end
   end
