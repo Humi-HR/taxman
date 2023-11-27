@@ -29,7 +29,7 @@ RSpec.describe Taxman2024::Ei do
     let(:ie) { 5_500_00 }
 
     it "matches pdoc" do
-      expect(ei).to eq 89_65.00.to_d
+      expect(ei).to eq 91_30.00.to_d
     end
   end
 
@@ -49,7 +49,7 @@ RSpec.describe Taxman2024::Ei do
     let(:province) { Taxman::QC }
 
     it "uses the remaining contribution room" do
-      expect(ei).to eq 19_05
+      expect(ei).to eq 42_24
     end
   end
 
@@ -57,7 +57,7 @@ RSpec.describe Taxman2024::Ei do
     let(:constants) { described_class::Constants.to_h }
 
     it "has the employee rate" do
-      expect(constants[:ei_employee_rate]).to eq 0.0163
+      expect(constants[:ei_employee_rate]).to eq 0.0166
     end
 
     it "has the employer matching rate" do
@@ -65,7 +65,7 @@ RSpec.describe Taxman2024::Ei do
     end
 
     it "has the maximum insurable earnings for a year" do
-      expect(constants[:ei_maximum_insurable]).to eq 61_500.00
+      expect(constants[:ei_maximum_insurable]).to eq 63_200.00
     end
   end
 end
