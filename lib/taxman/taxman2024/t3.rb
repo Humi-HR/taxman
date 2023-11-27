@@ -6,11 +6,11 @@ module Taxman2024
     LOWEST_RATE = 0.150.to_d
 
     RATES_AND_CONSTANTS = {
-      53_359_00.to_d => [LOWEST_RATE, 0.0.to_d],
-      106_717_00.to_d => [0.205.to_d, 2_935_00.to_d],
-      165_430_00.to_d => [0.260.to_d, 8_804_00.to_d],
-      235_675_00.to_d => [0.290.to_d, 13_767_00.to_d],
-      BigDecimal("Infinity") => [0.330.to_d, 23_194_00.to_d]
+      55_867_00.to_d => [LOWEST_RATE, 0.0.to_d],
+      111_733_00.to_d => [0.205.to_d, 3_073_00.to_d],
+      173_205_00.to_d => [0.260.to_d, 9_218_00.to_d],
+      246_752_00.to_d => [0.290.to_d, 14_414_00.to_d],
+      BigDecimal("Infinity") => [0.330.to_d, 24_284_00.to_d]
     }.freeze
 
     def initialize(a:, hd:, k2_value:, tc: nil, k3: 0, tc_offset: 0)
