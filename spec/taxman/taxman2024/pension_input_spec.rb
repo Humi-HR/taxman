@@ -4,7 +4,9 @@ RSpec.describe Taxman2024::PensionInput do
   let(:cpp_input) do
     described_class.new(
       pensionable_income_this_period: pi,
+      ytd_pensionable_income: pi_ytd,
       ytd_cpp_contributions: cpp_ytd,
+      ytd_additional_cpp_contributions: additional_cpp_ytd,
       ytd_qpp_contributions: qpp_ytd,
       contribution_months_this_year: pm,
       pensionable_non_periodic_income_this_period: b_pensionable,
@@ -14,7 +16,9 @@ RSpec.describe Taxman2024::PensionInput do
   end
 
   let(:pi) { 3_500 }
+  let(:pi_ytd) { 7_000 }
   let(:cpp_ytd) { 114 }
+  let(:additional_cpp_ytd) { 0 }
   let(:qpp_ytd) { 441 }
   let(:pm) { 12 }
   let(:b_pensionable) { 111 }
@@ -24,7 +28,9 @@ RSpec.describe Taxman2024::PensionInput do
   let(:form) do
     {
       pi: 3_500_00.to_d,
+      pi_ytd: 7_000_00.to_d,
       d: 114_00.to_d,
+      d2: 0.to_d,
       b_pensionable: 111_00.to_d,
       pi_periodic: 3_389_00.to_d,
       dq: 441_00.to_d,
