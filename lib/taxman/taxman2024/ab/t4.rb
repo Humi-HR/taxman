@@ -8,7 +8,7 @@ module Taxman2024
       DEFAULT_TD1 = 21_885_00.to_d
 
       RATES_AND_CONSTANTS = {
-        148_289_00.to_d => [LOWEST_RATE, 0.0.to_d],
+        148_269_00.to_d => [LOWEST_RATE, 0.0.to_d],
         177_922_00.to_d => [0.12, 2_965_00.to_d],
         237_230_00.to_d => [0.13, 4_745_00.to_d],
         355_845_00.to_d => [0.14, 7_117_00.to_d],
