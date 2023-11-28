@@ -5,7 +5,7 @@ module Taxman2024
   class F5B < Factor
     # Pensionable income here _includes_ the bonus!
     def self.params
-      %i[f5 b pi f5q province]
+      %i[f5 b_pensionable pi f5q province]
     end
     attr_reader(*params)
 
@@ -18,7 +18,7 @@ module Taxman2024
             f5
           end
 
-      f * b / pi
+      f * b_pensionable / pi
     end
   end
 end
