@@ -8,6 +8,7 @@ module Taxman2024
                    ytd_cpp_contributions:,
                    ytd_additional_cpp_contributions:,
                    ytd_qpp_contributions:,
+                   ytd_additional_qpp_contributions:,
                    contribution_months_this_year:,
                    qc_pensionable_income_this_period: 0,
                    pensionable_non_periodic_income_this_period: 0,
@@ -20,6 +21,7 @@ module Taxman2024
       @ytd_cpp_contributions = ytd_cpp_contributions
       @ytd_additional_cpp_contributions = ytd_additional_cpp_contributions
       @ytd_qpp_contributions = ytd_qpp_contributions
+      @ytd_additional_qpp_contributions = ytd_additional_qpp_contributions
       @contribution_months_this_year = contribution_months_this_year
     end
 
@@ -36,6 +38,7 @@ module Taxman2024
       cpp_ytd = (@ytd_cpp_contributions * 100).to_d
       additional_cpp_ytd = (@ytd_additional_cpp_contributions * 100).to_d
       qpp_ytd = (@ytd_qpp_contributions * 100).to_d
+      additional_qpp_ytd = (@ytd_additional_qpp_contributions * 100).to_d
 
       {
         # T4127
@@ -46,6 +49,7 @@ module Taxman2024
         d: cpp_ytd,
         d2: additional_cpp_ytd,
         dq: qpp_ytd,
+        d2q: additional_qpp_ytd,
 
         # TP-1015.3
         qc_s3: qc_pensionable_income_this_period,
