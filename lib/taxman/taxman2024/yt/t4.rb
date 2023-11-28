@@ -6,7 +6,7 @@ module Taxman2024
     class T4 < T4Generic
       LOWEST_RATE = 0.0640.to_d
       CEA = 1_433_00.to_d
-      K4P_RATE = BigDecimal("0.047")
+      K4P_RATE = LOWEST_RATE
 
       RATES_AND_CONSTANTS = {
         55_867_00.to_d => [LOWEST_RATE, 0.0.to_d],
