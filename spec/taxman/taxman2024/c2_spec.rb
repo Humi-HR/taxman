@@ -1,13 +1,14 @@
 # frozen_string_literal: true
 
 RSpec.describe Taxman2024::C2 do
-  subject(:c2) { described_class.new(pm: pm, d2: d2, pi_ytd: pi_ytd, pi: pi, w: w.amount).amount }
+  subject(:c2) { described_class.new(pm: pm, d2: d2, d2q: d2q, pi_ytd: pi_ytd, pi: pi, w: w.amount).amount }
 
   let(:pm) { 12 }
   let(:p) { 12 }
   let(:w) { Taxman2024::W.new(pm: pm, pi_ytd: pi_ytd) }
   let(:pi) { 4_000_00 }
   let(:d2) { 0 }
+  let(:d2q) { 0 }
   let(:pi_ytd) { 0 }
 
   context "when the employee has not reached the CPP maximum for the year" do

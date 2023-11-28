@@ -42,6 +42,7 @@ RSpec.describe Taxman2024::Calculate do
         ytd_cpp_contributions: 0,
         ytd_additional_cpp_contributions: 0,
         ytd_qpp_contributions: 0,
+        ytd_additional_qpp_contributions: 0,
         contribution_months_this_year: 12
       )
     end
@@ -124,6 +125,7 @@ RSpec.describe Taxman2024::Calculate do
         ytd_cpp_contributions: 0,
         ytd_additional_cpp_contributions: 0,
         ytd_qpp_contributions: 0,
+        ytd_additional_qpp_contributions: 0,
         contribution_months_this_year: 12
       )
     end
@@ -179,6 +181,7 @@ RSpec.describe Taxman2024::Calculate do
         ytd_cpp_contributions: 0,
         ytd_additional_cpp_contributions: 0,
         ytd_qpp_contributions: 0,
+        ytd_additional_qpp_contributions: 0,
         contribution_months_this_year: 12
       )
     end
@@ -232,6 +235,7 @@ RSpec.describe Taxman2024::Calculate do
         ytd_cpp_contributions: 3_754.45,
         ytd_additional_cpp_contributions: 0,
         ytd_qpp_contributions: 0,
+        ytd_additional_qpp_contributions: 0,
         contribution_months_this_year: 12
       )
     end

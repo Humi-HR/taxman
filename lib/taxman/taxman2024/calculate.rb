@@ -33,7 +33,8 @@ module Taxman2024
       context[:c] = context[:province] == Taxman::QC ? 0.to_d : C.amount(context)
       context[:qc_c] = context[:province] == Taxman::QC ? QcC.amount(context) : 0.to_d
       context[:w] = W.amount(context)
-      context[:c2] = C2.amount(context)
+      context[:c2] = context[:province] == Taxman::QC ? 0.to_d : C2.amount(context)
+      context[:qc_c2] = context[:province] == Taxman::QC ? C2.amount(context) : 0.to_d
       context[:qc_ap] = QcAp.amount(context)
       context[:qc_ap1] = QcAp1.amount(context)
       context[:ei] = Ei.amount(context)
