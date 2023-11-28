@@ -16,8 +16,8 @@ RSpec.describe Taxman2024::Pe::T2 do
     let(:t4) { 12_500_00.to_d + surplus }
     let(:surplus) { 15_000_00 }
 
-    it "has a ten percent surtax on the amount over the threshold" do
-      expect(t2).to eq (0.1 * surplus) + t4
+    it "has no surtax" do
+      expect(t2).to eq t4
     end
   end
 end
