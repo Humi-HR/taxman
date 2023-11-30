@@ -15,7 +15,9 @@ module Taxman2024
     end
 
     def amount
-      context[:province] == Taxman::QC ? (context[:qc_c] / 100.0).round(2) : 0
+      return 0 if context[:province] != Taxman::QC
+
+      ((context[:qc_c] + context[:qc_c2]) / 100.0).round(2)
     end
   end
 end
