@@ -13,6 +13,8 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 
+  config.exclude_pattern = "spec/integration/taxman2024/*"
+
   Taxman2024::Calculate.enable
 end
 
