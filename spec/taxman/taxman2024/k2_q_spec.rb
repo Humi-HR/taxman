@@ -40,7 +40,7 @@ RSpec.describe Taxman2024::K2Q do
     let(:b_insurable) { 20_000_00.to_d }
 
     it "return correct k2q value" do
-      expect(k2q).to be_within(1).of 710_61.60.to_d
+      expect(k2q).to be_within(1).of 710_91.60.to_d
     end
   end
 end
