@@ -56,15 +56,11 @@ RSpec.describe Taxman2024::Calculate do
     end
 
     it "calculates the federal tax owed" do
-      expect(calculate.call).to match(
-        a_hash_including(federal_tax: 543.84)
-      )
+      expect(calculate.call[:federal_tax]).to eq(533.25)
     end
 
     it "calculates the provincial tax owed" do
-      expect(calculate.call).to match(
-        a_hash_including(provincial_tax: 321.17)
-      )
+      expect(calculate.call[:provincial_tax]).to eq(311.74)
     end
 
     it "calculates the bonus tax owed" do
@@ -86,15 +82,11 @@ RSpec.describe Taxman2024::Calculate do
     end
 
     it "calculates the employee ei contribution" do
-      expect(calculate.call).to match(
-        a_hash_including(employee_ei_contribution: 130.4)
-      )
+      expect(calculate.call[:employee_ei_contribution]).to eq(132.80)
     end
 
     it "calculates the employer ei contribution" do
-      expect(calculate.call).to match(
-        a_hash_including(employer_ei_contribution: 182.56)
-      )
+      expect(calculate.call[:employer_ei_contribution]).to eq(185.92)
     end
   end
 
@@ -126,7 +118,8 @@ RSpec.describe Taxman2024::Calculate do
         ytd_additional_cpp_contributions: 0,
         ytd_qpp_contributions: 0,
         ytd_additional_qpp_contributions: 0,
-        contribution_months_this_year: 12
+        contribution_months_this_year: 12,
+        pensionable_non_periodic_income_this_period: 21_619
       )
     end
 
@@ -138,9 +131,7 @@ RSpec.describe Taxman2024::Calculate do
     end
 
     it "calculates the federal tax owed" do
-      expect(calculate.call).to match(
-        a_hash_including(federal_tax: 393.38)
-      )
+      expect(calculate.call[:federal_tax]).to eq(382.81)
     end
 
     it "calculates the federal bonus tax owed" do
@@ -194,15 +185,11 @@ RSpec.describe Taxman2024::Calculate do
     end
 
     it "calculates the federal tax owed" do
-      expect(calculate.call).to match(
-        a_hash_including(federal_tax: 387.85)
-      )
+      expect(calculate.call[:federal_tax]).to eq(377.29)
     end
 
     it "calculates the provincial tax owed" do
-      expect(calculate.call).to match(
-        a_hash_including(provincial_tax: 250.68)
-      )
+      expect(calculate.call[:provincial_tax]).to eq(244.95)
     end
   end
 
@@ -249,15 +236,11 @@ RSpec.describe Taxman2024::Calculate do
     end
 
     it "calculates the federal bonus tax owed" do
-      expect(calculate.call).to match(
-        a_hash_including(federal_tax_on_bonus: 205.00)
-      )
+      expect(calculate.call[:federal_tax_on_bonus]).to eq(200.46)
     end
 
     it "calculates the provincial bonus tax owed" do
-      expect(calculate.call).to match(
-        a_hash_including(provincial_tax_on_bonus: 91.50)
-      )
+      expect(calculate.call[:provincial_tax_on_bonus]).to eq(89.75)
     end
   end
 end

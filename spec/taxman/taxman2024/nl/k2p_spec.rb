@@ -28,7 +28,7 @@ RSpec.describe Taxman2024::Nl::K2p do
 
     # https://docs.google.com/spreadsheets/d/1Kh9TLeYrnnqyr7BkKyuFyAWDOvkUvAlBzFAKLBB3Vbe_within(0.01).of/edit#gid=562910102
     it "matches PDOC/Greg's sheet" do
-      expect(k2p).to be_within(0.01).of 358_95.33.to_d
+      expect(k2p).to be_within(0.01).of 371_19.59.to_d
     end
   end
 end
