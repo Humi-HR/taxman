@@ -3,11 +3,11 @@
 module Taxman2024
   # Calculates the employee's ei contributions for the period
   class Ei < Factor
-    EI_MAX = 1_002_45.to_d
-    QC_EI_MAX = 781_05.to_d
-    MAXIMUM_INSURABLE = 61_500_00.to_d
-    EMPLOYEE_RATE = 0.0163.to_d
-    QC_EMPLOYEE_RATE = 0.0127.to_d
+    EI_MAX = 1_049_12.to_d
+    QC_EI_MAX = 834_24.to_d
+    MAXIMUM_INSURABLE = 63_200_00.to_d
+    EMPLOYEE_RATE = 0.0166.to_d
+    QC_EMPLOYEE_RATE = 0.0132.to_d
     EMPLOYER_MATCHING = 1.4.to_d
 
     # Helper method to get the constants as a hash

@@ -57,8 +57,8 @@ RSpec.describe Taxman2024::On::T4 do
     let(:k2p) { Taxman2024::On::K2p.new(**k2_params).amount }
 
     # https://docs.google.com/spreadsheets/d/1q0tv_4IMqdL23wLRg49VikhXRC5tsy7oxGc5at71fzw/edit#gid=89378561
-    it "calculates an annualized provincial tax deduction of $2,106.92" do
-      expect(t4).to be_within(0.2).of 2_106_92.to_d
+    it "calculates annualized provincial tax deduction" do
+      expect(t4).to be_within(0.2).of 1_988_13.53.to_d
     end
   end
 end

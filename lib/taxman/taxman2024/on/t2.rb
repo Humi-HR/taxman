@@ -4,13 +4,16 @@ module Taxman2024
   module On
     # This calculates the T2 factor for ontario
     class T2 < T2Generic
+      V1_LOWER = 5_554_00.to_d
+      V1_UPPER = 7_108_00.to_d
+
       def v1
-        if t4 <= 5_315_00.to_d
+        if t4 <= V1_LOWER
           0
-        elsif t4 <= 6_802_00.to_d
-          0.2 * (t4 - 5_315_00.to_d)
+        elsif t4 <= V1_UPPER
+          0.2 * (t4 - V1_LOWER)
         else
-          (0.2 * (t4 - 5_315_00.to_d)) + (0.36 * (t4 - 6_802_00.to_d))
+          (0.2 * (t4 - V1_LOWER)) + (0.36 * (t4 - V1_UPPER))
         end
       end
 
@@ -36,7 +39,7 @@ module Taxman2024
       end
 
       def s2
-        274_00.to_d
+        286_00.to_d
       end
     end
   end

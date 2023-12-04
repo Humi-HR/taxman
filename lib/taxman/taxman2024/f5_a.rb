@@ -4,7 +4,7 @@ module Taxman2024
   # Calculates the F5A factor
   class F5A < Factor
     def self.params
-      %i[pi b f5 f5q province]
+      %i[pi b_pensionable f5 f5q province]
     end
     attr_reader(*params)
 
@@ -17,9 +17,9 @@ module Taxman2024
             f5
           end
 
-      return f if b <= 0
+      return f if b_pensionable <= 0
 
-      f * ((pi - b) / pi)
+      f * ((pi - b_pensionable) / pi)
     end
   end
 end
