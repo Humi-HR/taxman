@@ -1,5 +1,36 @@
 # Changelog
 
+## [3.0.0](https://github.com/Humi-HR/taxman/compare/v2.2.0...v3.0.0) (2023-12-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* 2024
+
+### Features
+
+* 2024 ([8c0653f](https://github.com/Humi-HR/taxman/commit/8c0653f8cdc69dadf056a35e7db7fbf55fb975d6))
+* 2024 EI rates ([2a611c4](https://github.com/Humi-HR/taxman/commit/2a611c45e1ab3a6e1b29c4e72e5fb62db093ef9f))
+* C2 for QC ([53ed8ef](https://github.com/Humi-HR/taxman/commit/53ed8efd7ebb33a290e28719a2bc0bebce668857))
+* C2 tax factor ([fbd8559](https://github.com/Humi-HR/taxman/commit/fbd855904411216e1ab9015d054d98006cd4ba1a))
+* NB tax constants ([8357c98](https://github.com/Humi-HR/taxman/commit/8357c985b418b6e45813e7c4ec7cd90229dd9693))
+* QC constant updates and include C2 in F5Q ([86ba389](https://github.com/Humi-HR/taxman/commit/86ba389b2f12545bfcdd29313a3274f101a87513))
+* QC EI, QPP and QPIP rates ([ae04d6e](https://github.com/Humi-HR/taxman/commit/ae04d6e11f8b7e3f02008355af451b7abba20b80))
+* update BPAF for 2024 ([62e1a4b](https://github.com/Humi-HR/taxman/commit/62e1a4b0fa1d33ba2a9a91d6312a7add075d1e84))
+* update CEA ([474f6ec](https://github.com/Humi-HR/taxman/commit/474f6ecba275f2cb08c88f6ab2f618dcf3714dff))
+* update federal and provincial tax rates and constants ([e1d64c8](https://github.com/Humi-HR/taxman/commit/e1d64c8375024107055dfac13cbb4a6e4efde089))
+* update provincial S and V1 calculations ([31beb1b](https://github.com/Humi-HR/taxman/commit/31beb1b8db5fc42c68333b2b098cbd8a38e854ef))
+* use pensionable part of b for f5a and f5b ([ba8e6d4](https://github.com/Humi-HR/taxman/commit/ba8e6d44934ccca3b45da36a80945ec8db4a2de8))
+
+
+### Bug Fixes
+
+* AB tax bracket fix ([03ec52f](https://github.com/Humi-HR/taxman/commit/03ec52fdc673cfa63edcca6ba6c8157d7669396c))
+* adjust rspecs for 2024 ([84f0c7b](https://github.com/Humi-HR/taxman/commit/84f0c7b24278fc80af706c7499238a455d92a480))
+* fix unit tests ([c1f9074](https://github.com/Humi-HR/taxman/commit/c1f9074f7ac6d71df22ecdfbb141daeddbe891c9))
+* ON V1 constants ([d64df8c](https://github.com/Humi-HR/taxman/commit/d64df8ccadc5effd39c333fe7b43bbd5b2af7fcb))
+* YT K4P rate ([05f5c91](https://github.com/Humi-HR/taxman/commit/05f5c91fd04a52a384d270d517407b802e8ac64b))
+
 ## [2.2.0](https://github.com/Humi-HR/taxman/compare/v2.1.2...v2.2.0) (2023-10-31)
 
 
