@@ -8,6 +8,12 @@ All the 2023 numbers come from the
 [CRA](https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas/t4127-jan/t4127-jan-payroll-deductions-formulas-computer-programs.html#toc38)
 and from [Revenue Quebec](https://www.revenuquebec.ca/documents/en/formulaires/tp/TP-1015.F-V%282023-01%29.pdf).
 
+## 2024
+
+All the 2024 numbers come from the
+[CRA](https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas/t4127-jan/t4127-jan-payroll-deductions-formulas-computer-programs.html)
+
+
 ## Release flow and installation
 
 The release flow of the gem depends on the `release-please` Github Action,
