@@ -242,5 +242,13 @@ RSpec.describe Taxman2024::Calculate do
     it "calculates the provincial bonus tax owed" do
       expect(calculate.call[:provincial_tax_on_bonus]).to eq(89.75)
     end
+
+    context "with wrong tax year input" do
+      let(:t) { Taxman2023::PersonalTaxDeductionsInput.new }
+
+      it "raises error" do
+        expect { calculate.call }.to raise_error ArgumentError
+      end
+    end
   end
 end

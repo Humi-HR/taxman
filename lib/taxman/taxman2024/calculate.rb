@@ -27,6 +27,8 @@ module Taxman2024
 
       @context = {}
       [period_input, year_input, personal_tax_input, pension_input, qpip_input, ei_input].each do |input|
+        check_input_year_module(input)
+
         context.merge!(input.translate)
       end
 
@@ -70,6 +72,16 @@ module Taxman2024
 
     def raise_unless_enabled
       raise "2024 not enabled" unless self.class.enabled?
+    end
+
+    def year_module
+      @year_module ||= self.class.to_s.split('::').first
+    end
+
+    def check_input_year_module(input)
+      return if input.class.to_s.split('::').first == year_module
+
+      raise ArgumentError, "wrong tax year module: #{input.class}"
     end
 
     def self.enable
