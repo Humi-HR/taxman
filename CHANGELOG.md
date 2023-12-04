@@ -1,5 +1,14 @@
 # Changelog
 
+## [3.0.1](https://github.com/Humi-HR/taxman/compare/v3.0.0...v3.0.1) (2023-12-04)
+
+
+### Bug Fixes
+
+* check that correct year's input are being used ([248a014](https://github.com/Humi-HR/taxman/commit/248a0145304546de11b4bc46670af48b5e41d087))
+* linting ([b7a1c26](https://github.com/Humi-HR/taxman/commit/b7a1c26e37785289d3c2b494da3074e601bb2bc0))
+* use specific wrong year error ([84faf78](https://github.com/Humi-HR/taxman/commit/84faf780a81373b9be46a68af8ae42ac949d5ed4))
+
 ## [3.0.0](https://github.com/Humi-HR/taxman/compare/v2.2.0...v3.0.0) (2023-12-04)
 
 
