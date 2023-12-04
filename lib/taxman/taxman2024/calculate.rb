@@ -75,11 +75,11 @@ module Taxman2024
     end
 
     def year_module
-      @year_module ||= self.class.to_s.split('::').first
+      @year_module ||= self.class.to_s.split("::").first
     end
 
     def check_input_year_module(input)
-      return if input.class.to_s.split('::').first == year_module
+      return if input.class.to_s.split("::").first == year_module
 
       raise ArgumentError, "wrong tax year module: #{input.class}"
     end
