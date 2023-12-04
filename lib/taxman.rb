@@ -15,6 +15,8 @@ module Taxman
 
   class UnsupportedProvince < StandardError; end
 
+  class WrongTaxYearError < StandardError; end
+
   %w[AB BC MB NB NL NS NT NU ON PE QC SK YT].each do |province|
     const_set(province, province)
   end

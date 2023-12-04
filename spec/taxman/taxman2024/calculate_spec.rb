@@ -247,7 +247,7 @@ RSpec.describe Taxman2024::Calculate do
       let(:t) { Taxman2023::PersonalTaxDeductionsInput.new }
 
       it "raises error" do
-        expect { calculate.call }.to raise_error ArgumentError
+        expect { calculate.call }.to raise_error Taxman::WrongTaxYearError
       end
     end
   end
