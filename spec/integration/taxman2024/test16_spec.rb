@@ -30,8 +30,8 @@ RSpec.describe Taxman2024::Calculate do
 
   let(:t) do
     Taxman2024::PersonalTaxDeductionsInput.new(
-      federal_personal_amount: 15_000.00,
-      provincial_personal_amount: 10_382.00,
+      federal_personal_amount: 15_705.00,
+      provincial_personal_amount: 10_818.00,
       additional_tax_deductions: 0
     )
   end
@@ -40,16 +40,19 @@ RSpec.describe Taxman2024::Calculate do
     Taxman2024::PensionInput.new(
       pensionable_income_this_period: 2_900,
       pensionable_non_periodic_income_this_period: 2_500,
-      ytd_cpp_contributions: 19.34,
+      ytd_cpp_contributions: 208.14,
       ytd_qpp_contributions: 0,
-      contribution_months_this_year: 9
+      contribution_months_this_year: 9,
+      ytd_pensionable_income: 3_700.00,
+      ytd_additional_cpp_contributions: 0,
+      ytd_additional_qpp_contributions: 0
     )
   end
 
   let(:e) do
     Taxman2024::EiInput.new(
       insurable_income_this_period: 2_900,
-      employees_ytd_contributions: 19.56
+      employees_ytd_contributions: 19.92
     )
   end
 
@@ -74,6 +77,6 @@ RSpec.describe Taxman2024::Calculate do
   end
 
   it "matches PDOC's EI calculation" do
-    expect(calculate[:employee_ei_contribution]).to eq 47.27
+    expect(calculate[:employee_ei_contribution]).to eq 48.14
   end
 end
