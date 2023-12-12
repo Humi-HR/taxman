@@ -74,7 +74,11 @@ RSpec.describe Taxman2024::Calculate do
   end
 
   it "matches PDOC's CPP deduction" do
-    expect(calculate[:employee_cpp_contribution]).to eq 3_326.85 + 188.00  # TODO: check cpp2 separately
+    expect(calculate[:employee_cpp_contribution]).to eq 3_326.85
+  end
+
+  it "matches PDOC's CPP2 deduction" do
+    expect(calculate[:employee_cpp2_contribution]).to eq 188.00
   end
 
   it "matches PDOC's EI calculation" do

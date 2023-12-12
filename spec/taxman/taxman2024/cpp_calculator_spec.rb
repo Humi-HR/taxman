@@ -6,13 +6,25 @@ RSpec.describe Taxman2024::CppCalculator do
 
   it "adds the employee cpp contribution to context" do
     expect(cpp_calc.calculate).to match(
-      a_hash_including(employee_cpp_contribution: 437.13.to_d)
+      a_hash_including(employee_cpp_contribution: 427.13.to_d)
     )
   end
 
   it "adds the employer cpp contribution to context" do
     expect(cpp_calc.calculate).to match(
-      a_hash_including(employer_cpp_contribution: 437.13.to_d)
+      a_hash_including(employer_cpp_contribution: 427.13.to_d)
+    )
+  end
+
+  it "adds the employee cpp2 contribution to context" do
+    expect(cpp_calc.calculate).to match(
+      a_hash_including(employee_cpp2_contribution: 10.00.to_d)
+    )
+  end
+
+  it "adds the employer cpp2 contribution to context" do
+    expect(cpp_calc.calculate).to match(
+      a_hash_including(employer_cpp2_contribution: 10.00.to_d)
     )
   end
 end
