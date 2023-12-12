@@ -30,8 +30,8 @@ RSpec.describe Taxman2024::Calculate do
 
   let(:t) do
     Taxman2024::PersonalTaxDeductionsInput.new(
-      federal_personal_amount: 13_727.88,
-      provincial_personal_amount: 17_661.00,
+      federal_personal_amount: 0,
+      provincial_personal_amount: 18_491,
       additional_tax_deductions: 0
     )
   end
@@ -39,25 +39,28 @@ RSpec.describe Taxman2024::Calculate do
   let(:c) do
     Taxman2024::PensionInput.new(
       pensionable_income_this_period: 3_500,
-      ytd_cpp_contributions: 3_754.45,
+      ytd_cpp_contributions: 3_867.50,
       ytd_qpp_contributions: 0,
-      contribution_months_this_year: 9
+      contribution_months_this_year: 9,
+      ytd_pensionable_income: 73_200.00,
+      ytd_additional_cpp_contributions: 188,
+      ytd_additional_qpp_contributions: 0
     )
   end
 
   let(:e) do
     Taxman2024::EiInput.new(
       insurable_income_this_period: 3_500,
-      employees_ytd_contributions: 1_002.45
+      employees_ytd_contributions: 1_049.12
     )
   end
 
   it "matches PDOC's federal tax" do
-    expect(calculate[:federal_tax]).to eq 694.80
+    expect(calculate[:federal_tax]).to eq 721.37
   end
 
   it "matches PDOC's provincial tax" do
-    expect(calculate[:provincial_tax]).to eq 389.74
+    expect(calculate[:provincial_tax]).to eq 384.32
   end
 
   it "matches PDOC's CPP deduction" do
