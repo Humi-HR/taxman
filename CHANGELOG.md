@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.2](https://github.com/Humi-HR/taxman/compare/v3.0.1...v3.0.2) (2023-12-13)
+
+
+### Bug Fixes
+
+* unconditionally enable 2024 ([5cf3431](https://github.com/Humi-HR/taxman/commit/5cf3431fde2e926dbfc5334e01b4f9ec6da4a437))
+
 ## [3.0.1](https://github.com/Humi-HR/taxman/compare/v3.0.0...v3.0.1) (2023-12-12)
 
 
