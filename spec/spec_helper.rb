@@ -14,8 +14,6 @@ RSpec.configure do |config|
   end
 
   config.exclude_pattern = "spec/integration/taxman2024/{bug,qc,demo,pay,test_case}*"
-
-  Taxman2024::Calculate.enable
 end
 
 require "debug"

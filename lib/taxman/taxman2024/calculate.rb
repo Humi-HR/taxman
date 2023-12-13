@@ -23,8 +23,6 @@ module Taxman2024
     end
 
     def call
-      raise_unless_enabled
-
       @context = {}
       [period_input, year_input, personal_tax_input, pension_input, qpip_input, ei_input].each do |input|
         check_input_year(input)
@@ -70,10 +68,6 @@ module Taxman2024
       context.merge(bonus_symbols.to_h { |sym| [sym, 0] })
     end
 
-    def raise_unless_enabled
-      raise "2024 not enabled" unless self.class.enabled?
-    end
-
     def tax_year
       @tax_year ||= self.class.to_s.split("::").first[/\d+/]
     end
@@ -83,14 +77,6 @@ module Taxman2024
       return if input_year == tax_year
 
       raise Taxman::WrongTaxYearError, input_year
-    end
-
-    def self.enable
-      @enabled = true
-    end
-
-    def self.enabled?
-      !!@enabled
     end
   end
 end
