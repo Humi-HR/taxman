@@ -31,8 +31,8 @@ RSpec.describe Taxman2024::Calculate do
 
   let(:t) do
     Taxman2024::PersonalTaxDeductionsInput.new(
-      federal_personal_amount: 15_705,
-      provincial_personal_amount: 15_780,
+      federal_personal_amount: nil,
+      provincial_personal_amount: nil,
       additional_tax_deductions: 0
     )
   end
