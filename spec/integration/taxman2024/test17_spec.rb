@@ -85,9 +85,12 @@ RSpec.describe Taxman2024::Calculate do
     expect(calculate[:employee_ei_contribution]).to eq 874.82
   end
 
-  it "matches the f5b" do
-    pending "no F5B in test case data"
+  it "matches PDOC's f5" do
+    expect(calculate[:f5]).to be_within(1).of 747_13
+  end
 
-    expect(calculate[:f5b]).to be_within(1).of 541_75
+  it "matches the f5b" do
+    # fb5 is not in PDOC output, but f5 is
+    expect(calculate[:f5b]).to be_within(1).of (calculate[:f5] * (100_000.0 / 100_500))
   end
 end
