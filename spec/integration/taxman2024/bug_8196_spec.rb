@@ -33,7 +33,7 @@ RSpec.describe Taxman2024::Calculate do
       federal_personal_amount: nil,
       provincial_personal_amount: nil,
       additional_tax_deductions: 0,
-      federal_personal_amount_offset: -15_000,
+      federal_personal_amount_offset: -15_705,
       provincial_personal_amount_offset: -21_003
     )
   end
@@ -44,7 +44,10 @@ RSpec.describe Taxman2024::Calculate do
       pensionable_non_periodic_income_this_period: 0,
       ytd_cpp_contributions: 0,
       ytd_qpp_contributions: 0,
-      contribution_months_this_year: 12
+      contribution_months_this_year: 12,
+      ytd_pensionable_income: 0,
+      ytd_additional_cpp_contributions: 0,
+      ytd_additional_qpp_contributions: 0
     )
   end
 
