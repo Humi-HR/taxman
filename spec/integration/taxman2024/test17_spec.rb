@@ -91,6 +91,7 @@ RSpec.describe Taxman2024::Calculate do
 
   it "matches the f5b" do
     # fb5 is not in PDOC output, but f5 is
-    expect(calculate[:f5b]).to be_within(1).of (calculate[:f5] * (100_000.0 / 100_500))
+    expected_f5b = calculate[:f5] * (100_000.0 / 100_500)
+    expect(calculate[:f5b]).to be_within(1).of expected_f5b
   end
 end
