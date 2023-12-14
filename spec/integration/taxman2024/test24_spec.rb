@@ -70,6 +70,10 @@ RSpec.describe Taxman2024::Calculate do
     expect(calculate[:employee_cpp_contribution]).to be_within(0.1).of 92.90
   end
 
+  it "matches PDOC's CPP2 deduction" do
+    expect(calculate[:employee_cpp2_contribution]).to eq 0
+  end
+
   it "matches PDOC's EI calculation" do
     expect(calculate[:employee_ei_contribution]).to eq 28.15
   end
