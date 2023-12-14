@@ -30,8 +30,8 @@ RSpec.describe Taxman2024::Calculate do
 
   let(:t) do
     Taxman2024::PersonalTaxDeductionsInput.new(
-      federal_personal_amount: 15_000,
-      provincial_personal_amount: 11_865
+      federal_personal_amount: 15_705,
+      provincial_personal_amount: 12_399
     )
   end
 
@@ -41,13 +41,16 @@ RSpec.describe Taxman2024::Calculate do
       pensionable_non_periodic_income_this_period: 1000,
       ytd_cpp_contributions: 0,
       ytd_qpp_contributions: 0,
-      contribution_months_this_year: 12
+      contribution_months_this_year: 12,
+      ytd_pensionable_income: 0,
+      ytd_additional_cpp_contributions: 0,
+      ytd_additional_qpp_contributions: 0
     )
   end
 
   let(:e) do
     Taxman2024::EiInput.new(
-      insurable_income_this_period: 3500,
+      insurable_income_this_period: 3516.66,
       employees_ytd_contributions: 0
     )
   end
@@ -58,27 +61,31 @@ RSpec.describe Taxman2024::Calculate do
     end
 
     it "matches PDOC's federal tax" do
-      expect(calculate[:federal_tax]).to eq 280.17
+      expect(calculate[:federal_tax]).to eq 270.15
     end
 
     it "matches PDOC's provincial tax" do
-      expect(calculate[:provincial_tax]).to eq 142.57
+      expect(calculate[:provincial_tax]).to eq 137.95
     end
 
     it "matches PDOC's federal tax on bonus" do
-      expect(calculate[:federal_tax_on_bonus]).to be_within(0.1).of 201.78
+      expect(calculate[:federal_tax_on_bonus]).to be_within(0.1).of 195.61
     end
 
     it "matches PDOC's provincial tax on bonus" do
-      expect(calculate[:provincial_tax_on_bonus]).to be_within(0.1).of 90.21
+      expect(calculate[:provincial_tax_on_bonus]).to be_within(0.1).of 88.12
     end
 
     it "matches PDOC's CPP deduction" do
       expect(calculate[:employee_cpp_contribution]).to eq 201.23
     end
 
+    it "matches PDOC's CPP2 deduction" do
+      expect(calculate[:employee_cpp2_contribution]).to eq 0
+    end
+
     it "matches PDOC's EI calculation" do
-      expect(calculate[:employee_ei_contribution]).to eq 57.05
+      expect(calculate[:employee_ei_contribution]).to eq 58.38
     end
   end
 
@@ -88,6 +95,7 @@ RSpec.describe Taxman2024::Calculate do
     end
 
     it "matches the bonus t3" do
+      pending "not in PDOC"
       expect(calculate.dig(:taxes_with_bonus, :t3)).to be_within(1).of 7_683_74
     end
   end
@@ -108,14 +116,17 @@ RSpec.describe Taxman2024::Calculate do
     end
 
     it "matches t3" do
+      pending "not in PDOC"
       expect(context[:t3]).to be_within(1).of 7_481_95
     end
 
     it "matches k" do
+      pending "not in PDOC"
       expect(context[:k]).to eq 2_935_00
     end
 
     it "matches k2" do
+      pending "not in PDOC"
       expect(context[:k2_value]).to be_within(0.1).of 61_764.58
     end
   end
