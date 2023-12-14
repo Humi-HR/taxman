@@ -13,7 +13,7 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 
-  config.exclude_pattern = "spec/integration/taxman2024/{bug,qc,pay}*"
+  config.exclude_pattern = "spec/integration/taxman2024/{qc,pay}*"
 end
 
 require "debug"
