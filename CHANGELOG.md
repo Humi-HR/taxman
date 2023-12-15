@@ -1,5 +1,19 @@
 # Changelog
 
+## [3.0.3](https://github.com/Humi-HR/taxman/compare/v3.0.2...v3.0.3) (2023-12-15)
+
+
+### Bug Fixes
+
+* ensure all integration tests check CPP2 ([ee020a2](https://github.com/Humi-HR/taxman/commit/ee020a262c83fd644a4389e34eda8ebf287ab45e))
+* fix bug integration tests ([a9077e5](https://github.com/Humi-HR/taxman/commit/a9077e5c1bd58e39aec22992a0160a9b6bd98669))
+* fix demo test ([1289acc](https://github.com/Humi-HR/taxman/commit/1289accb7bb11aa4545606d0e72efa77f6398e21))
+* fix pay* integration tests ([c2f1579](https://github.com/Humi-HR/taxman/commit/c2f1579dc8bc697ecb50554215e3ea45543c02b2))
+* fix pending spec in test 17 ([1ce9de2](https://github.com/Humi-HR/taxman/commit/1ce9de2e9c584a6cc3ed62abe791ecd618489cb1))
+* linting ([ad69b96](https://github.com/Humi-HR/taxman/commit/ad69b9641b50e23f4428ee877019c4a7901e15c5))
+* move test into qc suite ([1131200](https://github.com/Humi-HR/taxman/commit/113120096a1c6f506e994f3691485dd69906cb6c))
+* use default personal amounts in spec ([fc624ab](https://github.com/Humi-HR/taxman/commit/fc624abab12e518fbc370e8a7e03ee16e84949f0))
+
 ## [3.0.2](https://github.com/Humi-HR/taxman/compare/v3.0.1...v3.0.2) (2023-12-13)
 
 
