@@ -16,7 +16,8 @@ module Taxman2024
       return MAX_VALUE if a <= 25_000_00.to_d
       return MIN_VALUE if a >= 75_000_00.to_d
 
-      MAX_VALUE - ((a - 25_000_00) * 0.06)
+      # Round result to the cent
+      (MAX_VALUE - ((a - 25_000_00) * 0.06)).round
     end
   end
 end
