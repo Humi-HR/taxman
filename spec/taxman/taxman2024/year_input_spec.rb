@@ -4,13 +4,10 @@ RSpec.describe Taxman2024::YearInput do
   let(:year_input) do
     described_class.new(
       ytd_bonus: 1,
-      annual_deductions: 2, # F1
       ytd_rsp_bonus_deductions: 3, # F4
       pay_periods: 12,
       f5b_ytd: 4,
       employer_ei_multiple: 1.3,
-      other_federal_deductions: 1_000,
-      other_provincial_deductions: 978,
       ytd_deductions_for_employment_income: 753,
       ytd_rsp_deductions: 111,
       ytd_gross_earnings: 222,
@@ -20,20 +17,16 @@ RSpec.describe Taxman2024::YearInput do
     )
   end
 
-  # rubocop:disable RSpec/ExampleLength
   it "translates the inputs" do
     expect(year_input.translate).to eq(
       {
         b1: 1_00.to_d,
         b1_insurable: 1_00.to_d,
         b1_pensionable: 1_00.to_d,
-        f1: 2_00.to_d,
         f4: 3_00.to_d,
         p: 12,
         f5b_ytd: 4_00.to_d,
         employer_ei_multiple: 1.3.to_d,
-        k3: 1_000_00.to_d,
-        k3p: 978_00.to_d,
         qc_b1: 1_00.to_d,
         qc_f1: 111_00.to_d,
         qc_g1: 222_00.to_d,
@@ -44,12 +37,10 @@ RSpec.describe Taxman2024::YearInput do
       }
     )
   end
-  # rubocop:enable RSpec/ExampleLength
 
   context "without optional params" do
     let(:year_input) { described_class.new(ytd_bonus: 1, f5b_ytd: 2, pay_periods: 26) }
 
-    # rubocop:disable RSpec/ExampleLength
     it "has default values" do
       expect(year_input.translate).to eq(
         {
@@ -58,11 +49,8 @@ RSpec.describe Taxman2024::YearInput do
           b1_insurable: 1_00.to_d,
           f5b_ytd: 2_00.to_d,
           p: 26,
-          f1: 0,
           f4: 0,
           employer_ei_multiple: 1.4.to_d,
-          k3: 0,
-          k3p: 0,
           qc_b1: 1_00.to_d,
           qc_f1: 0,
           qc_g1: 0,
@@ -73,6 +61,5 @@ RSpec.describe Taxman2024::YearInput do
         }
       )
     end
-    # rubocop:enable RSpec/ExampleLength
   end
 end

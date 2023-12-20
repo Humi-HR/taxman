@@ -12,6 +12,10 @@ module Taxman2024
       provincial_personal_amount_offset: 0,
       deduction_for_zone: 0,
       additional_tax_deductions: 0,
+      f1_annual_deductions: 0,
+      f2_alimony: 0,
+      k3_other_federal_deductions: 0,
+      k3p_other_provincial_deductions: 0,
       tp_1015_line_7_indexed_value_of_personal_tax_credits: 17_183,
       tp_1015_line_9_non_indexed_value_of_personal_tax_credits: 0,
       tp_1015_line_11_additional_source_deductions: 0,
@@ -24,6 +28,10 @@ module Taxman2024
       @tcp_offset = provincial_personal_amount_offset
       @hd = deduction_for_zone
       @l = additional_tax_deductions
+      @f1 = f1_annual_deductions
+      @f2 = f2_alimony
+      @k3 = k3_other_federal_deductions
+      @k3p = k3p_other_provincial_deductions
       @qc_e1 = tp_1015_line_7_indexed_value_of_personal_tax_credits
       @qc_e2 = tp_1015_line_9_non_indexed_value_of_personal_tax_credits
       @qc_l = tp_1015_line_11_additional_source_deductions
@@ -39,6 +47,10 @@ module Taxman2024
         tcp_offset: (@tcp_offset * 100).to_d,
         hd: (@hd * 100).to_d,
         l: (@l * 100).to_d,
+        f1: (@f1 * 100).to_d,
+        f2: (@f2 * 100).to_d,
+        k3: (@k3 * 100).to_d,
+        k3p: (@k3p * 100).to_d,
         qc_e1: (@qc_e1 * 100).to_d,
         qc_e2: (@qc_e2 * 100).to_d,
         qc_j: (@qc_j * 100).to_d,
