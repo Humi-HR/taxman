@@ -11,7 +11,6 @@ module Taxman2024
       qc_taxable_non_periodic_income: 0,
       moved_in_or_out_qc: false,
       rsp_deductions: 0,
-      alimony: 0,
       rsp_deductions_from_bonus: 0,
       previous_taxable_periodic_income: 0,
       union_dues: 0,
@@ -21,7 +20,6 @@ module Taxman2024
       @previous_i = previous_taxable_periodic_income
       @b = taxable_non_periodic_income
       @f = rsp_deductions
-      @f2 = alimony
       @f3 = rsp_deductions_from_bonus
       @u1 = union_dues
       @province = province
@@ -37,7 +35,6 @@ module Taxman2024
         previous_i: (@previous_i * 100).to_d,
         b: (@b * 100).to_d,
         f: (@f * 100).to_d,
-        f2: (@f2 * 100).to_d,
         f3: (@f3 * 100).to_d,
         u1: (@u1 * 100).to_d,
         province: @province.strip.upcase,

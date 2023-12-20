@@ -8,7 +8,11 @@ RSpec.describe Taxman2024::PersonalTaxDeductionsInput do
       federal_personal_amount_offset: tc_offset,
       provincial_personal_amount_offset: tcp_offset,
       deduction_for_zone: hd,
-      additional_tax_deductions: l
+      additional_tax_deductions: l,
+      f1_annual_deductions: f1,
+      f2_alimony: f2,
+      k3_other_federal_deductions: k3,
+      k3p_other_provincial_deductions: k3p
     )
   end
 
@@ -19,8 +23,12 @@ RSpec.describe Taxman2024::PersonalTaxDeductionsInput do
     let(:tcp_offset) { 2 }
     let(:hd) { 4 }
     let(:l) { 5 }
+    let(:f1) { 6 }
+    let(:f2) { 7 }
+    let(:k3) { 8 }
+    let(:k3p) { 9 }
 
-    it "translates the inputs" do
+    it "translates the inputs" do # rubocop:disable RSpec/ExampleLength
       expect(deductions_input.translate).to eq(
         {
           tc: 15_000_00.to_d,
@@ -29,6 +37,10 @@ RSpec.describe Taxman2024::PersonalTaxDeductionsInput do
           tcp_offset: 2_00.to_d,
           hd: 4_00.to_d,
           l: 5_00.to_d,
+          f1: 6_00.to_d,
+          f2: 7_00.to_d,
+          k3: 8_00.to_d,
+          k3p: 9_00.to_d,
           qc_e1: 17_183_00.to_d,
           qc_e2: 0.to_d,
           qc_j: 0.to_d,
@@ -46,7 +58,7 @@ RSpec.describe Taxman2024::PersonalTaxDeductionsInput do
   context "with no params" do
     let(:deductions_input) { described_class.new }
 
-    it "has default values" do
+    it "has default values" do # rubocop:disable RSpec/ExampleLength
       expect(deductions_input.translate).to eq(
         {
           tc: nil,
@@ -55,6 +67,10 @@ RSpec.describe Taxman2024::PersonalTaxDeductionsInput do
           tcp_offset: 0,
           hd: 0,
           l: 0,
+          f1: 0,
+          f2: 0,
+          k3: 0,
+          k3p: 0,
           qc_e1: 17_183_00.to_d,
           qc_e2: 0.to_d,
           qc_j: 0.to_d,
