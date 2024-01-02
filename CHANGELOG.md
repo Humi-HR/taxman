@@ -1,5 +1,16 @@
 # Changelog
 
+## [4.0.0](https://github.com/Humi-HR/taxman/compare/v3.0.3...v4.0.0) (2024-01-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* Move around inputs
+
+### Features
+
+* Move around inputs ([fed38ea](https://github.com/Humi-HR/taxman/commit/fed38ea702c0dd675cd7d3d12ecd781d1ef66f6d))
+
 ## [3.0.3](https://github.com/Humi-HR/taxman/compare/v3.0.2...v3.0.3) (2023-12-15)
 
 
