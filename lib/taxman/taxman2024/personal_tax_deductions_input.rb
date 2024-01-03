@@ -16,7 +16,7 @@ module Taxman2024
       f2_alimony: 0,
       k3_other_federal_deductions: 0,
       k3p_other_provincial_deductions: 0,
-      tp_1015_line_7_indexed_value_of_personal_tax_credits: 17_183,
+      tp_1015_line_7_indexed_value_of_personal_tax_credits: 18_056,
       tp_1015_line_9_non_indexed_value_of_personal_tax_credits: 0,
       tp_1015_line_11_additional_source_deductions: 0,
       tp_1015_line_19_deductions: 0,
