@@ -33,7 +33,7 @@ RSpec.describe Taxman2024::QcY1Y2 do
     let(:qc_i1) { 58_092_00 }
 
     it "calculates y1" do
-      expect(qc_y1_y2).to eq(6_168_86)
+      expect(qc_y1_y2).to eq(6_042_86)
     end
   end
 
@@ -43,7 +43,7 @@ RSpec.describe Taxman2024::QcY1Y2 do
     let(:qc_b2) { 20_000_00 }
 
     it "calculates y2" do
-      expect(qc_y1_y2.round).to eq(9_931_30)
+      expect(qc_y1_y2.round).to eq(9_805_30)
     end
   end
 end
