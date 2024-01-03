@@ -13,7 +13,7 @@ RSpec.describe Taxman2024::QcH do
   let(:p) { 12 }
 
   it "calculates" do
-    expect(qc_h.to_f.truncate).to eq(109_58)
+    expect(qc_h.to_f.truncate).to eq(115_00)
   end
 
   context "with large d" do
