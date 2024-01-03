@@ -16,7 +16,7 @@ RSpec.describe Taxman2024::QcY do
     let(:qc_i) { 58_092_00 }
 
     it "calculates taxes owing" do
-      expect(qc_y).to eq(6_168_86)
+      expect(qc_y).to eq(6_042_86)
     end
   end
 
@@ -31,8 +31,8 @@ RSpec.describe Taxman2024::QcY do
 
   [
     [100_00, 0.14],
-    [50_000_00, 0.19],
-    [100_000_00, 0.24],
+    [52_000_00, 0.19],
+    [104_000_00, 0.24],
     [250_000_00, 0.2575]
   ].each do |values|
     it "selects #{values[1]} bracket for #{values[0]} income" do
