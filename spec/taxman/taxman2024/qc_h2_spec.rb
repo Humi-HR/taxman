@@ -17,7 +17,7 @@ RSpec.describe Taxman2024::QcH2 do
     let(:qc_pr) { 12 }
 
     it "matches implementation spreadsheet" do
-      expect(qc_h2.round).to eq(109_58)
+      expect(qc_h2.round).to eq(115_00)
     end
   end
 

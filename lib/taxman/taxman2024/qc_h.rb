@@ -3,7 +3,7 @@
 module Taxman2024
   # Deduction for employment income
   class QcH < Factor
-    EMPLOYMENT_INCOME_MAXIMUM_DEDUCTION = 1_315 * 100
+    EMPLOYMENT_INCOME_MAXIMUM_DEDUCTION = 1_380 * 100
 
     def self.params
       %i[qc_d p]
