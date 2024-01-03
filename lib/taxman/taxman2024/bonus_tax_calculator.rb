@@ -91,7 +91,7 @@ module Taxman2024
       federal_tax = b * 0.1 if a_bonus <= 5_000_00
       if a_bonus <= 5_000_00 && province != Taxman::QC
         provincial_tax = b * 0.05
-      elsif a_bonus <= 17_183_00 && province == Taxman::QC
+      elsif a_bonus <= 18_056_00 && province == Taxman::QC
         provincial_tax = b * 0.07
       end
       [federal_tax, provincial_tax]
