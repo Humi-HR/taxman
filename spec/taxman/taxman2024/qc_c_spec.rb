@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 RSpec.describe Taxman2024::QcC do
-  subject(:c) { described_class.new(p: p, qc_a5: qc_a5, qc_s3: qc_s3, qc_r: qc_r).amount }
+  subject(:c) { described_class.new(p: p, qc_a5: qc_a5, qc_s3: qc_s3, qc_r: qc_r, pm: pm).amount }
 
   let(:p) { 12 }
   let(:qc_r) { 0 }
+  let(:pm) { 12 }
 
   context "when the employee has already reached the qpp maximum for the year" do
     let(:qc_a5) { Taxman2024::Qpp::MAX }

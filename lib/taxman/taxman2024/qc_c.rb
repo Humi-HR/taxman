@@ -4,7 +4,7 @@ module Taxman2024
   # Calculates the QPP contribution for the period
   class QcC < Factor
     def self.params
-      %i[qc_a5 qc_s3 p qc_r]
+      %i[qc_a5 qc_s3 p qc_r pm]
     end
     attr_reader(*params)
 
@@ -15,7 +15,7 @@ module Taxman2024
     # Calculates the maximum contributions to QPP for a year including any CPP
     # paid. Should the CPP paid (R) be 0, the factor will zero out.
     def qpp_max
-      [Qpp::MAX - ((qc_r * (Qpp::RATE / Cpp::RATE)) + qc_a5), 0].max
+      [(Qpp::MAX * (pm / 12)) - ((qc_r * (Qpp::RATE / Cpp::RATE)) + qc_a5), 0].max
     end
 
     # Calculates the QPP for an employee including CPP contributions.
