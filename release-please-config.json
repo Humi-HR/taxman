@@ -3,7 +3,8 @@
     ".": {
       "release-type": "ruby",
       "version-file": "lib/taxman/version.rb",
-      "package-name": "taxman"
+      "package-name": "taxman",
+      "bootstrap-sha": "ee59467654fc36266f7bc065f8f122a02284c758"
     }
   }
 }
