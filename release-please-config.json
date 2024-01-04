@@ -1,0 +1,9 @@
+{
+  "packages": {
+    ".": {
+      "release-type": "ruby",
+      "version-file": "lib/taxman/version.rb",
+      "package-name": "taxman"
+    }
+  }
+}

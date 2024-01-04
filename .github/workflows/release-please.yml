@@ -39,4 +39,3 @@ jobs:
           # we use a custom Personal Access Token rather than default
           # secrets.GITHUB_TOKEN. 
           token: ${{ secrets.HUMI_CI_TOKEN }}
-          manifest-file: .release-please-manifest.json
