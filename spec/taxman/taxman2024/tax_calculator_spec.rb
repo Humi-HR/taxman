@@ -129,6 +129,7 @@ RSpec.describe Taxman2024::TaxCalculator do
         qc_d: 5_000_00.to_d,
         province: "QC",
         qc_c: 158_133.to_d,
+        qc_c2: 0,
         qc_s3: 25_000.to_d,
         qc_b2: 20_000.to_d,
         qc_j: 0,
