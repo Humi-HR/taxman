@@ -94,6 +94,7 @@ RSpec.describe Taxman2024::TaxCalculator do
     let(:qc_partial_context) do
       {
         p: 12,
+        qc_pr: 6,
         pi_periodic: i,
         ie_periodic: i,
         i: i,
@@ -132,8 +133,10 @@ RSpec.describe Taxman2024::TaxCalculator do
         qc_c2: 0,
         qc_s3: 25_000.to_d,
         qc_b2: 20_000.to_d,
-        qc_j: 0,
-        qc_j1: 0,
+        qc_j_raw: 0,
+        qc_j1_raw: 0,
+        qc_j_calc: 0,
+        qc_j1_calc: 0,
         qc_k1: 0,
         qc_e1: 17_183_00.to_d,
         qc_e2: 0,
@@ -151,6 +154,31 @@ RSpec.describe Taxman2024::TaxCalculator do
 
     it "matches the expected T3 amount" do
       expect(tax[:t3]).to be_within(0.1).of 5_913_82.50.to_d
+    end
+
+    it "does not have new J calculated" do
+      expect(tax[:tp_1015_line_19_deductions_new]).to be_nil
+    end
+
+    it "does not have new J1 calculated" do
+      expect(tax[:tp_1016_annual_deductions_new]).to be_nil
+    end
+
+    context "with new J values" do
+      let(:partial_context) do
+        qc_partial_context.merge(
+          qc_j_raw: 1000,
+          qc_j1_raw: 1000
+        )
+      end
+
+      it "does not have new J calculated" do
+        expect(tax[:tp_1015_line_19_deductions_new]).to eq(2000)
+      end
+
+      it "does not have new J1 calculated" do
+        expect(tax[:tp_1016_annual_deductions_new]).to eq(2000)
+      end
     end
   end
 end

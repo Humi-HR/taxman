@@ -88,6 +88,12 @@ module Taxman2024
 
     def calculate_provincial_qc_taxes
       # TP-1015.3 I and prerequisite factors
+      qc_j = QcJ.new(**context.slice(*QcJ.params))
+      context[:qc_j] = qc_j.amount
+      context[:tp_1015_line_19_deductions_new] = qc_j.calc if qc_j.calc
+      qc_j1 = QcJ1.new(**context.slice(*QcJ1.params))
+      context[:qc_j1] = qc_j1.amount
+      context[:tp_1016_annual_deductions_new] = qc_j1.calc if qc_j1.calc
       context[:qc_h] = QcH.amount(context)
       context[:qc_cs] = QcCs.amount(context)
       context[:qc_csa] = QcCsa.amount(context)

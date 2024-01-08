@@ -20,7 +20,9 @@ module Taxman2024
       tp_1015_line_9_non_indexed_value_of_personal_tax_credits: 0,
       tp_1015_line_11_additional_source_deductions: 0,
       tp_1015_line_19_deductions: 0,
-      tp_1016_annual_deductions: 0
+      tp_1016_annual_deductions: 0,
+      tp_1015_line_19_deductions_calc: 0,
+      tp_1016_annual_deductions_calc: 0
     )
       @tc = federal_personal_amount
       @tcp = provincial_personal_amount
@@ -35,8 +37,10 @@ module Taxman2024
       @qc_e1 = tp_1015_line_7_indexed_value_of_personal_tax_credits
       @qc_e2 = tp_1015_line_9_non_indexed_value_of_personal_tax_credits
       @qc_l = tp_1015_line_11_additional_source_deductions
-      @qc_j = tp_1015_line_19_deductions
-      @qc_j1 = tp_1016_annual_deductions
+      @qc_j_raw = tp_1015_line_19_deductions
+      @qc_j1_raw = tp_1016_annual_deductions
+      @qc_j_calc = tp_1015_line_19_deductions_calc
+      @qc_j1_calc = tp_1016_annual_deductions_calc
     end
 
     def translate
@@ -53,8 +57,10 @@ module Taxman2024
         k3p: (@k3p * 100).to_d,
         qc_e1: (@qc_e1 * 100).to_d,
         qc_e2: (@qc_e2 * 100).to_d,
-        qc_j: (@qc_j * 100).to_d,
-        qc_j1: (@qc_j1 * 100).to_d, # Not supported in main app
+        qc_j_raw: (@qc_j_raw * 100).to_d,
+        qc_j1_raw: (@qc_j1_raw * 100).to_d,
+        qc_j_calc: (@qc_j_calc * 100).to_d,
+        qc_j1_calc: (@qc_j1_calc * 100).to_d,
         qc_k1: 0.to_d, # Not supported
         qc_k2: 0.to_d, # Not supported
         qc_q: 0.to_d, # Not supported
