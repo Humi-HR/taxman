@@ -99,7 +99,7 @@ RSpec.describe Taxman2024::TaxCalculator do
         i: i,
         f: 0,
         f2: 0,
-        f5a: 43_41.66.to_d,
+        f5a: 49_41.67.to_d,
         u1: 0,
         hd: 0,
         f1: 0,
@@ -150,8 +150,7 @@ RSpec.describe Taxman2024::TaxCalculator do
     end
 
     it "matches the expected T3 amount" do
-      pending("QC updates not implemented yet")
-      expect(tax[:t3]).to be_within(0.1).of 618_658.51.to_d
+      expect(tax[:t3]).to be_within(0.1).of 5_913_82.50.to_d
     end
   end
 end
