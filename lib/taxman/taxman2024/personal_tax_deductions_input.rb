@@ -59,8 +59,8 @@ module Taxman2024
         qc_e2: (@qc_e2 * 100).to_d,
         qc_j_raw: (@qc_j_raw * 100).to_d,
         qc_j1_raw: (@qc_j1_raw * 100).to_d,
-        qc_j_calc: (@qc_j_calc * 100).to_d,
-        qc_j1_calc: (@qc_j1_calc * 100).to_d,
+        qc_j_calc: @qc_j_calc.to_d,
+        qc_j1_calc: @qc_j1_calc.to_d,
         qc_k1: 0.to_d, # Not supported
         qc_k2: 0.to_d, # Not supported
         qc_q: 0.to_d, # Not supported
