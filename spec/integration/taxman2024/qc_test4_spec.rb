@@ -48,7 +48,10 @@ RSpec.describe Taxman2024::Calculate do
       pensionable_income_this_period: 10_000,
       ytd_cpp_contributions: 0,
       ytd_qpp_contributions: 4_038.40,
-      contribution_months_this_year: 12
+      contribution_months_this_year: 12,
+      ytd_pensionable_income: 0,
+      ytd_additional_cpp_contributions: 0,
+      ytd_additional_qpp_contributions: 0
     )
   end
 
