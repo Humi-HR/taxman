@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    taxman (4.0.0)
+    taxman (5.0.0)
 
 GEM
   remote: https://rubygems.org/
