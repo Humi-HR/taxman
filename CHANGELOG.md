@@ -1,5 +1,27 @@
 # Changelog
 
+## [5.0.0](https://github.com/Humi-HR/taxman/compare/taxman-v4.0.0...taxman/v5.0.0) (2024-01-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* Rework usage of J and J1 values for QC
+
+### Features
+
+* Rework usage of J and J1 values for QC ([69db1aa](https://github.com/Humi-HR/taxman/commit/69db1aabb000289575a612bde5bc0c5683634d96))
+* update QC basic personal amount for 2024 ([3f43b91](https://github.com/Humi-HR/taxman/commit/3f43b9113fbc4b9d0c7b5e3ec6d80e2b3ed0382a))
+* update QC maximum deduction for employment income for 2024 ([8c6a332](https://github.com/Humi-HR/taxman/commit/8c6a332790cfdbbb8817b2716e558282cff985d0))
+* update QC tax rates and constants for 2024 ([300ffec](https://github.com/Humi-HR/taxman/commit/300ffec8e8211f7bdffb6d69b9f683eeae4ba952))
+
+
+### Bug Fixes
+
+* add new PensionInput parameters to 2024 QC tests ([45daf74](https://github.com/Humi-HR/taxman/commit/45daf74fcc1e5c6d7efc4f1d443d9fc7ff9e8e71))
+* fix qc test ([a6ee352](https://github.com/Humi-HR/taxman/commit/a6ee3526af0c9987c5cca84b66aafb9fd3be6545))
+* include qc_c2 in qc_cs ([91441ed](https://github.com/Humi-HR/taxman/commit/91441ed36d4b349ca02ec36d70c2f286a49cd8fc))
+* prorate QPP maximum ([2fdc35a](https://github.com/Humi-HR/taxman/commit/2fdc35a6ae20062be623cb9ccad709b7e5927cd7))
+
 ## [4.0.0](https://github.com/Humi-HR/taxman/compare/v3.0.3...v4.0.0) (2024-01-02)
 
 
