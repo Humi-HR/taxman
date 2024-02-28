@@ -12,8 +12,6 @@ RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = :expect
   end
-
-  config.exclude_pattern = "spec/integration/taxman2024/qc*"
 end
 
 require "debug"
