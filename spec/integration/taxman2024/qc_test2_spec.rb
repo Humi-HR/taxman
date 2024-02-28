@@ -36,7 +36,11 @@ RSpec.describe Taxman2024::Calculate do
   end
 
   let(:t) do
-    Taxman2024::PersonalTaxDeductionsInput.new
+    Taxman2024::PersonalTaxDeductionsInput.new(
+      federal_personal_amount: 15_705,
+      tp_1015_line_7_indexed_value_of_personal_tax_credits: 18_056,
+      tp_1015_line_9_non_indexed_value_of_personal_tax_credits: 0
+    )
   end
 
   let(:c) do
@@ -48,7 +52,7 @@ RSpec.describe Taxman2024::Calculate do
       ytd_cpp_contributions: 0,
       ytd_qpp_contributions: 1_203.69,
       contribution_months_this_year: 10,
-      ytd_pensionable_income: 0,
+      ytd_pensionable_income: 21_500,
       ytd_additional_cpp_contributions: 0,
       ytd_additional_qpp_contributions: 0
     )
@@ -65,20 +69,20 @@ RSpec.describe Taxman2024::Calculate do
     Taxman2024::EiInput.new(
       insurable_income_this_period: 1500,
       insurable_non_periodic_income_this_period: 500,
-      employees_ytd_contributions: 0
+      employees_ytd_contributions: 264
     )
   end
 
   it "matches PDOC's federal tax" do
-    expect(calculate[:federal_tax]).to be_within(0.1).of 30.94
+    expect(calculate[:federal_tax]).to eq 27.16
   end
 
   it "matches PDOC's federal tax on bonus" do
-    expect(calculate[:federal_tax_on_bonus]).to be_within(0.1).of 57.57
+    expect(calculate[:federal_tax_on_bonus]).to eq 57.54
   end
 
   it "matches WEBRAS's provincial tax" do
-    expect(calculate[:provincial_tax]).to eq 32.12
+    expect(calculate[:provincial_tax]).to eq 27.07
   end
 
   it "matches WEBRAS's provincial bonus tax" do
@@ -87,6 +91,10 @@ RSpec.describe Taxman2024::Calculate do
 
   it "matches WEBRAS's QPP deduction" do
     expect(calculate[:employee_qpp_contribution]).to eq 87.38
+  end
+
+  it "matches WEBRAS's QPP2 deduction" do
+    expect(calculate[:employee_qpp2_contribution]).to eq 0
   end
 
   it "matches WEBRAS's QPIP employee deduction" do
@@ -98,6 +106,6 @@ RSpec.describe Taxman2024::Calculate do
   end
 
   it "matches PDOC's EI calculation" do
-    expect(calculate[:employee_ei_contribution]).to eq 19.05
+    expect(calculate[:employee_ei_contribution]).to eq 19.80
   end
 end

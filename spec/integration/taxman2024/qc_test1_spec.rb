@@ -20,27 +20,28 @@ RSpec.describe Taxman2024::Calculate do
       taxable_non_periodic_income: 1_000,
       qc_taxable_periodic_income: 10_000,
       qc_taxable_non_periodic_income: 1_000,
-      province: "qc",
+      province: "QC",
       periods_remaining_including_this_one: 48
     )
   end
 
   let(:y) do
     Taxman2024::YearInput.new(
-      ytd_bonus: 8_000,
+      ytd_bonus: 0,
       pay_periods: 52,
       f5b_ytd: 0,
       employer_ei_multiple: 1.4,
       ytd_gross_earnings: 40_000.00,
-      ytd_csb: 100.0
+      ytd_csb: 0
     )
   end
 
   let(:t) do
     Taxman2024::PersonalTaxDeductionsInput.new(
-      federal_personal_amount: nil,
+      federal_personal_amount: 15_705,
       provincial_personal_amount: nil,
-      tp_1015_line_9_non_indexed_value_of_personal_tax_credits: 100
+      tp_1015_line_9_non_indexed_value_of_personal_tax_credits: 100,
+      tp_1015_line_7_indexed_value_of_personal_tax_credits: 17_183
     )
   end
 
@@ -71,12 +72,12 @@ RSpec.describe Taxman2024::Calculate do
     Taxman2024::EiInput.new(
       insurable_income_this_period: 11_000,
       insurable_non_periodic_income_this_period: 1_000,
-      employees_ytd_contributions: 0
+      employees_ytd_contributions: 528
     )
   end
 
   it "matches PDOC's federal tax" do
-    expect(calculate[:federal_tax]).to be_within(3.6).of 2_305.07
+    expect(calculate[:federal_tax]).to eq 2_285.31
   end
 
   it "matches PDOC's federal tax on bonus" do
@@ -84,8 +85,7 @@ RSpec.describe Taxman2024::Calculate do
   end
 
   it "matches WEBRAS's provincial tax" do
-    # A quarter ish off...
-    expect(calculate[:provincial_tax]).to be_within(0.28).of 2_314.15
+    expect(calculate[:provincial_tax]).to eq 2_304.29
   end
 
   it "matches WEBRAS's provincial bonus tax" do
@@ -94,6 +94,10 @@ RSpec.describe Taxman2024::Calculate do
 
   it "matches WEBRAS's QPP deduction" do
     expect(calculate[:employee_qpp_contribution]).to eq 699.69
+  end
+
+  it "matches WEBRAS's QPP2 deduction" do
+    expect(calculate[:employee_qpp2_contribution]).to eq 0
   end
 
   it "matches WEBRAS's QPIP employee deduction" do
@@ -105,6 +109,6 @@ RSpec.describe Taxman2024::Calculate do
   end
 
   it "matches PDOC's EI calculation" do
-    expect(calculate[:employee_ei_contribution]).to eq 139.70
+    expect(calculate[:employee_ei_contribution]).to eq 145.20
   end
 end

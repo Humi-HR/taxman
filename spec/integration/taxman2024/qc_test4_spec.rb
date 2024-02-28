@@ -20,7 +20,7 @@ RSpec.describe Taxman2024::Calculate do
       taxable_non_periodic_income: 0,
       qc_taxable_periodic_income: 10_000,
       qc_taxable_non_periodic_income: 0,
-      province: "qc",
+      province: "QC",
       periods_remaining_including_this_one: 3
     )
   end
@@ -47,7 +47,7 @@ RSpec.describe Taxman2024::Calculate do
     Taxman2024::PensionInput.new(
       pensionable_income_this_period: 10_000,
       ytd_cpp_contributions: 0,
-      ytd_qpp_contributions: 4_038.40,
+      ytd_qpp_contributions: 4_348,
       contribution_months_this_year: 12,
       ytd_pensionable_income: 0,
       ytd_additional_cpp_contributions: 0,
@@ -66,12 +66,12 @@ RSpec.describe Taxman2024::Calculate do
   let(:e) do
     Taxman2024::EiInput.new(
       insurable_income_this_period: 10_000,
-      employees_ytd_contributions: 0
+      employees_ytd_contributions: 5_000
     )
   end
 
   it "matches PDOC's federal tax" do
-    expect(calculate[:federal_tax]).to be_within(0.1).of 1339.14
+    expect(calculate[:federal_tax]).to be_within(0.1).of 1300.51
   end
 
   it "matches PDOC's federal tax on bonus" do
@@ -79,7 +79,7 @@ RSpec.describe Taxman2024::Calculate do
   end
 
   it "matches WEBRAS's provincial tax" do
-    expect(calculate[:provincial_tax]).to eq 1466.20
+    expect(calculate[:provincial_tax]).to eq 1433.57
   end
 
   it "matches WEBRAS's provincial bonus tax" do
@@ -90,16 +90,19 @@ RSpec.describe Taxman2024::Calculate do
     expect(calculate[:employee_qpp_contribution]).to eq 0
   end
 
+  it "matches WEBRAS's QPP2 deduction" do
+    expect(calculate[:employee_qpp2_contribution]).to eq 0
+  end
+
   it "matches WEBRAS's QPIP employee deduction" do
-    expect(calculate[:employee_qpip_contribution]).to eq 4.94
+    expect(calculate[:employee_qpip_contribution]).to eq 19.76
   end
 
   it "matches WEBRAS's QPIP employer deduction" do
-    # WEBRAS does not have an input for QPIP employer contrib, sooooo....
-    expect(calculate[:employer_qpip_contribution]).to eq 6.92
+    expect(calculate[:employer_qpip_contribution]).to eq 27.68
   end
 
   it "matches PDOC's EI calculation" do
-    expect(calculate[:employee_ei_contribution]).to eq 127.0
+    expect(calculate[:employee_ei_contribution]).to eq 0
   end
 end
