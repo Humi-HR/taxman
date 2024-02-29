@@ -1,5 +1,13 @@
 # Changelog
 
+## [5.0.1](https://github.com/Humi-HR/taxman/compare/taxman/v5.0.0...taxman/v5.0.1) (2024-02-29)
+
+
+### Bug Fixes
+
+* QC tax tests docs ([27447af](https://github.com/Humi-HR/taxman/commit/27447afbef7f7bef3a6c6026e8849adfa6ed3a23))
+* QC tests ([62b4209](https://github.com/Humi-HR/taxman/commit/62b4209264146ed97b8cbc0ee9a09bbc102d94da))
+
 ## [5.0.0](https://github.com/Humi-HR/taxman/compare/taxman-v4.0.0...taxman/v5.0.0) (2024-01-09)
 
 
