@@ -1,5 +1,13 @@
 # Changelog
 
+## [5.1.0](https://github.com/Humi-HR/taxman/compare/taxman/v5.0.1...taxman/v5.1.0) (2024-03-20)
+
+
+### Features
+
+* Add CPP2 constants ([d200601](https://github.com/Humi-HR/taxman/commit/d200601b54c07ed046f65f564176b2695eb4942c))
+* Add old constants for CPP and EI ([bd3ca56](https://github.com/Humi-HR/taxman/commit/bd3ca56ffc32404567959302c06f974f5aa4fe15))
+
 ## [5.0.1](https://github.com/Humi-HR/taxman/compare/taxman/v5.0.0...taxman/v5.0.1) (2024-02-29)
 
 
