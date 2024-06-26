@@ -24,6 +24,9 @@ jobs:
     - name: Check 1
       run: |
         curl -i -H "Authorization: token ${{ secrets.ELLIOTS_TAXMAN_TOKEN }}" https://api.github.com/user
+        curl -i -H "Authorization: token ${{ secrets.ELLIOTS_TAXMAN_TOKEN }}" https://api.github.com/user/tokens
+      
     - name: Check 2
       run: |
         curl -i -H "Authorization: token ${{ secrets.HUMI_CI_TOKEN }}" https://api.github.com/user
+        curl -i -H "Authorization: token ${{ secrets.HUMI_CI_TOKEN }}" https://api.github.com/user/tokens
