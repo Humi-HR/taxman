@@ -21,3 +21,9 @@ jobs:
         bundler-cache: true
     - name: Run the default task
       run: bundle exec rake
+    - name: Check 1
+      run: |
+        curl -i -H "Authorization: token ${{ secrets.ELLIOTS_TAXMAN_TOKEN }}" https://api.github.com/user
+    - name: Check 2
+      run: |
+        curl -i -H "Authorization: token ${{ secrets.HUMI_CI_TOKEN }}" https://api.github.com/user
